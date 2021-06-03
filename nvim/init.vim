@@ -83,6 +83,8 @@ set encoding=UTF-8
 
 set path+=** " Allow recursive search with the :find command
 
+" auto delete trailing white spaces
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 call plug#begin('~/.vim/plugged')
 Plug 'ray-x/aurora'      " for Plug user
