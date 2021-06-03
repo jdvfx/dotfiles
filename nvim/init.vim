@@ -9,8 +9,9 @@
 " == Key mapping
 " ===================================
 "
-"make new split appear below or on the right side of current split
-set splitbelow splitright
+" set leader key
+let g:mapleader = "\<Space>"
+
 " resize splits with arrow keys  
 nnoremap <Up> : resize +3<CR>
 nnoremap <Down> : resize -3<CR>
@@ -30,8 +31,10 @@ vnoremap > >gv
 set hidden " keeps buffers in BG
 
 " basic syntax highlighting
-"syntax on
+syntax on
 
+"make new split appear below or on the right side of current split
+set splitbelow splitright
 
 set noerrorbells " silent
 
