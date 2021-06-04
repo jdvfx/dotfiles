@@ -149,25 +149,30 @@ alias gs='git status'
 alias gc='git commit -m'
 alias gp='git push'
 alias ga='git add'
-alias grm'git rm'
+alias grm='git rm'
 
-# disable all the wacom buttons
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelUp' 'button 0'
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelDown' 'button 0'
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Up' 'button 0'
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Down' 'button 0'
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelUp' 'button 0'
-xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelDown' 'button 0'
+wac=`/usr/bin/xsetwacom --list | wc -l `
+if [ $wac != 0 ]; then
+    # disable all the wacom buttons if tablet detected
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelUp' 'button 0'
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelDown' 'button 0'
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Up' 'button 0'
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Down' 'button 0'
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelUp' 'button 0'
+    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelDown' 'button 0'
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 1 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 2 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 3 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 8 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 9 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 10 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 11 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 12 "button 0"
+    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 13 "button 0"
+fi
 
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 1 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 2 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 3 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 8 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 9 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 10 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 11 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 12 "button 0"
-xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 13 "button 0"
+# fix the delete key in ST terminal
+tput smkx
 
 # edit this file
 alias aliases='nvim ~/.bashrc'
