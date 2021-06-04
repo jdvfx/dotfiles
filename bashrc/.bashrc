@@ -117,14 +117,17 @@ alias p='python2.7'
 alias python='python2.7'
 
 alias sleep='systemctl suspend'
+alias refresh_fontcache='fc-cache -vf'
+alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
 
-# FEH (fast image viewer)
+# view images or image sequences
 alias i='feh -F *.jpg *.JPG *.PNG *.png'
+alias m='/opt/hfs18.5/bin/mplay \*.exr \*.jpg'
+alias r='/opt/hfs18.5/bin/mplay \*.exr \*.jpg'
 
+# Houdini
 alias h='/opt/hfs18.0/bin/houdinifx'
 alias h185='/opt/hfs18.5/bin/houdinifx'
-
-alias refresh_fontcache='fc-cache -vf'
 
 # NEOVIM!
 alias v='nvim'
@@ -137,9 +140,16 @@ alias vpnoff='nordvpn disconnect'
 alias killswitchon='nordvpn set killswitch on' 
 alias killswitchoff='nordvpn set killswitch off' 
 
-# work
+# remote work
 alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
 alias killno='killall nxplayer.bin'
+
+# GIT 
+alias gs='git status'
+alias gc='git commit -m'
+alias gp='git push'
+alias ga='git add'
+alias grm'git rm'
 
 # disable all the wacom buttons
 xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelUp' 'button 0'
@@ -159,6 +169,8 @@ xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 11 "button 0"
 xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 12 "button 0"
 xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 13 "button 0"
 
+# edit this file
+alias aliases='nvim ~/.bashrc'
 # add some private bashrc commands
 source ~/.bashrc_pr
 
