@@ -12,6 +12,12 @@
 " set leader key
 let g:mapleader = "\<Space>"
 
+" auto pep8 !
+map <leader>pp :Neoformat! python autopep8<CR>
+
+" so long Ex mode!
+nnoremap <S-Q> : <Esc>
+
 " resize splits with ctrl+arrow keys  
 nnoremap <up> : resize +3<cr>
 nnoremap <Down> : resize -3<CR>
@@ -92,7 +98,7 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 call plug#begin('~/.vim/plugged')
 Plug 'ray-x/aurora'      " for Plug user
 "Plug 'gruvbox-community/gruvbox'
-"Plug 'sbdchd/neoformat' "auto code formatter
+Plug 'sbdchd/neoformat' "auto code formatter
 " cool status bar 
 Plug 'vim-airline/vim-airline'
 "Plug 'davidhalter/jedi-vim'
