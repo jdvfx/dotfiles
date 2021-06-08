@@ -81,12 +81,14 @@ fi
 # // start BUNKER aliases //
 #################################################################################
 
+# basic stuff
 alias t='top'
 alias ht='htop' 
 alias th='htop' 
 alias x='exit' 
 alias c='clear'
 
+# ls
 alias ls='ls --color' 
 alias ll='ls -lh --color'
 alias la='ls -A --color'
@@ -107,40 +109,24 @@ alias cd....='cd ../../..'
 alias d='cd ~/Desktop' 
 alias dn='cd ~/Downloads' 
 
-alias evince='atril' 
+# sleep!
+alias suspend='systemctl suspend'
 
-alias f='firefox &'
-alias ch='chromium-browser &'
-alias goo='google-chrome &' 
-
-alias p='python2.7' 
-alias python='python2.7'
-
-alias sleep='systemctl suspend'
 alias refresh_fontcache='fc-cache -vf'
 alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
 
-# view images or image sequences
-alias i='feh -F *.jpg *.JPG *.PNG *.png'
-alias m='/opt/hfs18.5/bin/mplay \*.exr \*.jpg'
-alias r='/opt/hfs18.5/bin/mplay \*.exr \*.jpg'
+# browse web
+alias f='firefox &'
 
-# Houdini
-alias h='/opt/hfs18.0/bin/houdinifx'
-alias h185='/opt/hfs18.5/bin/houdinifx'
+# view images 
+alias i='feh -F *.jpg *.JPG *.PNG *.png'
 
 # NEOVIM!
 alias v='nvim'
 alias z='nvim' 
 alias n='nvim' 
 
-# VPN and killswitch
-alias vpnon='nordvpn connect' 
-alias vpnoff='nordvpn disconnect' 
-alias killswitchon='nordvpn set killswitch on' 
-alias killswitchoff='nordvpn set killswitch off' 
-
-# remote work
+# nomachine
 alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
 alias killno='killall nxplayer.bin'
 
@@ -151,6 +137,7 @@ alias gp='git push'
 alias ga='git add'
 alias grm='git rm'
 
+# for Wacom PTK-640 - disable all buttons
 wac=`/usr/bin/xsetwacom --list | wc -l `
 if [ $wac != 0 ]; then
     # disable all the wacom buttons if tablet detected
