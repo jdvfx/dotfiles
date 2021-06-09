@@ -8,12 +8,22 @@
 " ===================================
 " == Key mapping
 
-"
 " set leader key
 let g:mapleader = "\<Space>"
 
+" convert Python2 print '' into Python3 print('')
+" works for single or double quotes
+function Python2PrintTo3()
+    :g/print "/norm A)
+    :g/print/: s/print "/print("/g
+    :g/print '/norm A)
+    :g/print/: s/print '/print('/g
+endfunction
+
 " auto pep8 !
 map <leader>pp :Neoformat! python autopep8<CR>
+" python2 print into python3
+map <leader>23 : call Python2PrintTo3()<CR>
 
 " so long Ex mode!
 nnoremap <S-Q> : <Esc>
@@ -39,6 +49,7 @@ vnoremap > >gv
 " ===================================
 "
 set wildmenu
+set nomodeline " fix security issue
 
 set hidden " keeps buffers in BG
 set exrc " load .vim config files when using `neovim .`
@@ -80,11 +91,11 @@ set scrolloff=8 " start scrolling before the start/end of the page
 " this is pretty good, just need to check that Ctrl+e is not used by default
 map <C-e> :Lex <bar> vertical resize 40 <CR>
 
-" set status line intos and colors
-set statusline=%F "file full path
-set statusline+=%= "right side of the status bar
-set statusline+=%y "file type
-set statusline +=\ %c:%l/%L "show column:line/max line
+"" set status line intos and colors
+"set statusline=%F "file full path
+"set statusline+=%= "right side of the status bar
+"set statusline+=%y "file type
+"set statusline +=\ %c:%l/%L "show column:line/max line
 
 " not sure if we need that, need to check 
 set encoding=UTF-8
@@ -96,9 +107,10 @@ set path+=** " Allow recursive search with the :find command
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 call plug#begin('~/.vim/plugged')
-Plug 'ray-x/aurora'      " for Plug user
+"Plug 'ray-x/aurora'      " for Plug user
 "Plug 'gruvbox-community/gruvbox'
 Plug 'sbdchd/neoformat' "auto code formatter
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " cool status bar 
 Plug 'vim-airline/vim-airline'
 "Plug 'davidhalter/jedi-vim'
@@ -112,8 +124,8 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'junegunn/goyo.vim'
 call plug#end()
 
-
-let g:deoplete#enable_at_startup = 1
+let g:semshi#error_sign_delay = 2
+" let g:deoplete#enable_at_startup = 1
 
 " use: PluginInstall to install plugins
 "set nocompatible
