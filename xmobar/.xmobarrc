@@ -1,4 +1,4 @@
-Config { font = "xft:JetBrains Mono NL:size=9:antialias=true:hinting=true"
+Config { font = "xft:JetBrains Mono:size=9:antialias=true:hinting=true"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
