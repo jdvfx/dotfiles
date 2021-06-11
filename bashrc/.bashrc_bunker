@@ -32,6 +32,7 @@ alias dn='cd ~/Downloads'
 
 # sleep!
 alias suspend='systemctl suspend'
+alias sd='echo SHUTDOWN;sudo shutdown now'
 
 alias refresh_fontcache='fc-cache -vf'
 alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
