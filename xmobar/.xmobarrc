@@ -13,6 +13,6 @@ Config { font = "xft:JetBrains Mono:size=9:antialias=true:hinting=true"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#444444> %StdinReader%</fc>}{<fc=#444444>%cpu% . %memory% . %swap% . %date%</fc> <fc=#0088FF>%time% </fc>"
+        , template = "<fc=#444444> %StdinReader%</fc>}{<fc=#444444>%cpu% . %memory% . %swap% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
         }
 

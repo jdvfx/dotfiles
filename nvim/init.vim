@@ -113,6 +113,7 @@ Plug 'sbdchd/neoformat' "auto code formatter
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " cool status bar 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'davidhalter/jedi-vim'
 "
 " comment ON/OFF with leader+cc/cu
@@ -126,7 +127,7 @@ call plug#end()
 
 let g:semshi#error_sign_delay = 2
 " let g:deoplete#enable_at_startup = 1
-
+let g:airline_theme='badwolf'
 " use: PluginInstall to install plugins
 "set nocompatible
 "filetype off
