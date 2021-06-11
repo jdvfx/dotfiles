@@ -77,99 +77,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-#################################################################################
-# // start BUNKER aliases //
-#################################################################################
-
-# basic stuff
-alias t='top'
-alias ht='htop' 
-alias th='htop' 
-alias x='exit' 
-alias c='clear'
-
-# ls
-alias ls='ls --color' 
-alias ll='ls -lh --color'
-alias la='ls -A --color'
-alias l='ls -CF --color'
-alias lrt='ls -lhrt --color' 
-alias lrs='ls -lhrs --color' 
-alias lrtr='ls -lht --color' 
-alias lrsr='ls -lhs -color' 
-alias l='ls --color' 
-
-# go somewhere
-alias ..='cd ..'
-alias ...='cd ../..' 
-alias ....='cd ../../..' 
-alias cd..='cd ..' 
-alias cd...='cd ../..' 
-alias cd....='cd ../../..' 
-alias d='cd ~/Desktop' 
-alias dn='cd ~/Downloads' 
-
-# sleep!
-alias suspend='systemctl suspend'
-
-alias refresh_fontcache='fc-cache -vf'
-alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
-
-# browse web
-alias f='firefox &'
-
-# view images 
-alias i='feh -F *.jpg *.JPG *.PNG *.png'
-
-# NEOVIM!
-alias v='nvim'
-alias z='nvim' 
-alias n='nvim' 
-
-# nomachine
-alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
-alias killno='killall nxplayer.bin'
-
-# GIT 
-alias gs='git status'
-alias gc='git commit -m'
-alias gp='git push'
-alias ga='git add'
-alias grm='git rm'
-
-# for Wacom PTK-640 - disable all buttons
-wac=`/usr/bin/xsetwacom --list | wc -l `
-if [ $wac != 0 ]; then
-    # disable all the wacom buttons if tablet detected
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelUp' 'button 0'
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelDown' 'button 0'
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Up' 'button 0'
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheel2Down' 'button 0'
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelUp' 'button 0'
-    xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'RelWheelDown' 'button 0'
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 1 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 2 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 3 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 8 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 9 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 10 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 11 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 12 "button 0"
-    xsetwacom -s --set "Wacom Intuos4 6x9 Pad pad" Button 13 "button 0"
-fi
-
-# fix the delete key in ST terminal
-tput smkx
-
-# edit this file
-alias aliases='nvim ~/.bashrc'
-# add some private bashrc commands
-source ~/.bashrc_pr
-
-#################################################################################
-# // end BUNKER aliases // 
-#################################################################################
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -189,3 +96,5 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+source ~/.bashrc_bunker
