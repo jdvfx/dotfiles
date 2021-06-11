@@ -3,15 +3,16 @@ Config { font = "xft:JetBrains Mono:size=9:antialias=true:hinting=true"
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
-        , position = TopW L 100
-        , commands = [    Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 30
+        , position = TopW L 100 
+        , commands = [    Run Cpu ["-L","5","-H","70","--normal","#444444","--high","#FFAA00"] 30
                         , Run Memory ["-t","Mem: <usedratio>%"] 50
                         , Run Swap [] 200
-                        , Run Date "%b %_d %H:%M " "date" 100
+                        , Run Date "%H:%M" "time" 100
+                        , Run Date "%b %_d" "date" 1000
                         , Run StdinReader
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{%cpu% <fc=#444444>%memory%</fc> <fc=#444444>%swap%</fc> <fc=#0088FF>%date%</fc>"
+        , template = "<fc=#444444> %StdinReader%</fc>}{<fc=#444444>%cpu% . %memory% . %swap% . %date%</fc> <fc=#0088FF>%time% </fc>"
         }
 
