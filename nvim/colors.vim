@@ -59,6 +59,8 @@ hi PmenuSel guifg=#ffffff guibg=#0060ff
 
 "hi normal guibg=#222428 guifg=#ffffff
 "
+hi normal guibg=#181818
+"
 hi semshiSelected        guifg=#0060ff guibg=#222222 gui=bold
 hi semshiParameter       guifg=#1ac3ff
 "
