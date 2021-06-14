@@ -66,6 +66,6 @@ myConfig = def {
                , ((mod4Mask, xK_F8), spawn "/bin/python2.7 ~/.xmonad/brightness/adjustBrightness.py +.1")
                , ((mod4Mask, xK_Right), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
                , ((mod4Mask, xK_Left), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
-               , ((mod4Mask, xK_o), spawn "ls --color=never --format=single-column ~/.local/bin/dmenu/ | dmenu -fn 'JetBrains Mono NL:size=9' -sb '#f579ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '~/.local/bin/dmenu/%'")
-               , ((mod4Mask, xK_p), spawn "ls --color=never --format=single-column /usr/bin/ | dmenu -fn 'JetBrains Mono NL:size=9' -sb '#2bc395' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '/usr/bin/%'")
+               , ((mod4Mask, xK_o), spawn "ls --color=never --format=single-column ~/.local/bin/dmenu/ | dmenu -fn 'JetBrains Mono:size=10' -sb '#f579ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '~/.local/bin/dmenu/%'")
+               , ((mod4Mask, xK_p), spawn "ls --color=never --format=single-column /usr/bin/ | dmenu -fn 'JetBrains Mono:size=10' -sb '#2bc395' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '/usr/bin/%'")
                ]
