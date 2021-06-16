@@ -45,7 +45,7 @@ myStartupHook = do
 -- Main configuration, override the defaults to your liking.
 myConfig = def {
                modMask = mod4Mask, -- Use Super instead of Alt
-               terminal = "st",
+               terminal = "alacritty",
                borderWidth   = 1,
                normalBorderColor  = "#000000",
                focusedBorderColor = "#0088FF",
