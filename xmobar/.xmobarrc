@@ -4,7 +4,7 @@ Config { font = "xft:JetBrains Mono:size=10:antialias=true:hinting=true"
         , bgColor = "black"
         , fgColor = "grey"
         , position = TopW L 100 
-        , commands = [    Run Cpu ["-L","5","-H","70","--normal","#444444","--high","#FFAA00"] 30
+        , commands = [    Run Cpu ["-L","5","-H","70","--normal","#888888","--high","#FFAA00"] 30
                         , Run Memory ["-t","Mem: <usedratio>%"] 50
                         , Run Swap [] 200
                         , Run Date "%H:%M" "time" 100
@@ -13,6 +13,6 @@ Config { font = "xft:JetBrains Mono:size=10:antialias=true:hinting=true"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#444444> %StdinReader%</fc>}{<fc=#444444>%cpu% . %memory% . %swap% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#888888>%cpu% . %memory% . %swap% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
         }
 
