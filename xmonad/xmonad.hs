@@ -5,6 +5,12 @@ import XMonad.Util.EZConfig
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.SpawnOnce
 
+-- for layouts
+import XMonad.Layout.NoBorders   ( noBorders, smartBorders)
+import XMonad.Layout.Spiral
+import Data.Ratio -- this makes the '%' operator available (optional)
+import XMonad.Layout.Spiral
+import XMonad.Layout.Grid
 
 -- The main function.
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
@@ -17,21 +23,21 @@ myPP = xmobarPP {
                 ppTitle = xmobarColor "#888888" ""
                 }
 
---myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
-
-                      --"" . wrap "<" ">"
-
---xmobarPP {
-            --ppOutput = hPutStrLn xmproc
-          --, ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-          --, ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          --, ppSep = "   "
-      --} 
 
 -- Key binding to toggle the gap for the bar.
 -- B key: show/hide the bar
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
+
+------------------------------------------------------------------------
+-- LAYOUTS
+------------------------------------------------------------------------
+myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| noBorders Full
+    where
+      layoutTall = Tall 1 (3/100) (1/2)
+      layoutSpiral = spiral (125 % 146)
+      layoutGrid = Grid
+      layoutMirror = Mirror (Tall 1 (3/100) (3/5))
 
 ------------------------------------------------------------------------
 -- AUTOSTART
@@ -49,16 +55,17 @@ myConfig = def {
                borderWidth   = 1,
                normalBorderColor  = "#000000",
                focusedBorderColor = "#0088FF",
-               startupHook        = myStartupHook
+               startupHook        = myStartupHook,
+               layoutHook = myLayouts
                } `additionalKeys`
                [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
                , ((mod4Mask, xK_Print), spawn "scrot ~/Pictures/screenshots/")
                , ((mod4Mask, xK_F1), spawn "setxkbmap -option 'caps:escape'")
                , ((mod4Mask, xK_F11), spawn "amixer -q sset Master 3%-;aplay ~/.xmonad/sounds/beep-29.wav")
                , ((mod4Mask, xK_F12), spawn "amixer -q sset Master 3%+;aplay ~/.xmonad/sounds/beep-29.wav")
-               , ((mod4Mask, xK_F6), spawn "/bin/python2.7 ~/.xmonad/brightness/setDefaultBrightness.py")
-               , ((mod4Mask, xK_F7), spawn "/bin/python2.7 ~/.xmonad/brightness/adjustBrightness.py -.1")
-               , ((mod4Mask, xK_F8), spawn "/bin/python2.7 ~/.xmonad/brightness/adjustBrightness.py +.1")
+               , ((mod4Mask, xK_F6), spawn "/bin/python ~/.xmonad/brightness/setDefaultBrightness.py")
+               , ((mod4Mask, xK_F7), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py -.1")
+               , ((mod4Mask, xK_F8), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py +.1")
                , ((mod4Mask, xK_Right), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
                , ((mod4Mask, xK_Left), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
                , ((mod4Mask, xK_o), spawn "ls --color=never --format=single-column ~/.local/bin/dmenu/ | dmenu -fn 'JetBrains Mono:size=10' -sb '#f579ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '~/.local/bin/dmenu/%'")
