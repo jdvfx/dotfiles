@@ -87,6 +87,35 @@ tput smkx
 alias aliases='nvim ~/.bashrc'
 # add some private bashrc commands
 source ~/.bashrc_pr
+LS_COLORS='*.sh=1;33:*.hs=1;33:*.py=1;33:di=1;36:*.jpg=1;30:*.txt=1;31:*.png=1;32:*.hiplc=1;35:*.hip=1;35:*.zip=1;37:*.pdf=1;32'
+
+
+#1;33 yellow bold
+
+#1;37 bold aqua
+#1;35 bold orange 
+#1;31 bold coral
+#1;32 bold pink
+#1;37 bold white
+#1;30 bold grey/blue
+
+#36 aqua
+#35 brown
+#92 pink
+#34 royal blue
+#37 grey/blue
+#44 white text on blue
+#30 black text
+#31 dark pink 
+#33 orange
+#45 white text on brown
+#4 white text underlined
+#7 black text on white background
+#2 grey (looks thin)
+#1 white (bold)
+
+alias termcolors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
+
 
 #################################################################################
 # // end BUNKER aliases // 
