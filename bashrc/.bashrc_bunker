@@ -2,6 +2,10 @@
 # // start BUNKER aliases //
 #################################################################################
 
+
+stty -ixon # Disable ctrl+c and ctrl+q in terminal
+
+
 # basic stuff
 alias t='top'
 alias ht='htop' 
@@ -10,15 +14,15 @@ alias x='exit'
 alias c='clear'
 
 # ls
-alias ls='ls --color' 
-alias ll='ls -lh --color'
-alias la='ls -A --color'
-alias l='ls -CF --color'
-alias lrt='ls -lhrt --color' 
-alias lrs='ls -lhrs --color' 
-alias lrtr='ls -lht --color' 
-alias lrsr='ls -lhs -color' 
-alias l='ls --color' 
+alias ls='ls --color=auto --group-directories-first' 
+alias ll='ls -lh --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+alias lrt='ls -lhrt --color=auto' 
+alias lrs='ls -lhrs --color=auto' 
+alias lrtr='ls -lht --color=auto' 
+alias lrsr='ls -lhs -color=auto' 
+alias l='ls --color=auto' 
 
 # go somewhere
 alias ..='cd ..'
@@ -87,7 +91,7 @@ tput smkx
 alias aliases='nvim ~/.bashrc'
 # add some private bashrc commands
 source ~/.bashrc_pr
-LS_COLORS='*.sh=1;33:*.hs=1;33:*.py=1;33:di=1;36:*.jpg=1;30:*.txt=1;31:*.png=1;32:*.hiplc=1;35:*.hip=1;35:*.zip=1;37:*.pdf=1;32'
+LS_COLORS='*.sh=1;33:*.hs=1;33:*.py=1;33:di=1;34:*.jpg=1;30:*.txt=1;31:*.png=1;32:*.hiplc=1;35:*.hip=1;35:*.zip=1;37:*.pdf=1;32'
 
 
 #1;33 yellow bold
@@ -115,6 +119,9 @@ LS_COLORS='*.sh=1;33:*.hs=1;33:*.py=1;33:di=1;36:*.jpg=1;30:*.txt=1;31:*.png=1;3
 #1 white (bold)
 
 alias termcolors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
+
+# remove duplicates in history
+export HISTCONTROL=ignoreboth
 
 
 #################################################################################
