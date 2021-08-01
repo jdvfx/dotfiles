@@ -5,6 +5,7 @@
 
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
+alias pscpu='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
 
 # basic stuff
 alias t='top'
@@ -64,7 +65,7 @@ alias ga='git add'
 alias grm='git rm'
 
 # for Wacom PTK-640 - disable all buttons
-wac=`/usr/bin/xsetwacom --list | wc -l`
+wac=`/usr/bin/xsetwacom --list | wc -l `
 if [ $wac != 0 ]; then
     # disable all the wacom buttons if tablet detected
     xsetwacom --set 'Wacom Intuos4 6x9 Pad pad' 'AbsWheelUp' 'button 0'
