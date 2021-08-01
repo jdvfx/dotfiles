@@ -5,6 +5,8 @@
 
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
+# nicer prompt
+export PS1="\[\033[38;5;95m\]\A \[\033[38;5;63m\]\w \[\033[38;5;95m\]> \[$(tput sgr0)\]"
 alias pscpu='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
 
 # basic stuff
