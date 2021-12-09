@@ -1,0 +1,7 @@
+brave#/usr/bin/brave-browser
+chrome#google-chrome
+nomachine#/usr/NX/bin/nxplayer --geometry 1920x1080 &
+blender#/opt/blender-3.0.0-linux-x64/blender
+firefox#firefox
+houdini#/opt/hfs18.0/bin/houdinifx
+spotify#/snap/bin/spotify

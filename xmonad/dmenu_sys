@@ -1,0 +1,3 @@
+sleep#systemctl suspend
+logout#killall -9 xmonad-x86_64-l
+shutdown#shutdown now

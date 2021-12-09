@@ -1,0 +1,3 @@
+alsamixer#alacritty -e /usr/bin/alsamixer
+cheese#cheese
+gnome_disks#/usr/bin/gnome-disks
