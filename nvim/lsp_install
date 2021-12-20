@@ -1,0 +1,16 @@
+
+// install Python-Language-Server
+pip install -U jedi-language-server
+
+// install lua-language server
+// download the linux binary
+https://github.com/sumneko/lua-language-server/releases
+
+
+extract and place in /usr/lib/node_modules/lua-language-server
+
+// create an alias to the binary in /usr/bin:
+sudo ln -s /usr/lib/node_modules/lua-language-server/bin/lua-language-server /usr/bin/lua-language-server
+
+
+
