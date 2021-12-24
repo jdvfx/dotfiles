@@ -30,16 +30,20 @@ packer.reset()
 -- actual plugins list
 use "wbthomason/packer.nvim"
 
+-- >> !!! telescope is missing BurntSuhi/ripgrep (:checkhealth telescope)
 use {
     "nvim-telescope/telescope.nvim",
     requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
     config = get_config("telescope")
 }
 
+-- >> File Explorer like nertree
 use {"kyazdani42/nvim-tree.lua", config = get_config("nvim-tree")}
 
+-- >> navigation between splits and panes with Ctrl+hjkl
 use {"numToStr/Navigator.nvim", config = get_config("navigator")}
 
+-- >> bottom status line
 use {
     "nvim-lualine/lualine.nvim",
     config = get_config("lualine"),
@@ -47,12 +51,14 @@ use {
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
 }
 
+-- >> colorize HEX codes
 use {
     "norcalli/nvim-colorizer.lua",
     event = "BufReadPre",
     config = get_config("colorizer")
 }
 
+-- >> comment lines ON/OFF with gc/gcc
 use {
     "numToStr/Comment.nvim",
     opt = true,
@@ -60,6 +66,7 @@ use {
     config = get_config("comment")
 }
 
+-- >> auto pairs (){}[]""''
 use {"windwp/nvim-autopairs", config = get_config("autopairs")}
 
 use {
@@ -115,15 +122,19 @@ use {
     event = "BufReadPre",
     config = get_config("gitsigns")
 }
-
+-- >> module for treesitter, color per pair of brackets (){}[]
 use "p00f/nvim-ts-rainbow"
 
+-- >> better quickfix window
 use {
     "kevinhwang91/nvim-bqf",
     requires = {{"junegunn/fzf", module = "nvim-bqf"}}
 }
 
+-- >> telescope fuzzy finder
 use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+
+
 
 use {
     "akinsho/nvim-bufferline.lua",
@@ -146,28 +157,34 @@ use {
     config = get_config("symbols")
 }
 
+-- >> display indentations
 use {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
     config = [[require("config/indent-blankline")]]
 }
 
-use {
-    "akinsho/nvim-toggleterm.lua",
-    keys = {"<C-y>", "<leader>fl", "<leader>gt"},
-    config = get_config("toggleterm")
-}
+-- -- >> open terminal on the side with Ctrl+y
+-- use {
+--     "akinsho/nvim-toggleterm.lua",
+--     keys = {"<C-y>", "<leader>fl", "<leader>gt"},
+--     config = get_config("toggleterm")
+-- }
 
-use {
-    "blackCauldron7/surround.nvim",
-    config = function()
-        vim.g.surround_mappings_style = "surround"
-        require"surround".setup {}
-    end
-}
+-- -- >> something to enclose text with brackets/quotes
+-- use {
+--     "blackCauldron7/surround.nvim",
+--     config = function()
+--         vim.g.surround_mappings_style = "surround"
+--         require"surround".setup {}
+--     end
+-- }
 
 use "sotte/presenting.vim"
 
+
+-- >> A pretty list for showing diagnostics, references, telescope results,
+-- >> quickfix and location lists to help you solve all the trouble your code is causing.
 use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -189,7 +206,9 @@ use "ironhouzi/starlite-nvim"
 
 use {"folke/which-key.nvim", event = "VimEnter", config = get_config("which")}
 
+-- >> great plugin to align blocks of text
 use "junegunn/vim-easy-align" -- no lua alternative
+
 
 use {"rhysd/vim-grammarous", cmd = "GrammarousCheck"}
 
@@ -201,7 +220,9 @@ use {
     config = get_config("lf")
 }
 
+-- >> Doom Emacs' color scheme (amazing)
 use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
+
 
 use {
     "ThePrimeagen/harpoon",
@@ -212,13 +233,18 @@ use {
     requires = {"nvim-lua/plenary.nvim"}
 }
 
+-- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
-
 use {"folke/twilight.nvim", config = get_config("twilight")}
 
-use {"tweekmonster/startuptime.vim"}
 
+-- >> breaks down what takes time to load when opening VIM+a file (could save a few milliseconds!)
+-- use {"tweekmonster/startuptime.vim"}
+
+-- >> make the BG transparent: needed to keep the terminal BG color as Nvim BG color
 use {"xiyaowong/nvim-transparent", config = get_config("transparent")}
+
+
 
 use {
     "iamcco/markdown-preview.nvim",
