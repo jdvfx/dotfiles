@@ -180,7 +180,10 @@ use {
 --     end
 -- }
 
-use "sotte/presenting.vim"
+-- >> markup into presentation slides
+-- use "sotte/presenting.vim"
+
+
 
 
 -- >> A pretty list for showing diagnostics, references, telescope results,
@@ -202,36 +205,41 @@ use {
 
 use {"ahmedkhalf/project.nvim", config = get_config("project")}
 
+-- >> highlight similar text instances with * or #
 use "ironhouzi/starlite-nvim"
 
+-- >> automatically highlighting (underlines( other uses of the current word under the cursor
+-- >> used inside the Doom-One config
+use {"RRethy/vim-illuminate", event = "CursorHold"}
+
+
+-- >> display popup with key options (when pressing space)
 use {"folke/which-key.nvim", event = "VimEnter", config = get_config("which")}
 
 -- >> great plugin to align blocks of text
 use "junegunn/vim-easy-align" -- no lua alternative
 
+-- >> grammar check
+-- use {"rhysd/vim-grammarous", cmd = "GrammarousCheck"}
 
-use {"rhysd/vim-grammarous", cmd = "GrammarousCheck"}
-
-use {"RRethy/vim-illuminate", event = "CursorHold"}
-
-use {
-    "ptzz/lf.vim",
-    requires = "voldikss/vim-floaterm",
-    config = get_config("lf")
-}
+-- >> floating window with navigation (buggy on my config with Xmonad)
+-- use {
+--     "ptzz/lf.vim",
+--     requires = "voldikss/vim-floaterm",
+--     config = get_config("lf")
+-- }
 
 -- >> Doom Emacs' color scheme (amazing)
 use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 
-
-use {
-    "ThePrimeagen/harpoon",
-    keys = {
-        "<leader>ha", "<leader>hu", "<leader>h1", "<leader>h1", "<leader>h3",
-        "<leader>h4"
-    },
-    requires = {"nvim-lua/plenary.nvim"}
-}
+-- >> not installed properly, something is broken
+-- use {
+--     "ThePrimeagen/harpoon", keys = {
+--         "<leader>ha", "<leader>hu", "<leader>h1", "<leader>h1", "<leader>h3",
+--         "<leader>h4"
+--     },
+--     requires = {"nvim-lua/plenary.nvim"}
+-- }
 
 -- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
@@ -245,7 +253,7 @@ use {"folke/twilight.nvim", config = get_config("twilight")}
 use {"xiyaowong/nvim-transparent", config = get_config("transparent")}
 
 
-
+-- >> used to preview Markdown files in a browser
 use {
     "iamcco/markdown-preview.nvim",
     run = function()
@@ -255,6 +263,7 @@ use {
     config = get_config("markdown-preview")
 }
 
+-- >> faster navigation within text
 use {"ggandor/lightspeed.nvim", event = "BufReadPre"}
 
 use {"jvgrootveld/telescope-zoxide"}
@@ -266,4 +275,10 @@ use("crispgm/telescope-heading.nvim")
 -- use 'glepnir/lspsaga.nvim'
 -- Too intrusive (fFtT, sS zZ, xX ...)
 -- https://github.com/ggandor/lightspeed.nvim
+
+
 -- use 'ggandor/lightspeed.nvim'
+
+
+
+
