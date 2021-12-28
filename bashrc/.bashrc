@@ -55,7 +55,7 @@ fi
 #     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 # fi
 
-
+#
 color_prompt=yes
 
 parse_git_branch() {
