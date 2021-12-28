@@ -19,7 +19,7 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
-myPP = xmobarPP { 
+myPP = xmobarPP {
                 ppCurrent = xmobarColor "#1ac3ff" "",
                 ppTitle = xmobarColor "#888888" ""
                 }
@@ -43,8 +43,8 @@ myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| noBo
 ------------------------------------------------------------------------
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "nitrogen --restore &" 
-               
+    spawnOnce "nitrogen --restore &"
+
 -- Main configuration, override the defaults to your liking.
 myConfig = def {
                modMask = mod4Mask, -- Use Super instead of Alt
@@ -59,12 +59,12 @@ myConfig = def {
                , ((mod4Mask, xK_s ), spawn "scrot ~/Pictures/screenshots/")
                , ((mod4Mask, xK_F11), spawn "amixer -q sset Master 3%-;aplay ~/.xmonad/sounds/beep-29.wav")
                , ((mod4Mask, xK_F12), spawn "amixer -q sset Master 3%+;aplay ~/.xmonad/sounds/beep-29.wav")
-               , ((mod4Mask, xK_F6), spawn "/bin/python ~/.xmonad/brightness/setDefaultBrightness.py")
+               , ((mod4Mask, xK_F6), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py 0")
                , ((mod4Mask, xK_F7), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py -.1")
                , ((mod4Mask, xK_F8), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py +.1")
                , ((mod4Mask, xK_Right), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
                , ((mod4Mask, xK_Left), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
-               , ((mod4Mask, xK_i), spawn "cat ~/.xmonad/dmenu_sys | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#ff00ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_sys | awk -F'#' '{print $2}' | sh ")
+               , ((mod4Mask, xK_i), spawn "cat ~/.xmonad/dmenu_sys | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#FF5555' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_sys | awk -F'#' '{print $2}' | sh ")
                , ((mod4Mask, xK_o), spawn "cat ~/.xmonad/dmenu_apps1 | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#fc952e' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_apps1 | awk -F'#' '{print $2}' | sh ")
                , ((mod4Mask, xK_u), spawn "cat ~/.xmonad/dmenu_utils | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#0060ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_utils | awk -F'#' '{print $2}' | sh ")
                , ((mod4Mask, xK_p), spawn "ls --color=never --format=single-column /usr/bin/ | dmenu -fn 'JetBrains Mono:size=9' -sb '#2bc395' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '/usr/bin/%'")
