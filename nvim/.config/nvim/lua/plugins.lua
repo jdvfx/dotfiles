@@ -30,12 +30,19 @@ packer.reset()
 -- actual plugins list
 use "wbthomason/packer.nvim"
 
--- >> !!! telescope is missing BurntSuhi/ripgrep (:checkhealth telescope)
-use {
-    "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-    config = get_config("telescope")
-}
+
+
+-- >> faster navigation in text
+ use{
+    "phaazon/hop.nvim",
+    event = "BufReadPre",
+    config = get_config("hop")
+ }
+
+
+
+
+
 
 -- >> File Explorer like nertree
 use {"kyazdani42/nvim-tree.lua", config = get_config("nvim-tree")}
@@ -77,17 +84,25 @@ use {
 
 use "nvim-treesitter/nvim-treesitter-textobjects"
 
+
+-- >> autocomplete
 use {
     "hrsh7th/nvim-cmp",
     requires = {
-        {"hrsh7th/cmp-nvim-lsp"}, {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"},
-        {"hrsh7th/cmp-cmdline"}, {"hrsh7th/cmp-vsnip"},
-        {"f3fora/cmp-spell", {"hrsh7th/cmp-calc"}, {"hrsh7th/cmp-emoji"}}
+      {"hrsh7th/cmp-nvim-lsp"},
+      { "hrsh7th/cmp-nvim-lua" },
+      {"hrsh7th/cmp-buffer"},
+      {"hrsh7th/cmp-path"},
+      {"hrsh7th/cmp-cmdline"},
+      { "hrsh7th/vim-vsnip" },
+      {"hrsh7th/cmp-vsnip"},
+      { "hrsh7th/vim-vsnip-integ" },
+      {"f3fora/cmp-spell", {"hrsh7th/cmp-calc"}, {"hrsh7th/cmp-emoji"}}
     },
     config = get_config("cmp")
 }
 
-use {"hrsh7th/vim-vsnip", config = get_config("vsnip")}
+-- use {"hrsh7th/vim-vsnip", config = get_config("vsnip")}
 
 use {"rafamadriz/friendly-snippets", requires = {{"hrsh7th/vim-vsnip"}}}
 
@@ -130,9 +145,6 @@ use {
     "kevinhwang91/nvim-bqf",
     requires = {{"junegunn/fzf", module = "nvim-bqf"}}
 }
-
--- >> telescope fuzzy finder
-use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
 
 
@@ -183,6 +195,22 @@ use {
 -- >> markup into presentation slides
 -- use "sotte/presenting.vim"
 
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-- >> !!! telescope is missing BurntSuhi/ripgrep (:checkhealth telescope)
+use {
+    "nvim-telescope/telescope.nvim",
+    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+    config = get_config("telescope")
+}
+-- >> telescope fuzzy finder
+use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+
+use {"jvgrootveld/telescope-zoxide"}
+
+use("crispgm/telescope-heading.nvim")
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -266,9 +294,13 @@ use {
 -- >> faster navigation within text
 use {"ggandor/lightspeed.nvim", event = "BufReadPre"}
 
-use {"jvgrootveld/telescope-zoxide"}
 
-use("crispgm/telescope-heading.nvim")
+-- use {"jvgrootveld/telescope-zoxide"}
+
+-- use("crispgm/telescope-heading.nvim")
+
+
+
 
 -- TODO: ????
 -- https://github.com/glepnir/lspsaga.nvim
