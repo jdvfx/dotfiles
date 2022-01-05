@@ -30,7 +30,7 @@ packer.reset()
 -- actual plugins list
 use "wbthomason/packer.nvim"
 
-
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 -- >> faster navigation in text
  use{
@@ -38,11 +38,6 @@ use "wbthomason/packer.nvim"
     event = "BufReadPre",
     config = get_config("hop")
  }
-
-
-
-
-
 
 -- >> File Explorer like nertree
 use {"kyazdani42/nvim-tree.lua", config = get_config("nvim-tree")}
@@ -76,12 +71,13 @@ use {
 -- >> auto pairs (){}[]""''
 use {"windwp/nvim-autopairs", config = get_config("autopairs")}
 
+
+-- >>  >>  >>  >>  >>  >>  >>  >>  >>  TreeSitter
 use {
     "nvim-treesitter/nvim-treesitter",
     config = get_config("treesitter"),
     run = ":TSUpdate"
 }
-
 use "nvim-treesitter/nvim-treesitter-textobjects"
 
 
@@ -102,7 +98,6 @@ use {
     config = get_config("cmp")
 }
 
--- use {"hrsh7th/vim-vsnip", config = get_config("vsnip")}
 
 use {"rafamadriz/friendly-snippets", requires = {{"hrsh7th/vim-vsnip"}}}
 
@@ -257,7 +252,7 @@ use "junegunn/vim-easy-align" -- no lua alternative
 --     config = get_config("lf")
 -- }
 
--- >> Doom Emacs' color scheme (amazing)
+-- >> Doom Emacs' color scheme
 use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 
 -- >> not installed properly, something is broken
@@ -271,7 +266,7 @@ use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 
 -- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
-use {"folke/twilight.nvim", config = get_config("twilight")}
+-- use {"folke/twilight.nvim", config = get_config("twilight")}
 
 
 -- >> breaks down what takes time to load when opening VIM+a file (could save a few milliseconds!)
@@ -291,26 +286,9 @@ use {
     config = get_config("markdown-preview")
 }
 
--- >> faster navigation within text
-use {"ggandor/lightspeed.nvim", event = "BufReadPre"}
-
-
--- use {"jvgrootveld/telescope-zoxide"}
-
--- use("crispgm/telescope-heading.nvim")
 
 
 
 
--- TODO: ????
--- https://github.com/glepnir/lspsaga.nvim
--- use 'glepnir/lspsaga.nvim'
--- Too intrusive (fFtT, sS zZ, xX ...)
--- https://github.com/ggandor/lightspeed.nvim
-
-
--- use 'ggandor/lightspeed.nvim'
-
-
-
+-- TODO:
 
