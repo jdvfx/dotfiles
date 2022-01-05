@@ -2,9 +2,14 @@
 
 ![](./screen.png)
 
-
-this config is based on:
+This config is based on Allaman's config:
 [Michael Peter aka Allaman](https://github.com/Allaman/nvim/)
+
+Huge thanks to Ben Frain for the detailed explanation
+[Ben Frain](https://gist.github.com/benfrain)
+
+Massive thanks to ThePrimeagen, best intro to Vim!
+[The Primeagen](https://www.youtube.com/c/ThePrimeagen)
 
 
 
