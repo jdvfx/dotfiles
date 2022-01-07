@@ -45,6 +45,37 @@ myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "nitrogen --restore &"
 
+
+
+
+
+------------------------------------------------------------------------
+-- DMENU FUNCTIONS
+------------------------------------------------------------------------
+-- dmenu font
+myFont :: String
+myFont = "JetBrains Mono:size=9"
+
+-- dmenu from text file
+-- dt : path to text file in this format: (appName1#appPath1 \n appPath2#appPath2)
+-- da : dmenu background color in this format: #000000
+dmenuFromText :: (String,String) -> (String)
+dmenuFromText  (dt,dc) = (dcmd) where
+  dcmd = "cat "++dt++" | awk -F'#' '{print $1}' | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % "++dt++"| awk -F'#' '{print $2}' | sh"
+
+-- dmenu from path
+-- dp : path
+-- dp : dmenu background color in this format: #000000
+dmenuFromPath  :: (String,String) -> (String)
+dmenuFromPath (dp,dc) = (dcmd) where
+  dcmd = "ls --color=never --format=single-column "++dp++" | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '"++dp++"%'"
+
+
+
+------------------------------------------------------------------------
+-- MAIN CONFIG
+------------------------------------------------------------------------
+
 -- Main configuration, override the defaults to your liking.
 myConfig = def {
                modMask = mod4Mask, -- Use Super instead of Alt
@@ -64,8 +95,11 @@ myConfig = def {
                , ((mod4Mask, xK_F8), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py +.1")
                , ((mod4Mask, xK_Right), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
                , ((mod4Mask, xK_Left), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
-               , ((mod4Mask, xK_i), spawn "cat ~/.xmonad/dmenu_sys | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#FF5555' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_sys | awk -F'#' '{print $2}' | sh ")
-               , ((mod4Mask, xK_o), spawn "cat ~/.xmonad/dmenu_apps1 | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#fc952e' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_apps1 | awk -F'#' '{print $2}' | sh ")
-               , ((mod4Mask, xK_u), spawn "cat ~/.xmonad/dmenu_utils | awk -F'#' '{print $1}' | dmenu -fn 'JetBrains Mono:size=9' -sb '#0060ff' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % ~/.xmonad/dmenu_utils | awk -F'#' '{print $2}' | sh ")
-               , ((mod4Mask, xK_p), spawn "ls --color=never --format=single-column /usr/bin/ | dmenu -fn 'JetBrains Mono:size=9' -sb '#2bc395' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '/usr/bin/%'")
+               , ((mod4Mask, xK_i), spawn (dmenuFromText ("~/.xmonad/dmenu_sys","#FF5555")))
+               , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
+               , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#0060ff")))
+               , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
                ]
+
+
+
