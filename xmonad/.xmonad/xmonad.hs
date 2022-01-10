@@ -72,6 +72,13 @@ dmenuFromPath (dp,dc) = (dcmd) where
 
 
 
+
+-- spotify next/previous
+spotifyControl :: (String) -> (String)
+spotifyControl (action) = (spotify_action) where
+  spotify_action = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."++action
+
+
 ------------------------------------------------------------------------
 -- MAIN CONFIG
 ------------------------------------------------------------------------
@@ -93,8 +100,8 @@ myConfig = def {
                , ((mod4Mask, xK_F6), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py 0")
                , ((mod4Mask, xK_F7), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py -.1")
                , ((mod4Mask, xK_F8), spawn "/bin/python ~/.xmonad/brightness/adjustBrightness.py +.1")
-               , ((mod4Mask, xK_Right), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
-               , ((mod4Mask, xK_Left), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+               , ((mod4Mask, xK_Right), spawn (spotifyControl("Next")))
+               , ((mod4Mask, xK_Left), spawn (spotifyControl("Previous")))
                , ((mod4Mask, xK_i), spawn (dmenuFromText ("~/.xmonad/dmenu_sys","#FF5555")))
                , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
                , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#0060ff")))
