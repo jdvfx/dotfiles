@@ -23,6 +23,7 @@ vim.g.mapleader = " "
 
 -- >> execute the python file I'm editting
 map("n","|",':w<CR>:!python %<CR>',default_options)
+map("v","|",':w<CR>:!python %<CR>',default_options)
 
 -- center search results
 map("n", "n", "nzz", default_options)
@@ -72,8 +73,14 @@ map("n", "g#", "<cmd>lua require'starlite'.g_hash()<CR>", default_options)
 
 
 -- Hop
-map("n", "H", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
-map("n", "L", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
-map("v", "H", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
-map("v", "L", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
+map("n", "<leader>j", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
+map("n", "<leader>k", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
+map("v", "<leader>j", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
+map("v", "<leader>k", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
+
+-- Save and Load session
+map("n","W",":mks! ~/sesh.vim<CR>",default_options)
+map("n","Q",":source ~/sesh.vim<CR>",default_options)
+
+
 
