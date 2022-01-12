@@ -1,4 +1,5 @@
 ---#echo nothing
 sleep#systemctl suspend
 logout#killall -9 xmonad-x86_64-l
+reboot#systemctl reboot
 shutdown#shutdown now
