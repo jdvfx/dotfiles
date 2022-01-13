@@ -1,3 +1,4 @@
+#! /usr/bin/python3.8
 
 '''
 Adjust screens brightness
@@ -9,7 +10,8 @@ import os
 import sys
 
 if len(sys.argv)!=2:
-    print("Error: needs only one argument\n eg: python adjustBrightness.py -0.5")
+    print("Error: needs only one argument\n \
+    eg: python adjustBrightness.py -0.5")
     quit()
 
 increment = float(sys.argv[-1])
@@ -21,9 +23,8 @@ if increment==0:
     # reset to default brightness (1.0)
     brightness = 1.0
 else:
-    f = open(brightnessFile,"r")
-    l = f.readlines()
-    f.close()
+    with open(brightnessFile,"r") as f:
+        l = f.readlines()
 
     brightness  =  float(l[0].split("\n")[0])
     brightness += increment
@@ -32,7 +33,7 @@ else:
 # sets brightness and save that value in the brightness file
 s = "xrandr -q | grep -E ' connected.*mm' | cut -d ' ' -f1 | xargs -I %  xrandr --output % --brightness "+str(brightness)
 os.system(s)
-f = open(brightnessFile,"w")
-f.write(str(brightness))
-f.close()
+
+with open(brightnessFile,"w") as f:
+    f.write(str(brightness))
 
