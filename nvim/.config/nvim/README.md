@@ -8,9 +8,7 @@ This config is based on Allaman's config:
 Huge thanks to Ben Frain for the detailed explanation
 [Ben Frain](https://gist.github.com/benfrain)
 
-Massive thanks to ThePrimeagen, best intro to Vim!
-[The Primeagen](https://www.youtube.com/c/ThePrimeagen)
-
+Thank you Primeagen and TJ!
 
 
 This is my first Lua based NeoVim (>0.5) configuration. My goal was to achieve the same functionality as [my old vimrc](https://github.com/Allaman/dotfiles/blob/master/vimrc) and move onwards to a full Lua based configuration and Lua based plugins especially the promising builtin [LSP](https://neovim.io/doc/user/lsp.html) and [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
