@@ -77,17 +77,15 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false
         },
-        -- ["<Tab>"] = cmp.mapping(function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_next_item()
-        --     elseif vim.fn["vsnip#available"](1) == 1 then
-        --         feedkey("<Plug>(vsnip-expand-or-jump)", "")
-        --     elseif has_words_before() then
-        --         cmp.complete()
-        --     else
-        --         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-        --     end
-        -- end, {"i", "s"}),
+
+        ['<Tab>'] = function(fallback)
+              if vim.fn.pumvisible() == 1 then
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), true)
+              else
+                fallback()
+              end
+            end,
+
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
