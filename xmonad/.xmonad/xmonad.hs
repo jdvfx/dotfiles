@@ -44,6 +44,7 @@ myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| noBo
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "nitrogen --restore &"
+    spawnOnce "compton  &"
 
 
 
@@ -89,7 +90,7 @@ myConfig = def {
                terminal = "alacritty",
                borderWidth   = 1,
                normalBorderColor  = "#000000",
-               focusedBorderColor = "#0088FF",
+               focusedBorderColor = "#003344",
                startupHook        = myStartupHook,
                layoutHook = myLayouts
                } `additionalKeys`
