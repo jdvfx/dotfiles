@@ -78,13 +78,21 @@ cmp.setup({
             select = false
         },
 
-        ['<Tab>'] = function(fallback)
-              if vim.fn.pumvisible() == 1 then
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), true)
-              else
-                fallback()
-              end
-            end,
+        -- ['<Tab>'] = function(fallback)
+        --     if vim.fn.pumvisible() == 1 then
+        --       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), true)
+        --     else
+        --       fallback()
+        --     end
+        -- end,
+
+        ["<Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn["vsnip#jumpable"](1) == 1 then
+                feedkey("<Plug>(vsnip-jump-next)", "")
+            end
+        end, {"i", "s"}),
 
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
