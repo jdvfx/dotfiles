@@ -55,8 +55,8 @@ map("n","Q",":source ~/sesh.vim<CR>",default_options)
 
 -- BUNKER
 -- >> execute the python file I'm editting
-map("n","|",':w<CR>:!python %<CR>',default_options)
-map("v","|",':w<CR>:!python %<CR>',default_options)
+map("n","|",':w<CR>:!python3 %<CR>',default_options)
+map("v","|",':w<CR>:!python3 %<CR>',default_options)
 
 -- PLUGINS
 -- Hop
