@@ -53,10 +53,21 @@ map("x", "J", ":move '>+1<CR>gv-gv", default_options)
 map("n","W",":mks! ~/sesh.vim<CR>",default_options)
 map("n","Q",":source ~/sesh.vim<CR>",default_options)
 
--- BUNKER
+-- ### BUNKER ###
+--
+-- >> Python
 -- >> execute the python file I'm editting
-map("n","|",':w<CR>:!python3 %<CR>',default_options)
-map("v","|",':w<CR>:!python3 %<CR>',default_options)
+map("n","<M-p>",':w!<CR>:!python3 %<CR>',default_options)
+
+-- Rust
+-- >> compile and run current RUST Cargo
+map("n","<M-g>",':w!<CR>:!cargo build && echo .. && cargo run && echo .. <CR>',default_options)
+-- >> compile RS
+map("n","<M-c>",':w!<CR>:!rustc % &&./main<CR>',default_options)
+
+-- >> Rust Formatter
+map("n","<M-f>",':w!<CR>:!rustfmt %<CR>:e %<CR>',default_options)
+
 
 -- PLUGINS
 -- Hop
@@ -67,6 +78,7 @@ map("v", "<leader>k", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
 
 -- telescope
 map("n", "<leader>p", '<cmd>lua require("telescope.builtin").find_files()<cr>')
+map("n", "<leader>o", '<cmd>NvimTreeOpen<cr>')
 
 -- LSP
 map("n", "K" , '<cmd>lua vim.lsp.buf.hover()<cr>', default_options)
