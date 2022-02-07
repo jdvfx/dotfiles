@@ -30,6 +30,18 @@ packer.reset()
 -- >> Packer Plugin !!!
 use "wbthomason/packer.nvim"
 
+
+
+-- RUST
+-- use 'simrat39/rust-tools.nvim'
+
+---- Prime Rust conf
+--require("lspconfig").rust_analyzer.setup(config({
+--    cmd = { "rustup", "run", "nightly", "rust-analyzer"},
+--}))
+
+-- require'lspconfig'.rust_analyzer.setup{}
+
 -- >> Doom Emacs' color scheme
 use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 -- >> make the BG transparent: needed to keep the terminal BG color as Nvim BG color
@@ -91,21 +103,19 @@ use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 use {"jvgrootveld/telescope-zoxide"}
 use("crispgm/telescope-heading.nvim")
 
--- >>telescope requires this: requires nvim-tree
+-- >> telescope requires this: requires nvim-tree
 use {"ahmedkhalf/project.nvim", config = get_config("project")}
 
 -- >> telescope requires this: File Explorer like nertree (required for ahmedkhalf/project)
 use {"kyazdani42/nvim-tree.lua", config = get_config("nvim-tree")}
 
-
--- ?>  TreeSitter
+-- >> TreeSitter (parser)
 use {
     "nvim-treesitter/nvim-treesitter",
     config = get_config("treesitter"),
     run = ":TSUpdate"
 }
 use "nvim-treesitter/nvim-treesitter-textobjects"
-
 
 -- >> autocomplete
 use {
@@ -122,9 +132,8 @@ use {
     config = get_config("cmp")
 }
 
-
 -- LSP config
---use "famiu/bufdelete.nvim" !!! turning this ON makes neovim shits itself!!! all plugins break
+-- use "famiu/bufdelete.nvim" !!! turning this ON makes neovim shits itself!!! all plugins break
 use {"neovim/nvim-lspconfig", config = get_config("lsp")}
 use {"ray-x/lsp_signature.nvim", requires = {{"neovim/nvim-lspconfig"}}}
 use {"onsails/lspkind-nvim", requires = {{"famiu/bufdelete.nvim"}}}
@@ -140,4 +149,9 @@ use {"RRethy/vim-illuminate", event = "CursorHold"}
 use "ironhouzi/starlite-nvim"
 
 
+-- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
+use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
 
+
+-- >> Rust analyzer
+require'lspconfig'.rust_analyzer.setup({})
