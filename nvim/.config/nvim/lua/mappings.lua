@@ -61,7 +61,7 @@ map("n","<M-p>",':w!<CR>:!python3 %<CR>',default_options)
 
 -- Rust
 -- >> compile and run current RUST Cargo
-map("n","<M-g>",':w!<CR>:!cargo build && echo .. && cargo run && echo .. <CR>',default_options)
+map("n","<M-g>",':w!<CR>:!cargo run<CR>',default_options)
 -- >> compile RS
 map("n","<M-c>",':w!<CR>:!rustc % &&./main<CR>',default_options)
 
