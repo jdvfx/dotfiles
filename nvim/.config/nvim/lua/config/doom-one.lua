@@ -1,7 +1,7 @@
 require("doom-one").setup({
     cursor_coloring = false,
     terminal_colors = false,
-    italic_comments = false,
+    italic_comments = true,
     enable_treesitter = true,
     transparent_background = false,
     pumblend = {enable = false, transparency_amount = 20},
