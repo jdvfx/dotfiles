@@ -1,9 +1,9 @@
-Config { font = "xft:JetBrains Mono:size=9:antialias=true:hinting=true"
+Config { font = "xft:Jetbrains Mono:size=9:bold:antialias=true:hinting=false"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
-        , position = TopW L 100 
+        , position = TopW L 100
         , commands = [    Run Cpu ["-L","5","-H","70","--normal","#888888","--high","#FFAA00"] 50
                         , Run Memory ["-t","Mem: <usedratio>%"] 200
                         , Run Date "%H:%M" "time" 100
@@ -13,6 +13,6 @@ Config { font = "xft:JetBrains Mono:size=9:antialias=true:hinting=true"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#888888>%coretemp% . %cpu% . %memory% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%coretemp% . %cpu% . %memory% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
         }
 
