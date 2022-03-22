@@ -46,10 +46,6 @@ myStartupHook = do
     spawnOnce "nitrogen --restore &"
     spawnOnce "compton  &"
 
-
-
-
-
 ------------------------------------------------------------------------
 -- DMENU FUNCTIONS
 ------------------------------------------------------------------------
@@ -71,14 +67,10 @@ dmenuFromPath  :: (String,String) -> (String)
 dmenuFromPath (dp,dc) = (dcmd) where
   dcmd = "ls --color=never --format=single-column "++dp++" | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '"++dp++"%'"
 
-
-
-
 -- spotify next/previous
 spotifyControl :: (String) -> (String)
 spotifyControl (action) = (spotify_action) where
   spotify_action = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."++action
-
 
 ------------------------------------------------------------------------
 -- MAIN CONFIG
@@ -87,15 +79,15 @@ spotifyControl (action) = (spotify_action) where
 -- Main configuration, override the defaults to your liking.
 myConfig = def {
                modMask = mod4Mask, -- Use Super instead of Alt
-               terminal = "alacritty",
+               terminal = "kitty",
                borderWidth   = 1,
                normalBorderColor  = "#000000",
-               focusedBorderColor = "#003344",
+               focusedBorderColor = "#00AAFF",
                startupHook        = myStartupHook,
                layoutHook = myLayouts
                } `additionalKeys`
                [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
-               , ((mod4Mask, xK_s ), spawn "scrot ~/Pictures/screenshots/")
+               , ((mod4Mask, xK_s ), spawn "scrot ~/Pictures/screenshots/;aplay ~/.xmonad/sounds/beep-28.wav")
                , ((mod4Mask, xK_F11), spawn "amixer -q sset Master 3%-;aplay ~/.xmonad/sounds/beep-29.wav")
                , ((mod4Mask, xK_F12), spawn "amixer -q sset Master 3%+;aplay ~/.xmonad/sounds/beep-29.wav")
                , ((mod4Mask, xK_F6), spawn "/bin/python3 ~/.xmonad/brightness/adjustBrightness.py 0")
@@ -108,6 +100,4 @@ myConfig = def {
                , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#0060ff")))
                , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
                ]
-
-
 
