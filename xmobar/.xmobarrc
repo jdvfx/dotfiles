@@ -1,4 +1,4 @@
-Config { font = "xft:Jetbrains Mono:size=9:bold:antialias=true:hinting=false"
+Config { font = "xft:IBM Plex Mono:size=9:medium:antialias=true:hinting=false"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
