@@ -51,7 +51,7 @@ myStartupHook = do
 ------------------------------------------------------------------------
 -- dmenu font
 myFont :: String
-myFont = "JetBrains Mono:size=9"
+myFont = "IBM PLex Mono Medium:size=9"
 
 -- dmenu from text file
 -- dt : path to text file in this format: (appName1#appPath1 \n appPath2#appPath2)
