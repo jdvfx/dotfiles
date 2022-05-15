@@ -4,7 +4,7 @@ require("doom-one").setup({
     italic_comments = true,
     enable_treesitter = true,
     transparent_background = false,
-    pumblend = {enable = false, transparency_amount = 20},
+    pumblend = {enable = true , transparency_amount = 06},
     plugins_integrations = {
         neorg = false,
         barbar = false,
@@ -26,3 +26,6 @@ require("doom-one").setup({
 vim.cmd("hi HopNextKey guifg=#009999")
 vim.cmd("hi HopNextKey1 guifg=#009999")
 vim.cmd("hi HopNextKey2 guifg=#009999")
+
+vim.cmd("hi Visual guibg=#103040")
+
