@@ -17,13 +17,6 @@ font:
       y: 0
 
 
-colors:
-  primary:
-    background: '#333333'
-    foreground: '#999999'
-  cursor:
-    cursor: '#00FF00'
-
 draw_bold_text_with_bright_colors: true
 
 window:
@@ -32,10 +25,47 @@ window:
     y: 8
   opacity: 0.5
 
+
+# Colors (Material Theme)
+colors:
+  # Default colors
+  primary:
+    background: '#282828'
+    foreground: '#777777'
+
+  # Normal colors
+  normal:
+    black:   '#212c3e'
+    red:     '#a72320'
+    green:   '#32a448'
+    yellow:  '#e58d11'
+    blue:    '#4088cc'
+    magenta: '#8020bb'
+    cyan:    '#2b9270'
+    white:   '#afb6b9'
+
+  # Bright colors
+  bright:
+    black:   '#202b3b'
+    red:     '#d3302e'
+    green:   '#2c9440'
+    yellow:  '#e5bd0c'
+    blue:    '#3b7cd2'
+    magenta: '#822fa7'
+    cyan:    '#35b286'
+    white:   '#e6ecec'
+
+  cursor:
+    cursor: '#00FF00'
+
+
 cursor:
   style:
     shape: Underline
     cursor_hollow_unfocused: true
     blinking: Off
   thickness: 0.2
+
+
+
 
