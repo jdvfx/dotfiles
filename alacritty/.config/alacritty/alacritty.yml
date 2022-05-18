@@ -1,17 +1,20 @@
 font:
   normal:
-    family: JetBrains Mono Nerd Font
-    style:  Regular
+    family: IBM Plex Mono
+    style: Text
   bold:
-    family: JetBrainsMono Nerd Font
-    style:  Regular
+    family: IBM Plex Mono
+    style:  Medium
   italic:
-    family: JetBrainsMono Nerd Font
+    family: IBM Plex Mono
     style:  Italic
   bold_italic:
-    family: JetBrainsMono Nerd Font
-    style:  Italic
-  size: 14
+    family: IBM Plex Mono
+    style:  Medium Italic
+  size: 13.5
+  offset:
+      x: 0
+      y: 0
 
 
 colors:
@@ -19,7 +22,7 @@ colors:
     background: '#333333'
     foreground: '#999999'
   cursor:
-    cursor: '#0033FF'
+    cursor: '#00FF00'
 
 draw_bold_text_with_bright_colors: true
 
@@ -32,6 +35,7 @@ window:
 cursor:
   style:
     shape: Underline
+    cursor_hollow_unfocused: true
     blinking: Off
   thickness: 0.2
 
