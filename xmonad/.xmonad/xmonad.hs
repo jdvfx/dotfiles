@@ -79,7 +79,7 @@ spotifyControl (action) = (spotify_action) where
 -- Main configuration, override the defaults to your liking.
 myConfig = def {
                modMask = mod4Mask, -- Use Super instead of Alt
-               terminal = "kitty",
+               terminal = "alacritty",
                borderWidth   = 1,
                normalBorderColor  = "#000000",
                focusedBorderColor = "#00AAFF",
