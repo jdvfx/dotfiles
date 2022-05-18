@@ -61,3 +61,11 @@ o.wildignore = [[
 *.swp,.lock,.DS_Store,._*
 */tmp/*,*.so,*.swp,*.zip,**/node_modules/**,**/target/**,**.terraform/**"
 ]]
+
+vim.cmd
+[[
+    augroup change_cursor
+        au!
+        au ExitPre * :set guicursor=a:hor90
+    augroup END
+]]
