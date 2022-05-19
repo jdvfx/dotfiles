@@ -41,13 +41,9 @@ myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| noBo
 ------------------------------------------------------------------------
 -- AUTOSTART
 ------------------------------------------------------------------------
--- WINIT_X11_SCALE_FACTOR is used for alacritty
--- it displays the same font size on monitors
--- with different DPIs
 --
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "export WINIT_X11_SCALE_FACTOR=1"
     spawnOnce "nitrogen --restore &"
     spawnOnce "compton  &"
 
