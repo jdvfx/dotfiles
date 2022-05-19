@@ -67,5 +67,7 @@ cursor:
   thickness: 0.2
 
 
-
+# ensures same font size on monitors with different DPIs
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
