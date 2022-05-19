@@ -3,7 +3,6 @@ chrome#google-chrome
 nomachine#/usr/NX/bin/nxplayer --geometry 1920x1080 &
 blender#/opt/blender-3.0.0-linux-x64/blender
 librewolf#/usr/bin/librewolf
-houdini#/opt/hfs18.0/bin/houdinifx
 spotify#/snap/bin/spotify
 inkscape#/usr/bin/inkscape
 
