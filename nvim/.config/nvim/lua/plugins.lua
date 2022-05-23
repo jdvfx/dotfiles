@@ -33,13 +33,19 @@ use "wbthomason/packer.nvim"
 
 
 -- RUST
--- use 'simrat39/rust-tools.nvim'
+-- need rust-analyzer installed for that.
+--
+-- git clone https://github.com/rust-lang/rust-analyzer.git
+-- cd rust-analyzer
+-- cargo xtask install --server
+--
+use 'simrat39/rust-tools.nvim'
+require('rust-tools').setup({})
 
----- Prime Rust conf
---require("lspconfig").rust_analyzer.setup(config({
+-- Prime Rust conf
+-- require("lspconfig").rust_analyzer.setup(config({
 --    cmd = { "rustup", "run", "nightly", "rust-analyzer"},
---}))
-
+-- }))
 -- require'lspconfig'.rust_analyzer.setup{}
 
 -- >> Doom Emacs' color scheme
@@ -88,13 +94,13 @@ use {
 }
 
 -- >> navigation between splits and panes with Ctrl+hjkl
-use {"numToStr/Navigator.nvim", config = get_config("navigator")}
+-- use {"numToStr/Navigator.nvim", config = get_config("navigator")}
 
 -- >> telescope
 use {
-    "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-    config = get_config("telescope")
+   "nvim-telescope/telescope.nvim",
+   requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+   config = get_config("telescope")
 }
 
 -- >> telescope fuzzy finder
@@ -148,10 +154,12 @@ use {"RRethy/vim-illuminate", event = "CursorHold"}
 -- >> highlight similar text instances with * or #
 use "ironhouzi/starlite-nvim"
 
-
 -- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
+-- use {"folke/twilight.nvim", config = get_config("twilight")}
 
 
 -- >> Rust analyzer
 require'lspconfig'.rust_analyzer.setup({})
+
+
