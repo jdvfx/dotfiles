@@ -32,15 +32,6 @@ use "wbthomason/packer.nvim"
 
 
 
--- RUST
--- need rust-analyzer installed for that.
---
--- git clone https://github.com/rust-lang/rust-analyzer.git
--- cd rust-analyzer
--- cargo xtask install --server
---
-use 'simrat39/rust-tools.nvim'
-require('rust-tools').setup({})
 
 -- Prime Rust conf
 -- require("lspconfig").rust_analyzer.setup(config({
@@ -139,6 +130,7 @@ use {
 }
 
 -- LSP config
+use "famiu/bufdelete.nvim"
 -- use "famiu/bufdelete.nvim" !!! turning this ON makes neovim shits itself!!! all plugins break
 use {"neovim/nvim-lspconfig", config = get_config("lsp")}
 use {"ray-x/lsp_signature.nvim", requires = {{"neovim/nvim-lspconfig"}}}
@@ -162,4 +154,12 @@ use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
 -- >> Rust analyzer
 require'lspconfig'.rust_analyzer.setup({})
 
-
+-- RUST
+-- need rust-analyzer installed for that.
+--
+-- git clone https://github.com/rust-lang/rust-analyzer.git
+-- cd rust-analyzer
+-- cargo xtask install --server
+--
+use 'simrat39/rust-tools.nvim'
+require('rust-tools').setup({})
