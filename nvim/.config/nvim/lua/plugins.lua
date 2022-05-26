@@ -30,18 +30,9 @@ packer.reset()
 -- >> Packer Plugin !!!
 use "wbthomason/packer.nvim"
 
-
-
-
--- Prime Rust conf
--- require("lspconfig").rust_analyzer.setup(config({
---    cmd = { "rustup", "run", "nightly", "rust-analyzer"},
--- }))
--- require'lspconfig'.rust_analyzer.setup{}
-
 -- >> Doom Emacs' color scheme
 use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
--- >> make the BG transparent: needed to keep the terminal BG color as Nvim BG color
+-- >> Transparent Background
 use {"xiyaowong/nvim-transparent", config = get_config("transparent")}
 
 -- >> faster navigation in text
@@ -85,7 +76,7 @@ use {
 }
 
 -- >> navigation between splits and panes with Ctrl+hjkl
--- use {"numToStr/Navigator.nvim", config = get_config("navigator")}
+use {"numToStr/Navigator.nvim", config = get_config("navigator")}
 
 -- >> telescope
 use {
@@ -93,10 +84,8 @@ use {
    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
    config = get_config("telescope")
 }
-
 -- >> telescope fuzzy finder
 use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-
 use {"jvgrootveld/telescope-zoxide"}
 use("crispgm/telescope-heading.nvim")
 
@@ -115,19 +104,21 @@ use {
 use "nvim-treesitter/nvim-treesitter-textobjects"
 
 -- >> autocomplete
-use {
-    "hrsh7th/nvim-cmp",
-    requires = {
+ use {
+     "hrsh7th/nvim-cmp",
+     requires = {
       {"hrsh7th/cmp-nvim-lsp"},
-      { "hrsh7th/cmp-nvim-lua" },
+      {"hrsh7th/cmp-nvim-lua" },
       {"hrsh7th/cmp-buffer"},
       {"hrsh7th/cmp-path"},
       {"hrsh7th/cmp-cmdline"},
-      { "hrsh7th/vim-vsnip-integ" },
+      {"hrsh7th/vim-vsnip-integ" },
       {"f3fora/cmp-spell", {"hrsh7th/cmp-calc"}, {"hrsh7th/cmp-emoji"}}
-    },
-    config = get_config("cmp")
-}
+     },
+     config = get_config("cmp")
+ }
+
+
 
 -- LSP config
 use "famiu/bufdelete.nvim"
