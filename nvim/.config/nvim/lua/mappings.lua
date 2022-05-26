@@ -91,3 +91,7 @@ map("n", "gd" , '<cmd>lua vim.lsp.buf.definition()<cr>', default_options)
 map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 
 
+map("n","<M-i>",':RustToggleInlayHints<CR>',default_options)
+
+map("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]',default_options)
+
