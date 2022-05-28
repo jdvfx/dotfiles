@@ -64,6 +64,7 @@ cmp.setup({
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- luasnip.lsp_expand(args.body)
         end
     },
     mapping = {
@@ -73,7 +74,7 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["Enter"] = cmp.mapping.confirm {
+        ["<CR>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false
         },
