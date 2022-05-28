@@ -113,6 +113,7 @@ use "nvim-treesitter/nvim-treesitter-textobjects"
       {"hrsh7th/cmp-path"},
       {"hrsh7th/cmp-cmdline"},
       {"hrsh7th/vim-vsnip-integ" },
+      {"hrsh7th/vim-vsnip" },
       {"f3fora/cmp-spell", {"hrsh7th/cmp-calc"}, {"hrsh7th/cmp-emoji"}}
      },
      config = get_config("cmp")
@@ -120,6 +121,7 @@ use "nvim-treesitter/nvim-treesitter-textobjects"
 
 
 
+      --
 -- LSP config
 use "famiu/bufdelete.nvim"
 -- use "famiu/bufdelete.nvim" !!! turning this ON makes neovim shits itself!!! all plugins break
