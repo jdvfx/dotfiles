@@ -3,6 +3,7 @@ Config { font = "xft:IBM Plex Mono:size=9:medium:antialias=true:hinting=false"
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
+        , alpha = 0
         , position = TopW L 100
         , commands = [    Run Cpu ["-L","5","-H","70","--normal","#888888","--high","#FFAA00"] 50
                         , Run Memory ["-t","Mem: <usedratio>%"] 200
