@@ -125,6 +125,9 @@ alias doc='python3 ~/Desktop/git/scripts/show_rust_docs.py'
 
 # open main.rs from the current project
 alias m='nvim src/main.rs'
+# open Cargo.toml
+alias a='nvim Cargo.toml'
+
 
 # go to rust and python projects
 alias r='cd ~/projects/'
