@@ -2,24 +2,21 @@
 # // start BUNKER aliases //
 #################################################################################
 
-
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
 # disable tap to click (macbook pro)
 synclient MaxTapTime=0
 
-# nicer prompt
-# export PS1="\[\033[38;5;95m\]\A \[\033[38;5;63m\]\w \[\033[38;5;95m\]> \[$(tput sgr0)\]"
-alias pscpu='ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
-
 # basic stuff
 alias t='top'
 alias ht='htop'
-alias th='htop'
+alias th='htop' #I'm bad at typing
 alias x='exit'
 alias c='clear'
+alias dc='cd' #I'm bad at typing
 
 # ls
+alias l='ls --color=auto'
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lh --color=auto'
 alias la='ls -A --color=auto'
@@ -28,7 +25,6 @@ alias lrt='ls -lhrt --color=auto'
 alias lrs='ls -lhrs --color=auto'
 alias lrtr='ls -lht --color=auto'
 alias lrsr='ls -lhs -color=auto'
-alias l='ls --color=auto'
 
 # go somewhere
 alias ..='cd ..'
@@ -40,23 +36,21 @@ alias cd....='cd ../../..'
 alias d='cd ~/Desktop'
 alias dn='cd ~/Downloads'
 
-# sleep!
+# sleep and shutdown
 alias suspend='systemctl suspend'
+alias sleep='systemctl suspend'
 alias sd='echo SHUTDOWN;sudo shutdown now'
 
 alias refresh_fontcache='fc-cache -vf'
 alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
 
-# browse web
-alias f='firefox &'
-
 # view images
-alias i='feh -F *.jpg *.JPG *.PNG *.png'
+alias i='feh -F *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF'
+# image magik
+alias f='display'
 
 # text editors
 alias v='nvim'
-alias z='nvim'
-alias n='nvim'
 alias g='gedit'
 
 # nomachine
@@ -69,6 +63,11 @@ alias gc='git commit -m'
 alias gp='git push'
 alias ga='git add'
 alias grm='git rm'
+
+# others
+alias evince='atril'
+alias p='python3'
+
 
 # for Wacom PTK-640 - disable all buttons
 wac=`/usr/bin/xsetwacom --list | wc -l `
@@ -93,45 +92,50 @@ fi
 
 
 # my utils and scripts
-alias cleanfilenames='/usr/bin/python2.7 ~/Desktop/scripts-and-commands/remove_spaces.py'
-
-
+alias cleanfilenames='/usr/bin/python3 ~/Desktop/git/scripts/clean_file_names.py'
 
 # edit this file
 alias aliases='nvim ~/.bashrc_bunker'
 # add some private bashrc commands
 source ~/.bashrc_pr
-# LS_COLORS='*.sh=1;33:*.hs=1;33:*.py=1;33:di=1;34:*.jpg=1;30:*.txt=1;31:*.png=1;32:*.hiplc=1;35:*.hip=1;35:*.zip=1;37:*.pdf=1;32'
-
-#1;33 yellow bold
-
-#1;37 bold aqua
-#1;35 bold orange
-#1;31 bold coral
-#1;32 bold pink
-#1;37 bold white
-#1;30 bold grey/blue
-
-#36 aqua
-#35 brown
-#92 pink
-#34 royal blue
-#37 grey/blue
-#44 white text on blue
-#30 black text
-#31 dark pink
-#33 orange
-#45 white text on brown
-#4 white text underlined
-#7 black text on white background
-#2 grey (looks thin)
-#1 white (bold)
+LS_COLORS='*.sh=1;33:*.py=1;35:*.js=1;36:*.gif=1;37:*.rs=1;31:*.toml=36:*.zip=45:*.mkv=32:*.hiplc=31:*.torrent=0;31'
 
 alias termcolors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
 
 # remove duplicates in history
 export HISTCONTROL=ignoreboth
 
+alias planck='cd /home/bunker/qmk_firmware/keyboards/planck/keymaps/bunker/'
+
+# alias nvim-clear-swap='rm /home/bunker/.local/share/nvim/swp/*.swp'
+# alias sr='/home/bunker/projects/keden_proxies/target/release/keden_proxies'
+# alias sp='python3 /home/bunker/Desktop/proxies_.py'
+# alias prx='/home/bunker/projects/image/target/release/image'
+
+
+# //  RUST  // #
+
+# search my rust projects
+alias gr='bash ~/Desktop/git/scripts/grep_my_rust.sh'
+# alias rs='/bin/python3 /home/bunker/projects/search_rs.py /home/bunker/projects/'
+# alias s='/home/bunker/projects/searchfiles/target/release/searchfiles -p ~/projects/ -q'
+
+# show rust docs in current project
+alias doc='python3 ~/Desktop/git/scripts/show_rust_docs.py'
+
+# open main.rs from the current project
+alias m='nvim src/main.rs'
+
+# go to rust and python projects
+alias r='cd ~/projects/'
+alias cu='cargo update'
+
+# mongo DB
+alias compass='mongodb-compass'
+alias mongostart='sudo systemctl start mongod'
+alias mongoend='sudo systemctl end mongod'
+
+alias brave='/usr/bin/brave-browser'
 
 #################################################################################
 # // end BUNKER aliases //
