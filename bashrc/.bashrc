@@ -112,3 +112,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 source ~/.bashrc_bunker
+. "$HOME/.cargo/env"
+export RUSTC_WRAPPER=sccache
+
+
