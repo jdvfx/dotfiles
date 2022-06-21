@@ -5,7 +5,7 @@
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
 # disable tap to click (macbook pro)
-[ hostname == bunker-macbookpro ]; synclient MaxTapTime=0
+if [ hostname == bunker-macbookpro ]; then synclient MaxTapTime=0; fi
 
 # basic stuff
 alias t='top'
