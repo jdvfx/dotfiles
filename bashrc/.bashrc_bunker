@@ -1,11 +1,11 @@
-#################################################################################
+############################
 # // start BUNKER aliases //
-#################################################################################
+############################
 
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
 # disable tap to click (macbook pro)
-synclient MaxTapTime=0
+[ hostname == bunker-macbookpro ]; synclient MaxTapTime=0
 
 # basic stuff
 alias t='top'
@@ -20,7 +20,6 @@ alias l='ls --color=auto'
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lh --color=auto'
 alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
 alias lrt='ls -lhrt --color=auto'
 alias lrs='ls -lhrs --color=auto'
 alias lrtr='ls -lht --color=auto'
