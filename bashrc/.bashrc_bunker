@@ -130,10 +130,13 @@ alias m='nvim src/main.rs'
 # open Cargo.toml
 alias a='nvim Cargo.toml'
 
-
 # go to rust and python projects
 alias r='cd ~/projects/'
 alias cu='cargo update'
+
+# rust bootcamp
+alias lg='cd ~/rustbootcamp/'
+alias code='/usr/bin/codium' #vscode used in bootcamp
 
 # mongo DB
 alias compass='mongodb-compass'
