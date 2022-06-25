@@ -1,3 +1,9 @@
+
+-- function is_available(plugin)
+--   return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+-- end
+
+
 -- local map = vim.api.nvim_set_keymap
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -14,6 +20,22 @@ expr_options = {noremap = true, expr = true, silent = true}
 -- map the leader key
 vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", default_options)
 vim.g.mapleader = " "
+
+
+
+
+-- Comment
+-- if is_available "Comment.nvim" then
+--   map("n", "<leader>/", function()
+--     require("Comment.api").toggle_current_linewise()
+--   end, { desc = "Comment line" })
+--   map(
+--     "v",
+--     "<leader>/",
+--     "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
+--     { desc = "Toggle comment line" }
+--   )
+-- end
 
 
 -- center search results
@@ -67,11 +89,13 @@ map("n","<M-p>",':w!<CR>:!python3 %<CR>',default_options)
 map("n","<M-g>",':w!<CR>:!cargo run<CR>',default_options)
 map("n","<M-b>",':w!<CR>:!cargo build<CR>',default_options)
 -- >> compile RS
-map("n","<M-c>",':w!<CR>:!rustc % &&./main<CR>',default_options)
+-- map("n","<M-c>",':w!<CR>:!rustc % &&./main<CR>',default_options)
 
--- >> Rust Formatter / Clippy
-map("n","<M-f>",':w!<CR>:!rustfmt %<CR>:e %<CR>',default_options)
-map("n","<M-F>",':w!<CR>:!cargo clippy %<CR>:e %<CR>',default_options)
+-- >> Rust Formatter / Clippy / OpenCargo
+map("n","<M-f>",':w!<CR>:!cargo fmt<CR>',default_options)
+map("n","<M-F>",':w!<CR>:!cargo clippy<CR>',default_options)
+map("n","<M-c>",':RustOpenCargo<CR>',default_options)
+map("n","<M-i>",':RustSetInlayHints<CR>',default_options)
 
 
 -- PLUGINS
@@ -91,7 +115,6 @@ map("n", "gd" , '<cmd>lua vim.lsp.buf.definition()<cr>', default_options)
 map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 
 
-map("n","<M-i>",':RustToggleInlayHints<CR>',default_options)
 
 map("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]',default_options)
 
