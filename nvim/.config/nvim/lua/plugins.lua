@@ -31,9 +31,9 @@ packer.reset()
 use "wbthomason/packer.nvim"
 
 -- >> Doom Emacs' color scheme
-use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
+-- use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 -- >> Transparent Background
-use {"xiyaowong/nvim-transparent", config = get_config("transparent")}
+-- use {"xiyaowong/nvim-transparent", config = get_config("transparent")}
 
 -- >> faster navigation in text
  use{
@@ -106,7 +106,7 @@ use "nvim-treesitter/nvim-treesitter-textobjects"
 -- >> autocomplete
  use {
      "hrsh7th/nvim-cmp",
-     requires = {
+      requires = {
       {"hrsh7th/cmp-nvim-lsp"},
       {"hrsh7th/cmp-nvim-lua" },
       {"hrsh7th/cmp-buffer"},
@@ -132,20 +132,27 @@ use {"onsails/lspkind-nvim", requires = {{"famiu/bufdelete.nvim"}}}
 -- >> display popup with key options (when pressing space)
 use {"folke/which-key.nvim", event = "VimEnter", config = get_config("which")}
 
--- >> automatically highlighting (underlines( other uses of the current word under the cursor
--- >> used inside the Doom-One config
+-->> automatically highlighting (underlines( other uses of the current word under the cursor
+-->> used inside the Doom-One config
 use {"RRethy/vim-illuminate", event = "CursorHold"}
 
--- >> highlight similar text instances with * or #
+-->> highlight similar text instances with * or #
 use "ironhouzi/starlite-nvim"
 
--- >> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
+-->> centers text with black borders around, dim text outside of a certain range with the Twilight plugin (optional)
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
--- use {"folke/twilight.nvim", config = get_config("twilight")}
+use {"folke/twilight.nvim", config = get_config("twilight")}
 
 
--- >> Rust analyzer
+-->> Rust analyzer
 require'lspconfig'.rust_analyzer.setup({})
+
+
+use 'simrat39/rust-tools.nvim'
+require('rust-tools').setup({})
+
+use {"tiagovla/tokyodark.nvim",config=get_config("tokyodark")}
+
 
 -- RUST
 -- need rust-analyzer installed for that.
@@ -153,6 +160,6 @@ require'lspconfig'.rust_analyzer.setup({})
 -- git clone https://github.com/rust-lang/rust-analyzer.git
 -- cd rust-analyzer
 -- cargo xtask install --server
---
-use 'simrat39/rust-tools.nvim'
-require('rust-tools').setup({})
+
+
+
