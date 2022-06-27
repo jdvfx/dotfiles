@@ -205,7 +205,6 @@ hl.plugins.treesitter = {
     commentTSWarning = hl.predef.YellowItalic,
     TSPunctBracket = hl.predef.Yell,
     TSOperator = hl.predef.Purp,
-    TSFuncMacro = hl.predef.Oran,
     TSPunctDelimiter = hl.predef.Gree,
     TSFunction = hl.predef.Green,
     TSComment = hl.predef.Comm,
