@@ -143,6 +143,8 @@ use "ironhouzi/starlite-nvim"
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
 use {"folke/twilight.nvim", config = get_config("twilight")}
 
+-- >>>>>>>
+use "p00f/nvim-ts-rainbow"
 
 -->> Rust analyzer
 require'lspconfig'.rust_analyzer.setup({})
