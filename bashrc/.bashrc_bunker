@@ -100,7 +100,7 @@ alias cleanfilenames='/usr/bin/python3 ~/Desktop/git/scripts/clean_file_names.py
 alias aliases='nvim ~/.bashrc_bunker'
 # add some private bashrc commands
 source ~/.bashrc_pr
-LS_COLORS='*.sh=1;33:*.py=1;35:*.js=1;36:*.gif=1;37:*.rs=1;31:*.toml=36:*.zip=45:*.mkv=32:*.hiplc=31:*.torrent=0;31'
+LS_COLORS='*.sh=1;33:*.py=1;33:*.js=1;36:*.gif=1;37:*.rs=0;33:*.toml=1;32:*.zip=1;32:*.mkv=32:*.hiplc=31:*.torrent=0;31:*.lock=0;35'
 
 alias termcolors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
 
@@ -123,7 +123,8 @@ alias gr='bash ~/Desktop/git/scripts/grep_my_rust.sh'
 # alias s='/home/bunker/projects/searchfiles/target/release/searchfiles -p ~/projects/ -q'
 
 # show rust docs in current project
-alias doc='python3 ~/Desktop/git/scripts/show_rust_docs.py'
+# alias doc='python3 ~/Desktop/git/scripts/show_rust_docs.py'
+alias doc='cargo doc --open'
 
 # open main.rs from the current project
 alias m='nvim src/main.rs'
