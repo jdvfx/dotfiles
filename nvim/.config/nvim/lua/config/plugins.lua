@@ -143,25 +143,23 @@ use "ironhouzi/starlite-nvim"
 use {"folke/zen-mode.nvim", cmd = "ZenMode", config = get_config("zen-mode")}
 use {"folke/twilight.nvim", config = get_config("twilight")}
 
--- >>>>>>>
+-- >> TS Rainbow: brackets pair in different color ({[]})
 use "p00f/nvim-ts-rainbow"
 
 -->> Rust analyzer
 require'lspconfig'.rust_analyzer.setup({})
 
-
 use 'simrat39/rust-tools.nvim'
 require('rust-tools').setup({})
+-- useful for inlayHints,Cargo Open,...
 
-use {"tiagovla/tokyodark.nvim",config=get_config("tokyodark")}
-
-
--- RUST
--- need rust-analyzer installed for that.
---
+-- need rust-analyzer for rust-tools :
 -- git clone https://github.com/rust-lang/rust-analyzer.git
 -- cd rust-analyzer
 -- cargo xtask install --server
 
 
+-- tokyo dark, but I'm overriding the colors
+-- with my "VScode like" theme, in the custom folder
+use {"tiagovla/tokyodark.nvim",config=get_config("tokyodark")}
 
