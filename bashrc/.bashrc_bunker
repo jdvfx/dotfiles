@@ -122,11 +122,7 @@ alias gr='bash ~/Desktop/git/scripts/grep_my_rust.sh'
 # alias rs='/bin/python3 /home/bunker/projects/search_rs.py /home/bunker/projects/'
 # alias s='/home/bunker/projects/searchfiles/target/release/searchfiles -p ~/projects/ -q'
 
-# show rust docs in current project
-<<<<<<< HEAD
-# alias doc='python3 ~/Desktop/git/scripts/show_rust_docs.py'
-=======
->>>>>>> 1e4ad0155eeccd87f5e266b7578615fb9b04e970
+# show rust docs for current project
 alias doc='cargo doc --open'
 
 # open main.rs from the current project
