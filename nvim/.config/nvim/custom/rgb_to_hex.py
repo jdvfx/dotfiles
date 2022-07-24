@@ -13,8 +13,9 @@ with open("palette_ok.lua","r") as f:
     r = f.read()
     l = r.splitlines()
 
-sat_offset = 0.2
-bri_offset = 40
+sat_offset = 0.3*0
+bri_offset = 100*0
+mult_offset = 1.3
 
 with open("palette.lua","w") as f:
     for i in l:
@@ -22,10 +23,13 @@ with open("palette.lua","w") as f:
         if len(b)>1:
             a = b[1].split('"')
             r = hex_to_rgb(a[0])
-            hsv = colorsys.rgb_to_hsv(r[0]+bri_offset,r[1]+bri_offset,r[2]+bri_offset)
+            b = bri_offset
+            m = mult_offset
+            hsv = colorsys.rgb_to_hsv(r[0]*m+b,r[1]*m+b,r[2]*m+b)
             hsv2 = (hsv[0],hsv[1]+sat_offset,hsv[2])
             r2 = colorsys.hsv_to_rgb(hsv2[0],hsv2[1],hsv2[2])
 
+            # clamp to 8bit RGB values
             r2_ = (\
                     min(255,max(0,int(r2[0]))),\
                     min(255,max(0,int(r2[1]))),\
@@ -36,7 +40,6 @@ with open("palette.lua","w") as f:
 
             i2 = re.sub(a[0],h,i)
             f.write(i2+"\n")
-
         else:
             f.write(i+"\n")
 
