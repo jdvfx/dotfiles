@@ -13,7 +13,7 @@ with open("palette_ok.lua","r") as f:
     r = f.read()
     l = r.splitlines()
 
-sat_offset = 0.3*0
+sat_offset = 0.0
 bri_offset = 100*0
 mult_offset = 1.3
 

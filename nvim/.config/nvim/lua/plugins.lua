@@ -155,6 +155,8 @@ require('rust-tools').setup({})
 
 use {"tiagovla/tokyodark.nvim",config=get_config("tokyodark")}
 
+-- use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
+-- require('oxocarbon').setup({})
 
 -- RUST
 -- need rust-analyzer installed for that.
