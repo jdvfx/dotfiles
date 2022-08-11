@@ -57,10 +57,10 @@ map("n", "<S-TAB>", ":bprevious<CR>", default_options)
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_options)
 
 -- Resizing panes
-map("n", "<Left>", ":vertical resize +1<CR>", default_options)
-map("n", "<Right>", ":vertical resize -1<CR>", default_options)
-map("n", "<Up>", ":resize -1<CR>", default_options)
-map("n", "<Down>", ":resize +1<CR>", default_options)
+map("n", "<Left>", ":vertical resize +3<CR>", default_options)
+map("n", "<Right>", ":vertical resize -3<CR>", default_options)
+map("n", "<Up>", ":resize -3<CR>", default_options)
+map("n", "<Down>", ":resize +3<CR>", default_options)
 
 -- Deal with visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_options)
