@@ -9,7 +9,7 @@ font:
     style: Light
   bold:
     family: IBM Plex Mono
-    style:  Medium
+    style: Light
   italic:
     family: IBM Plex Mono
     style:  Italic
@@ -43,12 +43,12 @@ colors:
   # Normal colors
   normal:
     black:   '#212c3e'
-    red:     '#a72320'
+    red:     '#aa2255'
     green:   '#32a448'
-    yellow:  '#e58d11'
+    yellow:  '#fc952e'
     blue:    '#4088cc'
-    magenta: '#8020bb'
-    cyan:    '#2b9270'
+    magenta: '#c866ff'
+    cyan:    '#2bc395'
     white:   '#afb6b9'
 
   # Bright colors
@@ -56,14 +56,14 @@ colors:
     black:   '#202b3b'
     red:     '#d3302e'
     green:   '#2c9440'
-    yellow:  '#e5bd0c'
-    blue:    '#3b7cd2'
-    magenta: '#822fa7'
-    cyan:    '#35b286'
+    yellow:  '#fc952e'
+    blue:    '#2279ff'
+    magenta: '#c866ff'
+    cyan:    '#2bc395'
     white:   '#e6ecec'
 
   cursor:
-    cursor: '#FF33AA'
+    cursor: '#2bc395'
 
 
 cursor:
