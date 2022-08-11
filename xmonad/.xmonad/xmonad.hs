@@ -83,7 +83,7 @@ myConfig = def {
                terminal = "alacritty",
                borderWidth   = 1,
                normalBorderColor  = "#000000",
-               focusedBorderColor = "#00AAFF",
+               focusedBorderColor = "#2279ff",
                startupHook        = myStartupHook,
                layoutHook = myLayouts
                } `additionalKeys`
@@ -96,9 +96,9 @@ myConfig = def {
                , ((mod4Mask, xK_F8), spawn "/bin/python3 ~/.xmonad/brightness/adjustBrightness.py +.1")
                , ((mod4Mask, xK_Right), spawn (spotifyControl("Next")))
                , ((mod4Mask, xK_Left), spawn (spotifyControl("Previous")))
-               , ((mod4Mask, xK_i), spawn (dmenuFromText ("~/.xmonad/dmenu_sys","#FF5555")))
+               , ((mod4Mask, xK_i), spawn (dmenuFromText ("~/.xmonad/dmenu_sys","#c866ff")))
                , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
-               , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#0060ff")))
+               , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#2279ff")))
                , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
                ]
 
