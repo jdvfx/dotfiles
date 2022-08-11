@@ -20,7 +20,7 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = xmobarPP {
-                ppCurrent = xmobarColor "#1ac3ff" "",
+                ppCurrent = xmobarColor "#2279ff" "",
                 ppTitle = xmobarColor "#888888" ""
                 }
 
