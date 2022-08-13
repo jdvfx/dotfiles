@@ -95,7 +95,8 @@ map("n","<M-b>",':w!<CR>:!cargo build<CR>',default_options)
 map("n","<M-f>",':w!<CR>:!cargo fmt<CR>',default_options)
 map("n","<M-F>",':w!<CR>:!cargo clippy<CR>',default_options)
 map("n","<M-c>",':RustOpenCargo<CR>',default_options)
-map("n","<M-i>",':RustSetInlayHints<CR>',default_options)
+map("n","<M-i>",':RustToggleInlayHints<CR>',default_options)
+map("n","<M-z>",':ZenMode<CR>',default_options)
 
 
 -- PLUGINS
