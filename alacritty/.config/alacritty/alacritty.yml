@@ -6,16 +6,16 @@
 font:
   normal:
     family: IBM Plex Mono
-    style: Light
+    style: Text
   bold:
     family: IBM Plex Mono
-    style: Light
+    style: Text
   italic:
     family: IBM Plex Mono
     style:  Italic
   bold_italic:
     family: IBM Plex Mono
-    style:  Medium Italic
+    style:  Italic
   size: 15
   offset:
       x: 0
@@ -63,7 +63,9 @@ colors:
     white:   '#e6ecec'
 
   cursor:
-    cursor: '#2bc395'
+    cursor: '#ff77bb'
+    # cursor: '#ffa500'
+    # cursor: '#f55608'
 
 
 cursor:
