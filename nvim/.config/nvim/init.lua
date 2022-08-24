@@ -38,7 +38,6 @@ require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim'
 
 
-
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
@@ -455,8 +454,9 @@ map("n","<M-b>",':w!<CR>:!cargo build<CR>',default_options)
 map("n","<M-f>",':w!<CR>:!cargo fmt<CR>',default_options)
 map("n","<M-F>",':w!<CR>:!cargo clippy<CR>',default_options)
 map("n","<M-c>",':RustOpenCargo<CR>',default_options)
-map("n","<M-i>",':RustToggleInlayHints<CR>',default_options)
-map("n","<M-z>",':ZenMode<CR>',default_options)
+
+map("n","<M-i>",':RustSetInlayHints<CR>',default_options)
+-- map("n","<M-z>",':ZenMode<CR>',default_options)
 
 -- >> Rust keep test code
 map("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]',default_options)
@@ -482,7 +482,7 @@ colorizer.setup({ "*" }, {
 
 -- BUNKER
 -- navigator
-require('Navigator').setup()
+-- require('Navigator').setup()
 local map = vim.api.nvim_set_keymap
 default_options = {noremap = true, silent = true}
 -- tmux navigation
@@ -495,6 +495,8 @@ map("n", "<C-j>", "<cmd>lua require('Navigator').down()<CR>", default_options)
 -- hop
 require"hop".setup {keys = "qwertyuiopasdfghjklzxcvbnm", term_seq_bias = 0.5}
 
-
+-- BUNKER
+-- rust inlay_hints
+require('rust-tools').inlay_hints.enable()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
