@@ -36,7 +36,8 @@ require('packer').startup(function(use)
   use "tiagovla/tokyodark.nvim"
   -- RustTools for RustToggleInlayHints
   use 'simrat39/rust-tools.nvim'
-
+-- TS rainbow
+  use "p00f/nvim-ts-rainbow"
 
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
 
@@ -272,6 +273,29 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+  rainbow = {
+      enable = true,
+      extended_mode = true,
+      max_file_lines = 2000,
+      colors = {
+        "#ffffff",
+        "#FFFF6e",
+        "#ff8e1f",
+        "#ff84c6",
+        "#b884ff",
+        "#2c9bff",
+        "#00FFFF",
+      }
+      -- colors = {
+      --   "#FFFFFF",
+      --   "#FFCC55",
+      --   "#AAAAFF",
+      --   "#FF55FF",
+      --   "#00FFFF",
+      --   "#FFFF00",
+      --   "#AAFF66",
+      -- }
+  }
 }
 
 -- Diagnostic keymaps
@@ -498,5 +522,11 @@ require"hop".setup {keys = "qwertyuiopasdfghjklzxcvbnm", term_seq_bias = 0.5}
 -- BUNKER
 -- rust inlay_hints
 require('rust-tools').inlay_hints.enable()
+
+
+
+
+
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
