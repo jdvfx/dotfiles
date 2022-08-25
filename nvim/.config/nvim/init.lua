@@ -525,6 +525,9 @@ require('rust-tools').inlay_hints.enable()
 
 
 
+-- map("n", "gd" , '<cmd>lua vim.lsp.buf.definition()<cr>', default_options)
+map("n", "K" , '<cmd>lua vim.lsp.buf.hover()<cr>', default_options)
+map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 
 
 
