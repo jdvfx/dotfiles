@@ -8,7 +8,7 @@ stty -ixon # Disable ctrl+c and ctrl+q in terminal
 PS1='\[\033[01;32m\]>\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $ '
 
 # disable tap to click (macbook pro)
-if [ hostname == bunker-macbookpro ]; then synclient MaxTapTime=0; fi
+if [ `hostname` == bunker-macbookpro ]; then synclient MaxTapTime=0; fi
 
 # basic stuff
 alias t='top'
@@ -115,8 +115,10 @@ alias planck='cd /home/bunker/qmk_firmware/keyboards/planck/keymaps/bunker/'
 # alias prx='/home/bunker/projects/image/target/release/image'
 
 
-# //  RUST  // #
+# // LEETCODE // #
+alias lc='cd ~/leetcode/'
 
+# //  RUST  // #
 # search my rust projects
 alias gr='bash ~/Desktop/git/scripts/grep_my_rust.sh'
 # alias rs='/bin/python3 /home/bunker/projects/search_rs.py /home/bunker/projects/'
@@ -124,7 +126,7 @@ alias gr='bash ~/Desktop/git/scripts/grep_my_rust.sh'
 
 # show rust docs for current project
 alias doc='cargo doc --open'
-
+alias cargofixpackagecache='rm ~/.cargo/.package-cache'
 # open main.rs from the current project
 alias m='nvim src/main.rs'
 # open Cargo.toml
@@ -144,6 +146,8 @@ alias mongostart='sudo systemctl start mongod'
 alias mongoend='sudo systemctl end mongod'
 
 alias brave='/usr/bin/brave-browser'
+
+alias s='scrot -s ~/Pictures/screenshots/rust/'
 
 #################################################################################
 # // end BUNKER aliases //
