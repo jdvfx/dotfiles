@@ -20,7 +20,7 @@ hl.predef = {
     Orange = { fg = p.orange },
     Yellow = { fg = p.yellow },
     Yell = { fg = p.yell },
-    Comm = { fg = p.comm },
+    Comm = { fg = p.comm , italic = true},
     Oran = { fg = p.oran },
     Gree = { fg = p.gree },
     Purp = { fg = p.purp },
