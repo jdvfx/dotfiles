@@ -9,14 +9,14 @@ font:
     style: Text
   bold:
     family: IBM Plex Mono
-    style: Text
+    style: Medium
   italic:
     family: IBM Plex Mono
     style:  Italic
   bold_italic:
     family: IBM Plex Mono
     style:  Italic
-  size: 15
+  size: 13.5
   offset:
       x: 0
       y: 0
