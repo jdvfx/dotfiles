@@ -34,7 +34,7 @@ local colors = {
     oran = "#ff84c6",
     gree = "#b0b0b0",
     comm = "#545870",
-    viz = "#222835"
+    viz = "#223344"
 }
 local function gamma_correction(colors)
     local colors_corrected = {}
