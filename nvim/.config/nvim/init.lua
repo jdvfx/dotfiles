@@ -79,6 +79,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true -- set relative numbered lines
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
