@@ -44,6 +44,7 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -122,12 +123,6 @@ vim.g.maplocalleader = ' '
 -- BUNKER 
 -- paste over currenly selected text without yanking it 
 vim.keymap.set('v','p','\"_dP')
-
-
-
-
-
-
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -489,6 +484,12 @@ map("n","<M-i>",':RustSetInlayHints<CR>',default_options)
 map("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]',default_options)
 
 
+-- Hop
+map("n", "<leader>j", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
+map("n", "<leader>k", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
+map("v", "<leader>j", "<cmd>lua require'hop'.hint_words()<cr>",default_options)
+map("v", "<leader>k", "<cmd>lua require'hop'.hint_lines()<cr>",default_options)
+
 -- BUNKER
 -- colorizer setup
 require('colorizer').setup()
@@ -525,8 +526,6 @@ require"hop".setup {keys = "qwertyuiopasdfghjklzxcvbnm", term_seq_bias = 0.5}
 -- BUNKER
 -- rust inlay_hints
 require('rust-tools').inlay_hints.enable()
-
-
 
 -- map("n", "gd" , '<cmd>lua vim.lsp.buf.definition()<cr>', default_options)
 map("n", "K" , '<cmd>lua vim.lsp.buf.hover()<cr>', default_options)
