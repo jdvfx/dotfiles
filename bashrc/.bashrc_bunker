@@ -4,6 +4,10 @@
 
 stty -ixon # Disable ctrl+c and ctrl+q in terminal
 
+# faster key repeats for Vim
+xset r rate 300 50
+
+
 # disable caps lock
 setxkbmap -option ctrl:nocaps
 # basic prompt
