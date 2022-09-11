@@ -531,7 +531,12 @@ require('rust-tools').inlay_hints.enable()
 map("n", "K" , '<cmd>lua vim.lsp.buf.hover()<cr>', default_options)
 map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 
-
+-- BUNKER
+-- move vertically 
+map("n", "<C-j>" , '5jzz', default_options)
+map("n", "<C-k>" , '5kzz', default_options)
+map("n","<C-d>", "<C-d>zz",default_options)
+map("n","<C-u>", "<C-u>zz",default_options)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
