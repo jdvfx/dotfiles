@@ -208,8 +208,15 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+--
 -- BUNKER - leader+p to find files in the current project
 vim.keymap.set('n', '<leader>p', require('telescope.builtin').find_files,{})
+
+--local bo = "/home/bunker/Downloads"
+--vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files,{cwd=bo})
+
+
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -535,8 +542,13 @@ map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 -- move vertically 
 map("n", "<C-j>" , '5jzz', default_options)
 map("n", "<C-k>" , '5kzz', default_options)
+map("n", "<A-j>" , '5jzz', default_options)
+map("n", "<A-k>" , '5kzz', default_options)
 map("n","<C-d>", "<C-d>zz",default_options)
 map("n","<C-u>", "<C-u>zz",default_options)
+
+map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="/src/*.rs"}<CR>',default_options)
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
