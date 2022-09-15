@@ -284,22 +284,13 @@ require('nvim-treesitter.configs').setup {
       max_file_lines = 2000,
       colors = {
         "#ffffff",
-        "#FFFF6e",
+        "#feff9a",
         "#ff8e1f",
-        "#ff84c6",
-        "#b884ff",
-        "#2c9bff",
-        "#00FFFF",
+        "#b848ff",
+        "#2255ff",
+        "#50d6cf",
+        "#06bc75",
       }
-      -- colors = {
-      --   "#FFFFFF",
-      --   "#FFCC55",
-      --   "#AAAAFF",
-      --   "#FF55FF",
-      --   "#00FFFF",
-      --   "#FFFF00",
-      --   "#AAFF66",
-      -- }
   }
 }
 
@@ -542,10 +533,13 @@ map("n", "gr" , '<cmd>lua vim.lsp.buf.rename()<cr>', default_options)
 -- move vertically 
 map("n", "<C-j>" , '5jzz', default_options)
 map("n", "<C-k>" , '5kzz', default_options)
-map("n", "<A-j>" , '5jzz', default_options)
-map("n", "<A-k>" , '5kzz', default_options)
 map("n","<C-d>", "<C-d>zz",default_options)
 map("n","<C-u>", "<C-u>zz",default_options)
+
+map("x", "<C-j>" , '5jzz', default_options)
+map("x", "<C-k>" , '5kzz', default_options)
+map("x","<C-d>", "<C-d>zz",default_options)
+map("x","<C-u>", "<C-u>zz",default_options)
 
 map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="/src/*.rs"}<CR>',default_options)
 
