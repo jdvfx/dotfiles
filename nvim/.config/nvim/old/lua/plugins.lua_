@@ -30,6 +30,13 @@ packer.reset()
 -- >> Packer Plugin !!!
 use "wbthomason/packer.nvim"
 
+-- use 'williamboman/mason.nvim'
+-- use 'williamboman/mason-lspconfig.nvim'
+
+
+
+
+
 -- >> Doom Emacs' color scheme
 -- use {"NTBBloodbath/doom-one.nvim", config = get_config("doom-one")}
 -- >> Transparent Background
