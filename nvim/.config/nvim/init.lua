@@ -543,7 +543,10 @@ map("x", "<C-k>" , '5kzz', default_options)
 map("x","<C-d>", "<C-d>zz",default_options)
 map("x","<C-u>", "<C-u>zz",default_options)
 
-map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="/src/*.rs"}<CR>',default_options)
+-- map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="/src/*.rs"}<CR>',default_options)
+--
+map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="*.*"}<CR>',default_options)
+map('n', '<leader>i', '<cmd>lua require("telescope.builtin").jumplist{fname_width=100}<CR>',default_options)
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
