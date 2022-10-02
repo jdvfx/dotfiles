@@ -96,8 +96,8 @@ hl.common = {
     debugBreakpoint = { fg = p.bg0, bg = p.red },
     ToolbarButton = { fg = p.bg0, bg = p.bg_blue },
     FocusedSymbol = { bg = p.bg3 },
-    CursorLine = { bg = "#221250"},
-    Visual = { bg = "#331260" },
+    CursorLine = { bg = "#222438"},
+    Visual = { bg = "#242458" },
 }
 
 hl.syntax = {
