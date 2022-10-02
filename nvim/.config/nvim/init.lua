@@ -82,6 +82,9 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true -- set relative numbered lines
 
+-- BUNKER
+vim.wo.cursorline = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
