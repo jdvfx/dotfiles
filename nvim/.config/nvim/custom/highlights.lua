@@ -52,7 +52,6 @@ hl.common = {
     lCursor = { reverse = true },
     CursorIM = { reverse = true },
     CursorColumn = { bg = p.bg1 },
-    CursorLine = { bg = p.viz },
     ColorColumn = { bg = p.bg1 },
     CursorLineNr = { fg = p.fg },
     LineNr = { fg = p.bg4 },
@@ -97,8 +96,8 @@ hl.common = {
     debugBreakpoint = { fg = p.bg0, bg = p.red },
     ToolbarButton = { fg = p.bg0, bg = p.bg_blue },
     FocusedSymbol = { bg = p.bg3 },
-    CursorLine = { bg = p.viz},
-    Visual = { bg = p.viz },
+    CursorLine = { bg = "#221250"},
+    Visual = { bg = "#331260" },
 }
 
 hl.syntax = {
