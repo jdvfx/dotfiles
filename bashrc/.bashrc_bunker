@@ -151,9 +151,18 @@ alias compass='mongodb-compass'
 alias mongostart='sudo systemctl start mongod'
 alias mongoend='sudo systemctl end mongod'
 
+# sqlite3
+alias b='sqlitebrowser'
+
 alias brave='/usr/bin/brave-browser'
 
 alias s='scrot -s ~/Pictures/screenshots/rust/'
+
+# free space on USB stick
+alias usbspace='df -h | grep TV'
+
+# display Wifi and LAN connections
+alias wifi='nmcli dev status'
 
 #################################################################################
 # // end BUNKER aliases //
