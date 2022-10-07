@@ -1,0 +1,23 @@
+Config { font = "xft:IBM Plex Mono:size=14:medium:antialias=true:hinting=false"
+        , borderColor = "black"
+        , border = TopB
+        , bgColor = "black"
+        , fgColor = "grey"
+        , position = TopW L 100
+        , commands = [    Run Cpu ["-L","5","-H","70","--normal","#888888","--high","#FFAA00"] 50
+                        , Run Memory ["-t","Mem: <usedratio>%"] 200
+                        , Run Date "%H:%M" "time" 100
+                        , Run Date "%b %_d" "date" 1000
+			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'"] "bats" 10000
+			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'"] "batp" 10000
+			, Run Com "/bin/bash" ["-c","sensors| grep CPU | cut -d + -f2"] "tcpu" 100
+			, Run Com "/bin/bash" ["-c","cat /proc/acpi/ibm/fan | grep level: | awk '{print $2}'"] "level" 100
+			, Run Com "/bin/bash" ["-c","sensors| grep fan2 | awk '{print $2}'"] "fan" 100
+                        , Run StdinReader
+                        , Run CoreTemp ["-t", "<core0>°|<core1>°","-L", "40", "-H", "60", "-l", "#888888", "-n", "#888888", "-h", "red"] 200
+                        ]
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555> %level% %fan% %tcpu% . %bats% %batp% . %cpu% . %memory% . %date%</fc> <fc=#1ac3ff> %time% </fc>"
+        }
+
