@@ -8,7 +8,7 @@ Config { font = "xft:IBM Plex Mono:size=14:medium:antialias=true:hinting=false"
                         , Run Memory ["-t","Mem: <usedratio>%"] 200
                         , Run Date "%H:%M" "time" 100
                         , Run Date "%b %_d" "date" 1000
-			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print $2}'"] "bats" 10000
+			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e percentage: -e state: | awk '{print $2}' | xargs echo | sed 's/fully-charged/=/' | sed 's/discharging/-/' | sed 's/charging/+/'"] "bats" 10000
 			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'"] "batp" 10000
 			, Run Com "/bin/bash" ["-c","sensors| grep CPU | cut -d + -f2"] "tcpu" 100
 			, Run Com "/bin/bash" ["-c","cat /proc/acpi/ibm/fan | grep level: | awk '{print $2}'"] "level" 100

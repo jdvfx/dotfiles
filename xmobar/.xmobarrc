@@ -1,4 +1,4 @@
-Config { font = "xft:IBM Plex Mono:size=9:medium:antialias=true:hinting=false"
+Config { font = "xft:IBM Plex Mono:style=Medium:size=9:medium:antialias=true:hinting=false"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
@@ -9,11 +9,12 @@ Config { font = "xft:IBM Plex Mono:size=9:medium:antialias=true:hinting=false"
                         , Run Memory ["-t","Mem: <usedratio>%"] 200
                         , Run Date "%H:%M" "time" 100
                         , Run Date "%b %_d" "date" 1000
+			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e percentage: -e state: | awk '{print $2}' | xargs echo | sed 's/fully-charged/=/' | sed 's/discharging/-/' | sed 's/charging/+/'"] "bats" 10000
                         , Run StdinReader
-                        , Run CoreTemp ["-t", "<core0>°|<core1>°","-L", "40", "-H", "60", "-l", "#888888", "-n", "#888888", "-h", "red"] 200
+                        , Run CoreTemp ["-t", "<core0>°|<core1>°","-L", "40", "-H", "60", "-l", "#888888", "-n", "#888888", "-h", "#F65608"] 200
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%coretemp% . %cpu% . %memory% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%bats% .  %coretemp% . %cpu% . %memory% . %date%</fc> <fc=#1ac3ff>%time% </fc>"
         }
 
