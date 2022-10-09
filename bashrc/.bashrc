@@ -115,6 +115,9 @@ source ~/.bashrc_bunker
 
 # CARGO!
 . "$HOME/.cargo/env"
-export RUSTC_WRAPPER=sccache
+export RUSTC_WRAPPER=sccache # don't do this on Fedora!!!
 
-
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
+[ -f "/home/bunker/.ghcup/env" ] && source "/home/bunker/.ghcup/env" # ghcup-env
