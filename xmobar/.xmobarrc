@@ -1,19 +1,49 @@
-Config { font = "xft:IBM Plex Mono:style=Medium:size=9:medium:antialias=true:hinting=false"
+-- https://wiki.archlinux.org/title/Xmobar
+
+Config {
+	font = "xft:IBM Plex Mono:style=Medium:size=9:medium:antialias=true:hinting=false"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
         , fgColor = "grey"
         , position = TopW L 100
-        , commands = [    Run Cpu ["-L","5","-H","70","--normal","#888888","--high","#FFAA00"] 50
-                        , Run Memory ["-t","Mem: <usedratio>%"] 200
-                        , Run Date "%H:%M" "time" 100
-                        , Run Date "%b %d" "date" 1000
-			, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e percentage: -e state: | awk '{print $2}' | xargs echo | sed 's/fully-charged/=/' | sed 's/discharging/-/' | sed 's/charging/+/' | sed 's/ //' "] "bats" 10000
-                        , Run StdinReader
-                        , Run CoreTemp ["-t", "<core0>°|<core1>°","-L", "40", "-H", "60", "-l", "#888888", "-n", "#888888", "-h", "#F65608"] 200
-                        ]
+        , commands =
+	[
+		Run MultiCpu
+		[ "--template" , "Cpu: <total0>%"
+		, "--Low"      , "50"         -- units: %
+		, "--High"     , "85"         -- units: %
+		, "--low"      , "darkgreen"
+		, "--normal"   , "darkorange"
+		, "--high"     , "darkred"
+		] 50
+
+		-- ram
+		, Run Memory ["-t","Mem: <usedratio>%"] 200
+
+		-- time
+		, Run Date "%H:%M" "time" 100
+
+		-- date
+		, Run Date "%b %d" "date" 1000
+
+		-- fans
+		, Run Com "/bin/bash" ["-c","cat /sys/devices/platform/applesmc.768/fan*_output | xargs echo"] "fans" 100
+
+		-- battery
+		, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e percentage: -e state: | awk '{print $2}' | xargs echo | sed 's/fully-charged/=/' | sed 's/discharging/-/' | sed 's/charging/+/' | sed 's/ //' "] "bats" 10000
+
+		-- stdin from Xmonad (current Window in use)
+		, Run StdinReader
+
+		-- cpu temp
+		, Run CoreTemp ["-t", "<core0>°|<core1>°","-L", "40", "-H", "60", "-l", "#888888", "-n", "#888888", "-h", "#F65608"] 200
+
+	]
+	
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%cpu% . %coretemp% . %memory% . %bats% . %date% . </fc><fc=#1ac3ff>%time% </fc>"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%multicpu% . %coretemp% . %fans% . %memory% . %bats% . %date% . </fc><fc=#1ac3ff>%time% </fc>"
+
         }
 
