@@ -1,5 +1,4 @@
 -- IMPORTS
-
 import XMonad
 import XMonad.Util.EZConfig
 import XMonad.Hooks.DynamicLog
@@ -8,10 +7,9 @@ import XMonad.Util.SpawnOnce
 -- for layouts
 import XMonad.Layout.NoBorders   ( noBorders, smartBorders)
 import XMonad.Layout.Spiral
-import Data.Ratio -- this makes the '%' operator available (optional)
-import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
 import XMonad.Layout.ToggleLayouts
+import Data.Ratio -- this makes the '%' operator available (optional)
 
 -- The main function.
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
@@ -21,7 +19,7 @@ myBar = "xmobar"
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 myPP = xmobarPP {
                 ppCurrent = xmobarColor "#2279ff" "",
-                ppTitle = xmobarColor "#888888" ""
+                ppTitle = xmobarColor "#2bc395" ""
                 }
 
 -- Key binding to toggle the gap for the bar.
@@ -31,7 +29,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 ------------------------------------------------------------------------
 -- LAYOUTS
 ------------------------------------------------------------------------
-myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| noBorders Full
+myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| (noBorders Full)
     where
       layoutTall = Tall 1 (3/100) (1/2)
       layoutSpiral = spiral (125 % 146)
@@ -52,21 +50,27 @@ myStartupHook = do
 ------------------------------------------------------------------------
 -- dmenu font
 myFont :: String
-myFont = "IBM PLex Mono Medium:size=9"
+myFont = "IBM Plex Mono:style=Medium:size=9"
 
 -- dmenu from text file
 -- dt : path to text file in this format: (appName1#appPath1 \n appPath2#appPath2)
--- da : dmenu background color in this format: #000000
+-- dc : dmenu background color in this format: #000000
 dmenuFromText :: (String,String) -> (String)
 dmenuFromText  (dt,dc) = (dcmd) where
   dcmd = "cat "++dt++" | awk -F'#' '{print $1}' | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % grep % "++dt++"| awk -F'#' '{print $2}' | sh"
 
 -- dmenu from path
 -- dp : path
--- dp : dmenu background color in this format: #000000
+-- dc : dmenu background color in this format: #000000
 dmenuFromPath  :: (String,String) -> (String)
 dmenuFromPath (dp,dc) = (dcmd) where
   dcmd = "ls --color=never --format=single-column "++dp++" | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA' | xargs -I % sh -c '"++dp++"%'"
+
+-- dmenu status bar (for now, just time and date)
+-- dc : dmenu background color in this format: #000000
+dmenuStatus :: (String)-> (String)
+dmenuStatus (dc) = (dcst) where
+  dcst = "date +'%H:%M %b.%d.%Y' | xargs -n 1 | dmenu -fn '"++myFont++"' -sb '"++dc++"' -sf '#222222' -nb '#000000' -nf '#CCBBAA'"
 
 -- spotify next/previous
 spotifyControl :: (String) -> (String)
@@ -100,5 +104,6 @@ myConfig = def {
                , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
                , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#2279ff")))
                , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
+               , ((mod4Mask, xK_t), spawn (dmenuStatus("#f55608")))
                ]
 
