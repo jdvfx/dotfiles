@@ -104,6 +104,6 @@ myConfig = def {
                , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
                , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#2279ff")))
                , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
-               , ((mod4Mask, xK_t), spawn (dmenuStatus("#f55608")))
+               , ((mod4Mask, xK_y), spawn (dmenuStatus("#f55608")))
                ]
 
