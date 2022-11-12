@@ -31,6 +31,8 @@ alias ll='ls -lh --color=auto'
 alias la='ls -A --color=auto'
 alias lrt='ls -lhrt --color=auto'
 alias lrs='ls -lhrs --color=auto'
+alias rt='ls -lhrt --color=auto'
+alias rs='ls -lhrs --color=auto'
 alias lrtr='ls -lht --color=auto'
 alias lrsr='ls -lhs -color=auto'
 
@@ -75,7 +77,7 @@ alias grm='git rm'
 # others
 alias evince='atril'
 alias p='python3'
-
+alias rv='mpv'
 
 # for Wacom PTK-640 - disable all buttons
 wac=`/usr/bin/xsetwacom --list | wc -l `
