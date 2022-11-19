@@ -167,6 +167,9 @@ alias usbspace='df -h | grep TV'
 # display Wifi and LAN connections
 alias wifi='nmcli dev status'
 
+alias trash='cd ~/.local/share/Trash'
+
+
 #################################################################################
 # // end BUNKER aliases //
 #################################################################################
