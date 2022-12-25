@@ -26,7 +26,7 @@ alias dc='cd' #I'm bad at typing
 
 # ls
 alias l='ls --color=auto'
-alias ld='ls -d */'
+alias ld='ls -dtr */'
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lh --color=auto'
 alias la='ls -A --color=auto'
