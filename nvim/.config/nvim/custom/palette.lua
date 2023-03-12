@@ -2,6 +2,7 @@ local color_gamma = require("tokyodark.utils").color_gamma
 local gamma = require("tokyodark.config").gamma
 
 local colors = {
+    inlayhints = "#403333",
     black = "#070a0d",
     bg0 = "#161725",
     bg1 = "#212336",
