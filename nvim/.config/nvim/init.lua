@@ -25,6 +25,16 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'                                       -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                          -- Detect tabstop and shiftwidth automatically
 
+  -- codeium
+--   use {
+--   'Exafunction/codeium.vim',
+--   config = function ()
+--     -- Change '<C-g>' here to any keycode you like.
+--     vim.keymap.set('i', '<C-g>', function ()
+--       return vim.fn['codeium#Accept']()
+--     end, { expr = true })
+--   end
+-- }
 
   -- >> colorize HEX codes
   use 'norcalli/nvim-colorizer.lua'
@@ -34,8 +44,16 @@ require('packer').startup(function(use)
   use 'numToStr/Navigator.nvim'
   -- >> colorscheme
   use "tiagovla/tokyodark.nvim"
+
+  -- use {'nyoom-engineering/oxocarbon.nvim'}
+  -- vim.opt.background = "dark" -- set this to dark or light
+  -- vim.cmd("colorscheme oxocarbon")
+
   -- RustTools for RustToggleInlayHints
   use 'simrat39/rust-tools.nvim'
+
+
+
 -- TS rainbow
   use "p00f/nvim-ts-rainbow"
 
@@ -127,6 +145,10 @@ vim.g.maplocalleader = ' '
 -- BUNKER 
 -- paste over currenly selected text without yanking it 
 vim.keymap.set('v','p','\"_dP')
+
+
+-- comments
+-- vim.keymap.set('n','<leader>g','gcc',{silent = true})
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -348,10 +370,10 @@ local on_attach = function(_, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 
 -- Ensure the servers above are installed
 require('nvim-lsp-installer').setup {
@@ -372,26 +394,26 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = { enable = false, },
-    },
-  },
-}
+-- require('lspconfig').sumneko_lua.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = runtime_path,
+--       },
+--       diagnostics = {
+--         globals = { 'vim' },
+--       },
+--       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = { enable = false, },
+--     },
+--   },
+-- }
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -437,16 +459,33 @@ cmp.setup {
 }
 
 -- BUNKER
-require('rust-tools').setup({})
+-- require('rust-tools').setup({
 
--- BUNKER
--- require('tokyodark').setup{
+local rt = require("rust-tools")
+
+rt.setup({
+    tools = {
+      inlay_hints = {
+        highlight = "Dark"
+      }
+    },
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+
+})
+
 vim.g.tokyodark_transparent_background = true
 vim.g.tokyodark_enable_italic_comment = true
 vim.g.tokyodark_enable_italic = false
-vim.g.tokyodark_color_gamma = "1"
+vim.g.tokyodark_color_gamma = "1.0"
+vim.g.tokyodark_color_mult = "1.0"
 vim.cmd("colorscheme tokyodark")
- -- }
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -552,5 +591,7 @@ map('n', '<leader>o', '<cmd>lua require("telescope.builtin").find_files{cwd="/ho
 map('n', '<leader>i', '<cmd>lua require("telescope.builtin").jumplist{fname_width=100}<CR>',default_options)
 
 
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
