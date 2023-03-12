@@ -25,17 +25,6 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'                                       -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                          -- Detect tabstop and shiftwidth automatically
 
-  -- codeium
---   use {
---   'Exafunction/codeium.vim',
---   config = function ()
---     -- Change '<C-g>' here to any keycode you like.
---     vim.keymap.set('i', '<C-g>', function ()
---       return vim.fn['codeium#Accept']()
---     end, { expr = true })
---   end
--- }
-
   -- >> colorize HEX codes
   use 'norcalli/nvim-colorizer.lua'
   -- >> faster navigation in text
@@ -44,10 +33,6 @@ require('packer').startup(function(use)
   use 'numToStr/Navigator.nvim'
   -- >> colorscheme
   use "tiagovla/tokyodark.nvim"
-
-  -- use {'nyoom-engineering/oxocarbon.nvim'}
-  -- vim.opt.background = "dark" -- set this to dark or light
-  -- vim.cmd("colorscheme oxocarbon")
 
   -- RustTools for RustToggleInlayHints
   use 'simrat39/rust-tools.nvim'
@@ -459,25 +444,12 @@ cmp.setup {
 }
 
 -- BUNKER
--- require('rust-tools').setup({
-
-local rt = require("rust-tools")
-
-rt.setup({
+require("rust-tools").setup({
     tools = {
       inlay_hints = {
         highlight = "InlayHints"
       }
     },
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end,
-  },
-
 })
 
 vim.g.tokyodark_transparent_background = true
