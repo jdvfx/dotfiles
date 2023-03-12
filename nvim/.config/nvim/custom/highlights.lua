@@ -14,6 +14,7 @@ local function load_highlights(highlights)
 end
 
 hl.predef = {
+    Dark = { fg = p.bg2 },
     Fg = { fg = p.fg },
     Grey = { fg = p.grey },
     Red = { fg = p.red },
