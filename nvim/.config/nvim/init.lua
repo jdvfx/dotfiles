@@ -37,6 +37,9 @@ require('packer').startup(function(use)
   -- RustTools for RustToggleInlayHints
   use 'simrat39/rust-tools.nvim'
 
+  -- LSP loading 
+  use 'j-hui/fidget.nvim'
+
 
 
 -- TS rainbow
@@ -167,6 +170,9 @@ require('lualine').setup {
 
 -- Enable Comment.nvim
 require('Comment').setup()
+
+-- fidget LSP loader
+require('fidget').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
