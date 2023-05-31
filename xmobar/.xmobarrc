@@ -25,7 +25,7 @@ Config {
 		, Run Date "%H:%M" "time" 100
 
 		-- date
-		, Run Date "%b %d" "date" 1000
+		, Run Date "%a %b %d" "date" 1000
 
 		-- fans
 		, Run Com "/bin/bash" ["-c","cat /sys/devices/platform/applesmc.768/fan*_output | xargs echo"] "fans" 100
