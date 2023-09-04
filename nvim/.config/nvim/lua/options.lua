@@ -6,13 +6,8 @@ vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.autoread = true
 
--- use spaces for tabs 
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
-
 vim.cmd [[ set noswapfile ]]
+vim.cmd [[hi cursorline guibg=#222233]]
 
 ------------------------------------------------
 
@@ -55,7 +50,4 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
-
-
 
