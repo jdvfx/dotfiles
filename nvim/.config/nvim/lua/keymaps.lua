@@ -26,11 +26,10 @@ vim.keymap.set("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]')
 -- >> Clang-Format
 vim.keymap.set("n","<M-s>",':w!<CR>:%!clang-format<CR>')
 
--- go to my projects
+-- go to my projects (Telescope find_files)
 vim.keymap.set('n', '<leader>o', ':lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="*.*"}<CR>')
 
-
-
+-- Telescope file_brower
 vim.api.nvim_set_keymap(
   "n",
   "<space>fb",
