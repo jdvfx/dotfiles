@@ -29,6 +29,14 @@ vim.keymap.set("n","<M-s>",':w!<CR>:%!clang-format<CR>')
 -- go to my projects
 vim.keymap.set('n', '<leader>o', ':lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="*.*"}<CR>')
 
+
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser<CR>",
+  { noremap = true }
+)
   -- move vertically and center
 vim.keymap.set('n','<A-j>','5jzz')
 vim.keymap.set('n','<A-k>','5kzz')
