@@ -15,16 +15,20 @@ vim.keymap.set("n","<M-p>",':w!<CR>:!python3 %<CR>')
 -- >> compile and run current RUST Cargo
 vim.keymap.set("n","<M-g>",':w!<CR>:!cargo run<CR>')
 vim.keymap.set("n","<M-b>",':w!<CR>:!cargo build<CR>')
--- >> Rust Formatter / Clippy / OpenCargo / InlayHints
 vim.keymap.set("n","<M-f>",':w!<CR>:!cargo fmt<CR>')
 vim.keymap.set("n","<M-F>",':w!<CR>:!cargo clippy<CR>')
 vim.keymap.set("n","<M-c>",':RustOpenCargo<CR>')
-vim.keymap.set("n","<M-i>",':RustSetInlayHints<CR>')
+
+-- >> Rust Formatter / Clippy / OpenCargo / InlayHints
+vim.keymap.set("n","<M-i>",':lua require("rust-tools").inlay_hints.enable()<CR>')
 -- >> Rust keep test code
 vim.keymap.set("n","<M-d>",':read ~/.config/nvim/macros/deadcode<CR>]')
 
 -- >> Clang-Format
 vim.keymap.set("n","<M-s>",':w!<CR>:%!clang-format<CR>')
+
+-- NO NECK PAIN
+vim.keymap.set("n","<M-n>",':NoNeckPain<CR>')
 
 -- go to my projects (Telescope find_files)
 vim.keymap.set('n', '<leader>o', ':lua require("telescope.builtin").find_files{cwd="/home/bunker/projects/aliases/",follow=true,search_file="*.*"}<CR>')
@@ -32,7 +36,7 @@ vim.keymap.set('n', '<leader>o', ':lua require("telescope.builtin").find_files{c
 -- Telescope file_brower
 vim.api.nvim_set_keymap(
   "n",
-  "<space>fb",
+  "<space>f",
   ":Telescope file_browser<CR>",
   { noremap = true }
 )

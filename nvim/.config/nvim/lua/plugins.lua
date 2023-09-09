@@ -40,6 +40,8 @@ require('lazy').setup({
     },
   },
 
+  {"shortcuts/no-neck-pain.nvim", version = "*"},
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -79,6 +81,15 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+    },
+  },
+
+  { -- Rust tools for inlay hints --- BUNKER
+    'simrat39/rust-tools.nvim',
+    tools = {
+      inlay_hints = {
+        highlight = "InlayHints"
+      }
     },
   },
 
@@ -414,3 +425,29 @@ require("telescope").setup {
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension "file_browser"
+
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+
+require("no-neck-pain").setup({
+    width = 120,
+      buffers = {
+        colors = {
+          background = "#090909"
+        }
+      },
+})
+
+
