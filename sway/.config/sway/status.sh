@@ -9,7 +9,7 @@
 # upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'
 # The abbreviated weekday (e.g., "Sat"), followed by the ISO-formatted date
 # like 2018-10-06 and the time (e.g., 14:01)
-date_formatted=$(date "+%a %d/%m/%Y . %H:%M")
+date_formatted=$(date "+%a,%d,%m(%b),%Y . %H:%M")
 
 # Get the Linux version but remove the "-1-ARCH" part
 # linux_version=$(uname -r | cut -d '-' -f1)
@@ -23,6 +23,6 @@ fan2=$(sensors| grep fan2 | awk '{print $2}')
 # 💎 💻 💡 🔌 ⚡ 📁 \|
 # echo $uptime_formatted ↑ $linux_version 🐧 $battery_status 🔋 $date_formatted
 
-echo $fan1:$fan2 . $cpu_temp . $battery . $date_formatted 
+echo $fan1:$fan2 . $cpu_temp . $battery . $date_formatted .
 
 
