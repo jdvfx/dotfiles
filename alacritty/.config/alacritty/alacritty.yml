@@ -6,28 +6,27 @@
     # family: IBM Plex Mono
     # style: Text
     # family: IBM Plex Mono
-    #
+    # Showreel '23
    
 # - 16 13 05 02 08 09 10
 # + 14 12 03 curly 18 17 15 11 03 02 01 06 07
     
-    # family: Iosevka Term
-    # style: Regular
-
+    # family: IBM Plex Mono
+    # Press 
 font:
   normal:
-     family: SF Mono
-     style: Medium
+    family: Cascadia Mono PL
+    style: SemiBold
   bold:
-    family: SF Mono
-    style: Medium
+    family: Cascadia Mono PL
+    style: Bold
   italic:
-    family: SF Mono
-    style:  Italic
+    family: Cartograph CF
+    style: Bold Italic 
   bold_italic:
-    family: SF Mono
-    style:  Bold Italic
-  size: 13.5
+    family: Cartograph CF
+    style: Extra Bold Italic 
+  size: 13
   offset:
       x: 0
       y: 0
@@ -40,7 +39,7 @@ window:
   padding:
     x: 10
     y: 8
-  opacity: 0.5
+  opacity: 1
 
 
 # Colors (Material Theme)
@@ -48,7 +47,7 @@ colors:
   # Default colors
   primary:
     # background: '#333939'
-    background: '#272727'
+    background: '#151515'
     foreground: '#AAAAAA'
 
   # Normal colors
@@ -67,7 +66,7 @@ colors:
     black:   '#202b3b'
     red:     '#d3302e'
     green:   '#2c9440'
-    yellow:  '#fc952e'
+    yellow:  '#fc552e'
     blue:    '#2279ff'
     magenta: '#c866ff'
     cyan:    '#2bc395'
