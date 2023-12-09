@@ -20,6 +20,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+-- https://www.youtube.com/watch?v=zHTeCSVAFNY
+-- local plugins = {
+--   { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+-- }
+-- local opts = {}
+-- require("lazy").setup(plugins,opts)
+
+-- require("catpuccin").setup()
+-- vim.cmd.colorscheme "catpuccin"
+
+
+
+
+
+
+--
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -148,6 +166,7 @@ require('lazy').setup({
     },
   },
 
+
   -- {
   --   -- Theme inspired by Atom
   --   'navarasu/onedark.nvim',
@@ -165,6 +184,11 @@ require('lazy').setup({
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end,
+  },
+
+  -- BUNKER - colorize HEX codes :ColorizerToggle
+  {
+  'norcalli/nvim-colorizer.lua' 
   },
 
   {
@@ -478,7 +502,6 @@ local on_attach = function(_, bufnr)
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
   --
-  -- BUNKER
   local rt = require('rust-tools').setup()
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
@@ -714,6 +737,8 @@ vim.keymap.set('n', '<c-k>', ':wincmd k<cr>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<cr>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<cr>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
