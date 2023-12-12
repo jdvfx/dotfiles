@@ -185,6 +185,14 @@ require('lazy').setup({
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end,
   },
+  --
+  -- {
+  --   'Mofiqul/dracula.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'dracula'
+  --   end,
+  -- },
 
   -- BUNKER - colorize HEX codes :ColorizerToggle
   {
@@ -198,8 +206,8 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
+        theme = 'darcula',
+        component_separators = '.',
         section_separators = '',
       },
     },
@@ -738,7 +746,7 @@ vim.keymap.set('n', '<c-j>', ':wincmd j<cr>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<cr>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
 
-
+vim.cmd('hi Normal guibg=#222020')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
