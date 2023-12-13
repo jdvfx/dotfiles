@@ -206,7 +206,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'darcula',
+        theme = 'dracula',
         component_separators = '.',
         section_separators = '',
       },
@@ -747,6 +747,7 @@ vim.keymap.set('n', '<c-h>', ':wincmd h<cr>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
 
 vim.cmd('hi Normal guibg=#222020')
+vim.cmd('hi @comment guifg=#336644 gui=italic')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
