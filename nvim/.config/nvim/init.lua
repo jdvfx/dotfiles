@@ -719,7 +719,7 @@ vim.keymap.set("n","<m-o>",':lua require("rust-tools").inlay_hints.disable()<cr>
 vim.keymap.set("n","<m-d>",':read ~/.config/nvim/macros/deadcode<cr>]')
 
 -- >> clang-format
-vim.keymap.set("n","<m-s>",':w!<cr>:%!clang-format<cr>')
+-- vim.keymap.set("n","<m-s>",':w!<cr>:%!clang-format<cr>')
 
 -- no neck pain
 vim.keymap.set("n","<m-n>",':noneckpain<cr>')
@@ -745,6 +745,8 @@ vim.keymap.set('n', '<c-k>', ':wincmd k<cr>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<cr>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<cr>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
+
+vim.keymap.set('n', '<C-z>', ':q!<CR>')
 
 vim.cmd('hi Normal guibg=#222020')
 vim.cmd('hi @comment guifg=#336644 gui=italic')
