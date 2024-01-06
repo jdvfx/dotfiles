@@ -65,7 +65,7 @@ alias i='feh -F *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF'
 alias f='display'
 
 # text editors
-alias v='nvim'
+alias v='/opt/nvim-linux64/bin/nvim'
 alias g='gedit'
 
 # nomachine
