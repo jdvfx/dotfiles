@@ -30,9 +30,6 @@ Config {
 		-- fans
 		, Run Com "/bin/bash" ["-c","cat /sys/devices/platform/applesmc.768/fan*_output | xargs echo"] "fans" 100
 
-		-- battery
-		, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'"] "bats" 1000
-
 		-- stdin from Xmonad (current Window in use)
 		, Run StdinReader
 
@@ -43,7 +40,7 @@ Config {
 	
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%multicpu% . %coretemp% . %fans% . %memory% . %bats% . %date% . </fc><fc=#1ac3ff>%time% </fc>"
+        , template = "<fc=#888888> %StdinReader%</fc>}{<fc=#555555>%multicpu% . %coretemp% . %fans% . %memory% . %date% . </fc><fc=#1ac3ff>%time% </fc>"
 
         }
 
