@@ -1,7 +1,7 @@
 -- https://wiki.archlinux.org/title/Xmobar
 
 Config {
-	font = "xft:SF Mono:style=Bold:size=9:medium:antialias=true:hinting=false"
+	font = "xft:Cascadia Mono PL:style=Bold:size=11:bold:antialias=true:hinting=false"
         , borderColor = "black"
         , border = TopB
         , bgColor = "black"
@@ -31,7 +31,7 @@ Config {
 		, Run Com "/bin/bash" ["-c","cat /sys/devices/platform/applesmc.768/fan*_output | xargs echo"] "fans" 100
 
 		-- battery
-		, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -e percentage: -e state: | awk '{print $2}' | xargs echo | sed 's/fully-charged/=/' | sed 's/discharging/-/' | sed 's/charging/+/' | sed 's/ //' "] "bats" 10000
+		, Run Com "/bin/bash" ["-c","upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'"] "bats" 1000
 
 		-- stdin from Xmonad (current Window in use)
 		, Run StdinReader
