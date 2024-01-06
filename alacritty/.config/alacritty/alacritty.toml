@@ -1,0 +1,70 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#202b3b"
+blue = "#2279ff"
+cyan = "#2bc395"
+green = "#2c9440"
+magenta = "#c866ff"
+red = "#d3302e"
+white = "#e6ecec"
+yellow = "#fc552e"
+
+[colors.cursor]
+cursor = "#ff77bb"
+
+[colors.normal]
+black = "#212c3e"
+blue = "#4088cc"
+cyan = "#2bc395"
+green = "#32a448"
+magenta = "#c866ff"
+red = "#aa2255"
+white = "#afb6b9"
+yellow = "#fc952e"
+
+[colors.primary]
+background = "#151515"
+foreground = "#AAAAAA"
+
+[cursor]
+thickness = 0.2
+
+# [cursor.style]
+# blinking = "Off"
+# cursor_hollow_unfocused = true
+# shape = "Underline"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[font]
+size = 13
+
+[font.bold]
+family = "Cascadia Mono PL"
+style = "Bold"
+
+[font.bold_italic]
+family = "Cartograph CF"
+style = "Extra Bold Italic"
+
+[font.italic]
+family = "Cartograph CF"
+style = "Bold Italic"
+
+[font.normal]
+family = "Cascadia Mono PL"
+style = "SemiBold"
+
+[font.offset]
+x = 0
+y = 0
+
+[window]
+opacity = 1
+
+[window.padding]
+x = 10
+y = 8
