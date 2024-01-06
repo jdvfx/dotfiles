@@ -30,17 +30,16 @@ foreground = "#AAAAAA"
 
 [cursor]
 thickness = 0.2
-
-# [cursor.style]
-# blinking = "Off"
-# cursor_hollow_unfocused = true
-# shape = "Underline"
+style = { shape="Underline", blinking="Never"}
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
 
 [font]
 size = 13
+
+[mouse]
+hide_when_typing = true
 
 [font.bold]
 family = "Cascadia Mono PL"
