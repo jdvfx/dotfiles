@@ -173,6 +173,7 @@ alias wifi='nmcli dev status'
 
 alias trash='cd ~/.local/share/Trash'
 
+alias aptsearch='apt search --names-only'
 
 #################################################################################
 # // end BUNKER aliases //
