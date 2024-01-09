@@ -15,14 +15,32 @@ date_formatted=$(date "+%a,%d,%m(%b),%Y . %H:%M")
 # linux_version=$(uname -r | cut -d '-' -f1)
 
 battery=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}')
-cpu_temp=$(sensors| grep CPU | cut -d + -f2)
 
-fan1=$(cat /proc/acpi/ibm/fan | grep level: | awk '{print $2}')
-fan2=$(sensors| grep fan2 | awk '{print $2}')
+# ---------- CPU temp ---------
+# # lenovo thinkpad
+# cpu_temp=$(sensors| grep CPU | cut -d + -f2)
+
+# macbook pro
+cpu_temp=$(sensors | grep "Core 0" | awk '{print $3}')
+
+
+# ---------- FANS ---------
+
+# lenovo thinkpad
+# fan1=$(cat /proc/acpi/ibm/fan | grep level: | awk '{print $2}')
+# fan2=$(sensors| grep fan2 | awk '{print $2}')
+
+# macbook pro
+fan1=$(sensors | grep side | awk '{print $4}' | xargs | awk '{print $1}')
+fan2=$(sensors | grep side | awk '{print $4}' | xargs | awk '{print $2}')
 # Emojis and characters for the status bar
 # 💎 💻 💡 🔌 ⚡ 📁 \|
 # echo $uptime_formatted ↑ $linux_version 🐧 $battery_status 🔋 $date_formatted
 
+# lenovo thinkpad
 echo $fan1:$fan2 . $cpu_temp . $battery . $date_formatted .
+
+# macbook pro
+echo $fan1:$fan2 . $cpu_temp . $date_formatted .
 
 
