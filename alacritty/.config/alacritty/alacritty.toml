@@ -38,8 +38,8 @@ WINIT_X11_SCALE_FACTOR = "1.0"
 [font]
 size = 13
 
-[mouse]
-hide_when_typing = true
+# [mouse]
+# hide_when_typing = true
 
 [font.bold]
 family = "Cascadia Mono PL"
