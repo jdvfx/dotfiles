@@ -227,18 +227,27 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+x workspace next
 
+# equivalent to: xset r rate 300 50
+input type:keyboard {
+    repeat_delay 300
+    repeat_rate 50
+}
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+
+    font Cascadia Mono PL Bold 11
+
     position top
     height 21
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %I:%M'; do sleep 1; done
-    status_command while ~/.config/sway/status.sh; do sleep 3; done
+    status_command while ~/.config/sway/status.sh; do sleep 5; done
 
     colors {
         statusline #666666
@@ -254,8 +263,7 @@ bar {
 # need logout/login to change this setting
 gaps inner 0
 default_border pixel 1
-client.focused #008800 #005500 #228822
-client.focused #003300 #005500 #228822
+client.focused #000000 #009900 #000000
 
 output * bg /home/bunker/Desktop/git/wallpapers/pixel_stars.png fill
 
@@ -275,5 +283,5 @@ workspace 3 output HDMI-A-I
 
 # to find monitors: swaymsg -t get_outputs
 
-
 include /etc/sway/config.d/*
+
