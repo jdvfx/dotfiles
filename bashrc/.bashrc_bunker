@@ -55,7 +55,7 @@ alias dn='cd ~/Downloads'
 
 # sleep and shutdown
 alias sleep='systemctl suspend'
-alias sd='echo SHUTDOWN;sudo shutdown now'
+alias shutdown='echo SHUTDOWN;sudo shutdown now'
 
 alias refresh_fontcache='fc-cache -vf'
 alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
@@ -66,7 +66,10 @@ alias i='feh -F *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF'
 # text editors
 alias v='/opt/nvim-linux64/bin/nvim'
 alias g='gedit'
-alias code='/usr/bin/codium' #vscode used in bootcamp
+
+# vs_slow
+# alias code='/usr/bin/codium'
+alias code='flatpak run com.vscodium.codium' #if flatpak
 
 # nomachine
 alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
