@@ -3,5 +3,5 @@ pavucontrol#alacritty -e /usr/bin/pavucontrol
 cheese#cheese
 gnome_disks#/usr/bin/gnome-disks
 virt-manager#/usr/bin/virt-manager
-dirstat#/usr/bin/qdirstat
 transmission#/usr/bin/transmission-gtk
+dirstat#/usr/bin/qdirstat

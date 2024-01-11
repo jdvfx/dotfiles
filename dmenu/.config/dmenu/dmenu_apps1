@@ -1,8 +1,6 @@
 brave#/usr/bin/brave-browser
 chrome#google-chrome
 nomachine#/usr/NX/bin/nxplayer --geometry 1920x1080 &
-blender#/opt/blender-3.0.0-linux-x64/blender
-librewolf#/usr/bin/librewolf
 spotify#/snap/bin/spotify
-inkscape#/usr/bin/inkscape
 kdenlive#/usr/bin/kdenlive
+inkscape#/usr/bin/inkscape
