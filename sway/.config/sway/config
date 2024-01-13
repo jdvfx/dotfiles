@@ -1,68 +1,12 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Xmonad ish config
 
-
-
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-
-
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
 ### Key bindings
 #
 # Basics:
@@ -73,42 +17,34 @@ set $term alacritty
     # Kill focused window
     bindsym $mod+Shift+c kill
 
-
     # DMENU
-    set $sc ~/.config/dmenu
-    set $d1 $sc/dmenu_apps1
-    set $d2 $sc/dmenu_sys
-    set $d3 $sc/dmenu_utils
+    set $dm ~/.config/dmenu
+    set $d1 $dm/dmenu_apps1
+    set $d2 $dm/dmenu_sys
+    set $d3 $dm/dmenu_utils
     set $myFont "Cascadia Mono PL:style=Bold:size=11"
     set $col1 "#c866ff"
     set $col2 "#fc952e"
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
-    set $dmenu dmenu_path | dmenu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col4 -sf "#222222" | xargs swaymsg exec --
-
+    set $dmenu0 dmenu_path | dmenu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col4 -sf "#222222" | xargs swaymsg exec --
     set $dmenu1 cat $d1 | awk -F'#' '{print $1}' | dmenu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col1 -sf "#222222" | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | sh
     set $dmenu2 cat $d2 | awk -F'#' '{print $1}' | dmenu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col2 -sf "#222222" | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | sh
     set $dmenu3 cat $d3 | awk -F'#' '{print $1}' | dmenu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col3 -sf "#222222" | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | sh
-    # set $dmenu0 $menu -fn $myFont -nf "#CCBBAA" -nb "#000000" -sb $col4 -sf "#222222"
 
-    bindsym $mod+p exec $dmenu
+    bindsym $mod+p exec $dmenu0
     bindsym $mod+o exec $dmenu1
     bindsym $mod+i exec $dmenu2
     bindsym $mod+u exec $dmenu3
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod normal
 
-    # Reload the configuration file
     bindsym $mod+q reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+q exec swaynag -t warning -m 'Logout?' -B 'LOGOUT' 'swaymsg exit'
+    bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -117,22 +53,12 @@ set $term alacritty
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -158,74 +84,26 @@ set $term alacritty
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# Layout stuff:
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     bindsym $mod+space fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+b floating toggle
-    # bindsym $mod focus floating toggle 
-
-    # Swap focus between the tiling area and the floating area
-    # bindsym $mod+b focus mode_toggle
+    bindsym $mod+Shift+f floating toggle
+    bindsym $mod+t floating toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
+
+    bindsym $mod+Control+Shift+l move workspace to output right
+    bindsym $mod+Control+Shift+h move workspace to output left
+
 # Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-
-bindsym $mod+x workspace next
+    bindsym $mod+Shift+n move scratchpad
+    bindsym $mod+n scratchpad show
 
 # equivalent to: xset r rate 300 50
 input type:keyboard {
@@ -233,10 +111,7 @@ input type:keyboard {
     repeat_rate 50
 }
 
-#
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
 
     font Cascadia Mono PL Bold 11
@@ -244,9 +119,6 @@ bar {
     position top
     height 21
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %I:%M'; do sleep 1; done
     status_command while ~/.config/sway/status.sh; do sleep 5; done
 
     colors {
@@ -255,33 +127,21 @@ bar {
         inactive_workspace #D13311 #111111 #009900
         active_workspace #444444 #000000 #444444
         focused_workspace #009900 #008800 #000000
-         #009900 #000000 #009900
     }
 }
 
-# BUNKER
-# need logout/login to change this setting
 gaps inner 0
 default_border pixel 1
 client.focused #000000 #009900 #000000
 
+# wallpaper
 output * bg /home/bunker/Desktop/git/wallpapers/pixel_stars.png fill
 
 output eDP-1 scale 1.3
+
 # scale_filter values :default,linear,nearest,smart
 # not sure that does anything, I can't see the difference
 output eDP-1 scale_filter linear
 smart_borders on
 
-# client.<class> <border> <background> <text> [<indicator> [<child_border>]]
-#
-# Configures the color of window borders and title bars. The first three colors are required. When omitted indicator will use a sane default and child_border will use the color set for background. Colors may be specified in hex, either as #RRGGBB or #RRGGBBAA.
-
-workspace 1 output HDMI-A-I
-workspace 2 output HDMI-A-I
-workspace 3 output HDMI-A-I
-
-# to find monitors: swaymsg -t get_outputs
-
-include /etc/sway/config.d/*
 
