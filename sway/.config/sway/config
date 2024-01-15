@@ -71,7 +71,7 @@ set $term alacritty
     # Spotify prev/next track
     set $spotify dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player
     bindsym $mod+z exec $spotify.Previous
-    bindsym $mod+x exec $spotify.Previous
+    bindsym $mod+x exec $spotify.Next
 
 #
 # Workspaces:
