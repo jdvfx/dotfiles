@@ -1,5 +1,5 @@
 #!/bin/bash
-date_formatted=$(date "+%a.%d.%b(%m).%Y %H:%M")
+date_formatted=$(date "+%a.%d.%b.%Y %H:%M")
 
 # only care about that for Thinkpad
 # battery=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}')
