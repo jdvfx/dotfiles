@@ -13,6 +13,7 @@ set $term alacritty
 #
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
+    bindsym Control+Shift+t exec $term
 
     # Kill focused window
     bindsym $mod+Shift+c kill
@@ -43,7 +44,6 @@ set $term alacritty
     bindsym $mod+q reload
 
     # Exit sway (logs you out of your Wayland session)
-    # bindsym $mod+Shift+q exec swaynag -t warning -m 'Logout?' -B 'LOGOUT' 'swaymsg exit'
     bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
 #
 # Moving around:
