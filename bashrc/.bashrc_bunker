@@ -81,6 +81,9 @@ alias gc='git commit -m'
 alias gp='git push'
 alias ga='git add'
 
+alias keymount='sudo mount /dev/sdc1 /media/bunker/usbstick && lsblk | grep sdc'
+alias keyunmount='sudo umount /media/bunker/usbstick && lsblk | grep sdc'
+
 # others
 alias p='python3'
 
