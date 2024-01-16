@@ -65,9 +65,9 @@ alias i='feh -F *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF'
 
 # text editors
 alias v='/opt/nvim-linux64/bin/nvim'
-alias g='gedit'
+# gedit takes over 20s to open... WTF?!
+alias g='/opt/nvim-linux64/bin/nvim'
 
-# vs_slow
 # alias code='/usr/bin/codium'
 alias code='flatpak run com.vscodium.codium' #if flatpak
 
