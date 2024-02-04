@@ -144,6 +144,9 @@ alias trash='cd ~/.local/share/Trash'
 
 alias aptsearch='apt search --names-only'
 
+# python poetry (installed with pip install poetry)
+alias poetry='/home/bunker/.local/bin/poetry'
+
 #################################################################################
 # // end BUNKER aliases //
 #################################################################################
