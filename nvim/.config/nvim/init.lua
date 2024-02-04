@@ -712,7 +712,7 @@ vim.keymap.set("n","<m-f>",':w!<cr>:!cargo clippy<cr>')
 vim.keymap.set("n","<m-c>",':rustopencargo<cr>')
 
 -- >> compile and run C file with GCC
-vim.keymap.set("n","<m-t>",':!gcc %<cr>:!./a.out<cr>')
+vim.keymap.set("n","<m-t>",':w<cr>:!gcc %<cr>:!./a.out<cr>')
 
 -- >> rust formatter / clippy / opencargo / inlayhints
 vim.keymap.set("n","<m-i>",':lua require("rust-tools").inlay_hints.enable()<cr>')
