@@ -720,6 +720,7 @@ vim.keymap.set("n","<m-o>",':lua require("rust-tools").inlay_hints.disable()<cr>
 -- vim.keymap.set("n","<m-i>",':lua require("rust-tools").inlay_hints.toggle()<cr>')
 -- >> rust keep test code
 vim.keymap.set("n","<m-d>",':read ~/.config/nvim/macros/deadcode<cr>]')
+vim.keymap.set("n","<m-c>",':read ~/.config/nvim/macros/c_default<cr>]')
 
 -- >> clang-format
 -- vim.keymap.set("n","<m-s>",':w!<cr>:%!clang-format<cr>')
