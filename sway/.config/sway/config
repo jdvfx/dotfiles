@@ -1,5 +1,9 @@
 # Xmonad ish config
 
+
+# fix slow openning apps
+exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 set $mod Mod4
 set $left h
 set $down j
@@ -13,7 +17,8 @@ set $term alacritty
 #
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
-    bindsym Control+Shift+t exec $term
+    # conflict with Mate terminal (remote)
+    # bindsym Control+Shift+t exec $term
 
     # Kill focused window
     bindsym $mod+Shift+c kill
