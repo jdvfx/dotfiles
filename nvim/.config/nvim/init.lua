@@ -166,15 +166,6 @@ require('lazy').setup({
     },
   },
 
-
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
   { -- oxocarbon color theme --- BUNKER
   'nyoom-engineering/oxocarbon.nvim',
     priority = 1000,
@@ -185,14 +176,7 @@ require('lazy').setup({
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end,
   },
-  --
-  -- {
-  --   'Mofiqul/dracula.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'dracula'
-  --   end,
-  -- },
+
 
   -- BUNKER - colorize HEX codes :ColorizerToggle
   {
@@ -752,8 +736,18 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
 
 vim.keymap.set('n', '<C-z>', ':q!<CR>')
 
-vim.cmd('hi Normal guibg=#222020')
-vim.cmd('hi @comment guifg=#336644 gui=italic')
+-- vim.cmd('hi Normal guibg=#141616')
+-- vim.cmd('hi @comment guifg=#336644 gui=italic')
+
+vim.cmd('hi Normal guibg=#242424')
+vim.cmd('hi @comment guifg=#555555 gui=italic')
+-- vim.cmd('hi @type.builtin guifg=#00aaaa')
+-- vim.cmd('hi @type guifg=#ff77bb')
+
+
+
+-- require('vscode').load('dark')
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
