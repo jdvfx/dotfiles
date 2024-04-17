@@ -686,6 +686,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- >> python
 -- >> execute the python file i'm editting
 vim.keymap.set("n","<m-p>",':w!<cr>:!python3 %<cr>')
+-- run python test from the current test file
+vim.keymap.set("n","<c-p>",':w!<cr>:!cd .. && python3 -m tests.$(basename % .py)<cr>')
 
 -- rust
 -- >> compile and run current rust cargo
