@@ -689,6 +689,9 @@ vim.keymap.set("n","<m-p>",':w!<cr>:!python3 %<cr>')
 -- run python test from the current test file
 vim.keymap.set("n","<c-p>",':w!<cr>:!cd .. && python3 -m tests.$(basename % .py)<cr>')
 
+-- >> c compile and run (alt+,)
+vim.keymap.set("n","<m-,>",':w!<cr>:!gcc % -o out && ./out<cr>')
+
 -- rust
 -- >> compile and run current rust cargo
 vim.keymap.set("n","<m-g>",':w!<cr>:!cargo run<cr>')
