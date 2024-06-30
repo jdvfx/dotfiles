@@ -43,6 +43,9 @@ alias rs='ls -lhrs --color=auto'
 alias lrtr='ls -lht --color=auto'
 alias lrsr='ls -lhs -color=auto'
 
+alias wifioff='nmcli radio wifi off'
+alias wifion='nmcli radio wifi on'
+
 # go somewhere
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -70,6 +73,7 @@ alias g='/opt/nvim-linux64/bin/nvim'
 
 # alias code='/usr/bin/codium'
 alias code='flatpak run com.vscodium.codium' #if flatpak
+alias onlyoffice='flatpak run org.onlyoffice.desktopeditors'
 
 # nomachine
 alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
@@ -130,6 +134,7 @@ export HISTCONTROL=ignoreboth
 
 # go to rust and python projects
 alias r='cd ~/projects/'
+alias e='cd ~/projects2/'
 
 # rust bootcamp
 alias lg='cd ~/rustbootcamp/'
@@ -146,6 +151,7 @@ alias aptsearch='apt search --names-only'
 
 # python poetry (installed with pip install poetry)
 alias poetry='/home/bunker/.local/bin/poetry'
+
 
 #################################################################################
 # // end BUNKER aliases //
