@@ -60,6 +60,7 @@ alias shutdown='echo SHUTDOWN;sudo shutdown now'
 
 alias refresh_fontcache='fc-cache -vf'
 alias getpid='xprop _NET_WM_PID | cut -d" " -f3'
+alias vkill='xprop _NET_WM_PID | cut -d" " -f3 | xargs -I % kill -SEGV %'
 
 # view images
 alias i='feh -F *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF'
