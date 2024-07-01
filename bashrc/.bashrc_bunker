@@ -23,9 +23,7 @@ fi
 
 # basic stuff
 alias t='top'
-alias ht='htop'
-alias gt='htop' #for split kb
-alias th='htop' #I'm bad at typing
+alias ht='htop --sort PERCENT_CPU'
 alias x='exit'
 alias c='clear'
 alias dc='cd' #I'm bad at typing
