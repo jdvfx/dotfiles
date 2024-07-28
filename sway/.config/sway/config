@@ -36,9 +36,11 @@ set $term alacritty
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
+    # >>> DMENU <<<
     # dmenu on the current monitor, and with font setup
     set $dm dmenu -m "$(swaymsg -t get_outputs | jq 'map(.focused) | index(true)')" -fn $myFont -nf "#CCBBAA" -nb "#000000" -sf "#222222"
 
+    # >>> DMENU <<<
     set $dmenu0 dmenu_path | $dm -sb $col4 | xargs swaymsg exec --
     set $dmenu1 cat $d1 | awk -F'#' '{print $1}' | $dm -sb $col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $dmenu2 cat $d2 | awk -F'#' '{print $1}' | $dm -sb $col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
