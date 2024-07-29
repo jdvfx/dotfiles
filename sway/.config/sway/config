@@ -50,7 +50,7 @@ set $term alacritty
     bindsym $mod+o exec $dmenu1
     bindsym $mod+i exec $dmenu2
     bindsym $mod+u exec $dmenu3
-
+    bindsym $mod+y exec killall -9 dmenu
 
     floating_modifier $mod normal
 
