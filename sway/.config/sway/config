@@ -26,10 +26,10 @@ set $term alacritty
     bindsym $mod+Shift+c kill
 
     # DMENU
-    set $dm ~/.config/dmenu
-    set $d1 $dm/dmenu_apps1
-    set $d2 $dm/dmenu_sys
-    set $d3 $dm/dmenu_utils
+    set $sw ~/.config/sway
+    set $d1 $sw/menu_apps1
+    set $d2 $sw/menu_sys
+    set $d3 $sw/menu_utils
     set $myFont "Cascadia Mono PL:style=Bold:size=11"
     set $col1 "#c866ff"
     set $col2 "#fc952e"
@@ -39,7 +39,9 @@ set $term alacritty
     # Dmenu but Tofi (Wayland)
     set $menu tofi --selection-background
 
-    set $menu0 dmenu_path | $dm=$col4 | xargs swaymsg exec --
+    # find all executables in usr/bin
+    set $menu0 find /usr/bin/ -executable -type f -printf "%f\n" | $menu=$col4 | xargs swaymsg exec --
+    # custom command list from text files
     set $menu1 cat $d1 | awk -F'#' '{print $1}' | $menu=$col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu2 cat $d2 | awk -F'#' '{print $1}' | $menu=$col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu3 cat $d3 | awk -F'#' '{print $1}' | $menu=$col3 | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | xargs swaymsg exec --
