@@ -1,0 +1,22 @@
+anchor = top
+width = 100%
+height = 21
+horizontal = true
+font-size = 11
+prompt-text = " "
+font = Cascadia Mono PL Bold
+outline-width = 0
+border-width = 0
+background-color = #111111
+selection-color = #000000
+selection-background = #c866ff
+selection-background-padding = 3, 10
+text-color = #999999
+input-color = #999999
+min-input-width = 120
+result-spacing = 15
+padding-top = 0
+padding-bottom = 0
+padding-left = 0
+padding-right = 0
+
