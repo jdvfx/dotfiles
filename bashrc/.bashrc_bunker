@@ -65,13 +65,16 @@ alias vkill='xprop _NET_WM_PID | cut -d" " -f3 | xargs -I % kill -SEGV %'
 # view images
 alias i='ls *.jpg *.JPG *.PNG *.png *.jpeg *.JPEG *.tif *.TIF *.tiff *.TIFF 2> /dev/null | xargs -I % feh %'
 # text editors
-alias v='/opt/nvim-linux64/bin/nvim'
+alias v='xset r rate 300 50 && /opt/nvim-linux64/bin/nvim'
 # gedit takes over 20s to open... WTF?!
 alias g='/opt/nvim-linux64/bin/nvim'
 
 # alias code='/usr/bin/codium'
 alias code='flatpak run com.vscodium.codium' #if flatpak
 alias onlyoffice='flatpak run org.onlyoffice.desktopeditors'
+
+# flatpak run script
+alias fp='/usr/bin/python3 ~/Desktop/git/scripts/flatpakrun.py'
 
 # nomachine
 alias nomachine='/usr/NX/bin/nxplayer --geometry 1920x1080 &'
@@ -135,6 +138,8 @@ export HISTCONTROL=ignoreboth
 # go to rust and python projects
 alias r='cd ~/projects/'
 alias e='cd ~/projects2/'
+
+alias xl='cd ~/Desktop/paperwork_new_/moneyz/xl'
 
 # rust bootcamp
 alias lg='cd ~/rustbootcamp/'
