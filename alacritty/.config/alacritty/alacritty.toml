@@ -22,7 +22,7 @@ green = "#32a448"
 magenta = "#c866ff"
 red = "#aa2255"
 white = "#afb6b9"
-yellow = "#fc952e"
+yellow = "#bb33bb"
 
 [colors.primary]
 background = "#151515"
@@ -62,7 +62,7 @@ x = 0
 y = 0
 
 [window]
-opacity = 1
+opacity = 0.8
 
 [window.padding]
 x = 10

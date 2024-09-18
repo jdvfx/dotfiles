@@ -28,6 +28,8 @@ alias x='exit'
 alias c='clear'
 alias dc='cd' #I'm bad at typing
 
+# alias z='zoxide'
+
 # ls
 alias l='ls --color=auto'
 alias ld='ls -dtr */'
@@ -40,6 +42,8 @@ alias rt='ls -lhrt --color=auto'
 alias rs='ls -lhrs --color=auto'
 alias lrtr='ls -lht --color=auto'
 alias lrsr='ls -lhs -color=auto'
+
+alias lazygit='/opt/lazygit/lazygit'
 
 alias wifioff='nmcli radio wifi off'
 alias wifion='nmcli radio wifi on'
