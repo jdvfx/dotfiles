@@ -43,7 +43,7 @@ myLayouts = layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| (noB
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "nitrogen --restore &"
-    spawnOnce "compton  &"
+    -- spawnOnce "picom &"
 
 ------------------------------------------------------------------------
 -- DMENU FUNCTIONS
