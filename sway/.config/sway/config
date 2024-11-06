@@ -1,5 +1,7 @@
 # Xmonad ish config
 
+# I setup the monitor's position with wdisplay
+# sudo dnf install wdisplay
 
 # fix slow openning apps
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -12,20 +14,17 @@ set $right l
 
 set $term alacritty
 
-
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
-    # conflict with Mate terminal (remote)
-    # bindsym Control+Shift+t exec $term
 
     # Kill focused window
     bindsym $mod+Shift+c kill
 
-    # DMENU
+    # Dmenu but Tofi (Wayland)
     set $sw ~/.config/sway
     set $d1 $sw/menu_apps1
     set $d2 $sw/menu_sys
@@ -36,15 +35,25 @@ set $term alacritty
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
-    # Dmenu but Tofi (Wayland)
-    set $menu tofi --selection-background
+    # Tofi: Dmenu equivalent for Wayland
 
-    # find all executables in usr/bin
+    # get focus monitor name
+    # swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
+    # the monitor name is set manually to the main display
+    set $menu tofi --output HDMI-A-1 --selection-background
+
+    # find all executables in usr/bin (default behavior with Dmenu)
     set $menu0 find /usr/bin/ -executable -type f -printf "%f\n" | $menu=$col4 | xargs swaymsg exec --
+
     # custom command list from text files
+    # diplay app names and launch the matching execuble
+
     set $menu1 cat $d1 | awk -F'#' '{print $1}' | $menu=$col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu2 cat $d2 | awk -F'#' '{print $1}' | $menu=$col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu3 cat $d3 | awk -F'#' '{print $1}' | $menu=$col3 | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | xargs swaymsg exec --
+
+
+
 
     bindsym $mod+p exec $menu0
     bindsym $mod+o exec $menu1
@@ -53,6 +62,7 @@ set $term alacritty
 
     floating_modifier $mod normal
 
+    # reload config
     bindsym $mod+q reload
 
     # Exit sway (logs you out of your Wayland session)
@@ -121,17 +131,16 @@ set $term alacritty
     bindsym $mod+Shift+f floating toggle
     bindsym $mod+t floating toggle
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-
+    # swap monitors
     bindsym $mod+Control+Shift+l move workspace to output right
     bindsym $mod+Control+Shift+h move workspace to output left
 
-# Scratchpad:
+    # Scratchpad
     bindsym $mod+Shift+n move scratchpad
     bindsym $mod+n scratchpad show
 
 # equivalent to: xset r rate 300 50
+# move typing cursor faster
 input type:keyboard {
     repeat_delay 300
     repeat_rate 50
@@ -163,11 +172,24 @@ client.focused #000000 #009900 #000000
 # wallpaper
 output * bg /home/bunker/Desktop/git/wallpapers/pixel_stars.png fill
 
+# bigger fonts on Thinkpad 
 output eDP-1 scale 1.3
 
 # scale_filter values :default,linear,nearest,smart
 # not sure that does anything, I can't see the difference
+
+# get monitors:
+# swaymsg -t get_outputs
+
+# Thinkpad monitor
+output eDP-1 position 0,0
+# BenQ monitor
+# 1480 is the closest value to: 1920/1.3
+output HDMI-A-1 position 1480,0
+
+
 output eDP-1 scale_filter linear
+
 smart_borders on
 
 
