@@ -14,6 +14,13 @@ set $right l
 
 set $term alacritty
 
+
+# for tabbed layout:
+# hide the tab bar as much as possible (1 pixel height)
+font pango:monospace 0.001
+titlebar_border_thickness 0                                                     
+titlebar_padding 0
+
 ### Key bindings
 #
 # Basics:
@@ -51,9 +58,6 @@ set $term alacritty
     set $menu1 cat $d1 | awk -F'#' '{print $1}' | $menu=$col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu2 cat $d2 | awk -F'#' '{print $1}' | $menu=$col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu3 cat $d3 | awk -F'#' '{print $1}' | $menu=$col3 | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | xargs swaymsg exec --
-
-
-
 
     bindsym $mod+p exec $menu0
     bindsym $mod+o exec $menu1
@@ -123,6 +127,13 @@ set $term alacritty
 
 # Layout stuff:
 
+
+    # Switch the current container between different layout styles
+    # closest thing to Xmonad's stacked pannels (but with a 1px tab bar)
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     bindsym $mod+space fullscreen
@@ -131,7 +142,7 @@ set $term alacritty
     bindsym $mod+Shift+f floating toggle
     bindsym $mod+t floating toggle
 
-    # swap monitors
+    # swap monitors (not working properly)
     bindsym $mod+Control+Shift+l move workspace to output right
     bindsym $mod+Control+Shift+h move workspace to output left
 
@@ -148,7 +159,7 @@ input type:keyboard {
 
 # Status Bar:
 bar {
-
+    # mode hide
     font Cascadia Mono PL Bold 11
 
     position top
