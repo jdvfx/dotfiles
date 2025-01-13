@@ -99,6 +99,10 @@ titlebar_padding 0
     bindsym $mod+z exec $spotify.Previous
     bindsym $mod+x exec $spotify.Next
 
+    # Screenshot with mod shift s
+    bindsym $mod+Shift+s exec grim $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+
+
 #
 # Workspaces:
 #
