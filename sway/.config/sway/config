@@ -99,6 +99,13 @@ titlebar_padding 0
     bindsym $mod+z exec $spotify.Previous
     bindsym $mod+x exec $spotify.Next
 
+
+    # switch on/off monitors
+    bindsym $mod+XF86MonBrightnessDown exec swaymsg "output * dpms off"
+    bindsym $mod+XF86MonBrightnessUp exec swaymsg "output * dpms on"
+
+
+
     # Screenshot with mod shift s
     bindsym $mod+Shift+s exec grim $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
 
