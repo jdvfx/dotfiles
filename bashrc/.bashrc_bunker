@@ -2,6 +2,10 @@
 # // start BUNKER aliases //
 ############################
 
+
+# dark mode for GTK apps
+export GTK_THEME=Adwaita:dark
+
 # Disable ctrl+c and ctrl+q in terminal
 stty -ixon
 
