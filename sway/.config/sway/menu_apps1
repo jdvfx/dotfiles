@@ -1,9 +1,10 @@
-brave#/usr/bin/brave-browser
-chrome#google-chrome
+brave#/usr/bin/brave-browser --password-store=basic
+chromium#chromium-browser
 nomachine#/usr/NX/bin/nxplayer --geometry 1920x1080 &
-spotify#/snap/bin/spotify
+spotify#flatpak run com.spotify.Client
 kdenlive#flatpak run org.kde.kdenlive
 codium#flatpak run com.vscodium.codium
 onlyoffice#flatpak run org.onlyoffice.desktopeditors
 libreoffice#/usr/bin/libreoffice
 inkscape#/usr/bin/inkscape
+exo#flatpak run xyz.safeworlds.hiit
