@@ -1,4 +1,4 @@
-# Xmonad ish config
+# Xmonad-ish config
 
 # I setup the monitor's position with wdisplay
 # sudo dnf install wdisplay
@@ -21,31 +21,49 @@ font pango:monospace 0.001
 titlebar_border_thickness 0                                                     
 titlebar_padding 0
 
+
+
+### Window Rules
+
+    for_window [instance="Houdini FX"] floating enable
+
+
+
 ### Key bindings
 #
 # Basics:
 #
+
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+c kill
+    
+    # dragging windows around (mod+left_click)
+    floating_modifier $mod normal
 
-    # Dmenu but Tofi (Wayland)
+    # reload config
+    bindsym $mod+q reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
+
+
+#
+# Menu: Tofi (Dmenu equivalent for Wayland)
+# 
     set $sw ~/.config/sway
     set $d1 $sw/menu_apps1
     set $d2 $sw/menu_sys
     set $d3 $sw/menu_utils
+
     set $myFont "Cascadia Mono PL:style=Bold:size=11"
     set $col1 "#c866ff"
     set $col2 "#fc952e"
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
-    # Tofi: Dmenu equivalent for Wayland
-
-    # get focus monitor name
-    # swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
     # the monitor name is set manually to the main display
     set $menu tofi --output HDMI-A-1 --selection-background
 
@@ -54,7 +72,6 @@ titlebar_padding 0
 
     # custom command list from text files
     # diplay app names and launch the matching execuble
-
     set $menu1 cat $d1 | awk -F'#' '{print $1}' | $menu=$col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu2 cat $d2 | awk -F'#' '{print $1}' | $menu=$col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu3 cat $d3 | awk -F'#' '{print $1}' | $menu=$col3 | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | xargs swaymsg exec --
@@ -64,15 +81,8 @@ titlebar_padding 0
     bindsym $mod+i exec $menu2
     bindsym $mod+u exec $menu3
 
-    floating_modifier $mod normal
-
-    # reload config
-    bindsym $mod+q reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
 #
-# Moving around:
+# moving around:
 #
     # Move your focus around (hjkl or arrows)
     bindsym $mod+$left focus left
@@ -94,17 +104,18 @@ titlebar_padding 0
     bindsym $mod+Shift+up move up
     bindsym $mod+Shift+right move right
 
+
+#
+# Extra functions
+#
     # Spotify prev/next track
     set $spotify dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player
     bindsym $mod+z exec $spotify.Previous
     bindsym $mod+x exec $spotify.Next
 
-
     # switch on/off monitors
     bindsym $mod+XF86MonBrightnessDown exec swaymsg "output * dpms off"
     bindsym $mod+XF86MonBrightnessUp exec swaymsg "output * dpms on"
-
-
 
     # Screenshot with mod shift s
     bindsym $mod+Shift+s exec grim $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
@@ -138,12 +149,10 @@ titlebar_padding 0
 
 # Layout stuff:
 
-
     # Switch the current container between different layout styles
     # closest thing to Xmonad's stacked pannels (but with a 1px tab bar)
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
-
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -158,8 +167,14 @@ titlebar_padding 0
     bindsym $mod+Control+Shift+h move workspace to output left
 
     # Scratchpad
-    bindsym $mod+Shift+n move scratchpad
-    bindsym $mod+n scratchpad show
+    # bindsym $mod+Shift+n move scratchpad
+    # bindsym $mod+n scratchpad show; [con_mark="^__fs_.*$"] fullscreen enable
+        
+    # Save current window as scratchpad
+    bindsym $mod+shift+n mark --add __temp, move scratchpad; [con_mark="^__temp$"] scratchpad show, fullscreen enable, unmark __temp; exec swaymsg -- mark --add __fs_$(date +%s)
+    # Toggle scratchpad, retaining fullscreen
+    bindsym $mod+n scratchpad show; [con_mark="^__fs_.*$"] fullscreen enable
+
 
 # equivalent to: xset r rate 300 50
 # move typing cursor faster
@@ -200,18 +215,18 @@ output eDP-1 scale 1.3
 # scale_filter values :default,linear,nearest,smart
 # not sure that does anything, I can't see the difference
 
-# get monitors:
-# swaymsg -t get_outputs
-
 # Thinkpad monitor
 output eDP-1 position 0,0
 # BenQ monitor
 # 1480 is the closest value to: 1920/1.3
 output HDMI-A-1 position 1480,0
 
-
 output eDP-1 scale_filter linear
 
 smart_borders on
 
+# get monitors:
+# swaymsg -t get_outputs
 
+# get focus monitor name
+# swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
