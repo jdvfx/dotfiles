@@ -3,6 +3,8 @@
 # I setup the monitor's position with wdisplay
 # sudo dnf install wdisplay
 
+# find key names with wev (wayland equivalent of xev)
+
 # fix slow openning apps
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
@@ -64,8 +66,8 @@ titlebar_padding 0
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
-    # the monitor name is set manually to the main display
-    set $menu tofi --output HDMI-A-1 --selection-background
+    # the monitor name is set automatically to the monitor in focus
+    set $menu tofi --output `swaymsg -t get_outputs | jq '.[] | select(.focused) | .name' | sed 's/"//g'` --selection-background
 
     # find all executables in usr/bin (default behavior with Dmenu)
     set $menu0 find /usr/bin/ -executable -type f -printf "%f\n" | $menu=$col4 | xargs swaymsg exec --
@@ -80,7 +82,6 @@ titlebar_padding 0
     bindsym $mod+o exec $menu1
     bindsym $mod+i exec $menu2
     bindsym $mod+u exec $menu3
-
 #
 # moving around:
 #
@@ -152,6 +153,10 @@ titlebar_padding 0
     # closest thing to Xmonad's stacked pannels (but with a 1px tab bar)
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
+
+    # manual vertical and horizontal splits
+    bindsym $mod+BackSpace split v
+    bindsym $mod+apostrophe split h
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
