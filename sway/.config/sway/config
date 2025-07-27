@@ -1,9 +1,14 @@
 # Xmonad-ish config
 
-# I setup the monitor's position with wdisplay
+
+# setup the monitor's position with 'wdisplay'
 # sudo dnf install wdisplay
 
-# find key names with wev (wayland equivalent of xev)
+# find key names with 'wev' (wayland equivalent of xev)
+
+# get focused monitor's name
+# swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
+
 
 # fix slow openning apps
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -16,7 +21,6 @@ set $right l
 
 set $term alacritty
 
-
 # for tabbed layout:
 # hide the tab bar as much as possible (1 pixel height)
 font pango:monospace 0.001
@@ -24,11 +28,8 @@ titlebar_border_thickness 0
 titlebar_padding 0
 
 
-
 ### Window Rules
-
     for_window [instance="Houdini FX"] floating enable
-
 
 
 ### Key bindings
@@ -50,7 +51,6 @@ titlebar_padding 0
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
-
 
 #
 # Menu: Tofi (Dmenu equivalent for Wayland)
@@ -82,6 +82,7 @@ titlebar_padding 0
     bindsym $mod+o exec $menu1
     bindsym $mod+i exec $menu2
     bindsym $mod+u exec $menu3
+
 #
 # moving around:
 #
@@ -105,15 +106,9 @@ titlebar_padding 0
     bindsym $mod+Shift+up move up
     bindsym $mod+Shift+right move right
 
-
 #
 # Extra functions
 #
-    # Spotify prev/next track
-    set $spotify dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player
-    bindsym $mod+z exec $spotify.Previous
-    bindsym $mod+x exec $spotify.Next
-
     # switch on/off monitors
     bindsym $mod+XF86MonBrightnessDown exec swaymsg "output * dpms off"
     bindsym $mod+XF86MonBrightnessUp exec swaymsg "output * dpms on"
@@ -166,7 +161,7 @@ titlebar_padding 0
     bindsym $mod+Shift+f floating toggle
     bindsym $mod+t floating toggle
 
-    # swap monitors (not working properly)
+    # swap monitors
     bindsym $mod+Control+Shift+l move workspace to output right
     bindsym $mod+Control+Shift+h move workspace to output left
 
@@ -189,7 +184,6 @@ input type:keyboard {
 
 # Status Bar:
 bar {
-    # mode hide
     font Cascadia Mono PL Bold 11
 
     position top
@@ -206,31 +200,28 @@ bar {
     }
 }
 
+# show/hide status bar:
+bindsym $mod+b exec swaymsg bar mode toggle
+
 gaps inner 0
 default_border pixel 1
 client.focused #000000 #009900 #000000
 
+# remove border when only ONE window is on screen
+smart_borders on
+
 # wallpaper
 output * bg /home/bunker/Desktop/git/wallpapers/pixel_stars.png fill
 
-# bigger fonts on Thinkpad 
-output eDP-1 scale 1.3
+# Monitors:
+    # Thinkpad 1080p monitor
+    # bigger fonts (output resolution is 1477x831)
+    output eDP-1 scale 1.3
+    output eDP-1 position 0,0
+    output eDP-1 scale_filter smart
 
-# scale_filter values :default,linear,nearest,smart
-# not sure that does anything, I can't see the difference
+    # BenQ 1080p monitor
+    # 1480 is the closest value to: 1920/1.3 (1476.923)
+    output HDMI-A-1 position 1480,0
 
-# Thinkpad monitor
-output eDP-1 position 0,0
-# BenQ monitor
-# 1480 is the closest value to: 1920/1.3
-output HDMI-A-1 position 1480,0
 
-output eDP-1 scale_filter linear
-
-smart_borders on
-
-# get monitors:
-# swaymsg -t get_outputs
-
-# get focus monitor name
-# swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
