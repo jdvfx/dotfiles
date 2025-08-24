@@ -89,16 +89,12 @@ myConfig = def {
                } `additionalKeys`
                [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
                , ((mod4Mask, xK_s ), spawn "scrot ~/Pictures/screenshots/;aplay ~/.xmonad/sounds/beep-28.wav")
-               , ((mod4Mask, xK_F11), spawn "amixer -q sset Master 3%-;aplay ~/.xmonad/sounds/beep-29.wav")
-               , ((mod4Mask, xK_F12), spawn "amixer -q sset Master 3%+;aplay ~/.xmonad/sounds/beep-29.wav")
+               , ((mod4Mask, xK_slash), spawn "amixer -D pulse set Master 3%-;aplay ~/.xmonad/sounds/beep-29.wav")
+               , ((mod4Mask, xK_semicolon), spawn "amixer -D pulse set Master 3%+;aplay ~/.xmonad/sounds/beep-29.wav")
                , ((mod4Mask, xK_i), spawn (dmenuFromText ("~/.xmonad/dmenu_sys","#c866ff")))
                , ((mod4Mask, xK_o), spawn (dmenuFromText ("~/.xmonad/dmenu_apps1","#fc952e")))
                , ((mod4Mask, xK_u), spawn (dmenuFromText ("~/.xmonad/dmenu_utils","#2279ff")))
                , ((mod4Mask, xK_p), spawn (dmenuFromPath("/usr/bin/","#2bc395")))
                , ((mod4Mask, xK_y), spawn (dmenuStatus("#f55608")))
-               -- cool brightness shortcut but not in use right now.
-               -- , ((mod4Mask, xK_F7), spawn "/bin/python3 ~/.xmonad/brightness/adjustBrightness.py 0")
-               -- , ((mod4Mask, xK_F9), spawn "/bin/python3 ~/.xmonad/brightness/adjustBrightness.py -.1")
-               -- , ((mod4Mask, xK_F8), spawn "/bin/python3 ~/.xmonad/brightness/adjustBrightness.py +.1")
                ]
 
