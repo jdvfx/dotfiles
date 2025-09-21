@@ -1,7 +1,18 @@
 # Xmonad-ish config
 
-# I setup the monitor's position with wdisplay
+
+# setup the monitor's position with 'wdisplay'
 # sudo dnf install wdisplay
+
+# find key names with 'wev' (wayland equivalent of xev)
+
+# get focused monitor's name
+# swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
+
+
+# for sudo password requests
+# exec /usr/libexec/lxqt-policykit-agent
+
 
 # fix slow openning apps
 exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -14,19 +25,35 @@ set $right l
 
 set $term alacritty
 
-
 # for tabbed layout:
 # hide the tab bar as much as possible (1 pixel height)
 font pango:monospace 0.001
-titlebar_border_thickness 0                                                     
+titlebar_border_thickness 0
 titlebar_padding 0
-
 
 
 ### Window Rules
 
-    for_window [instance="Houdini FX"] floating enable
+    # find app_id with: swaymsg --type get_tree
 
+
+
+    for_window [instance="Houdini FX"] {
+        floating enable
+        resize set 1920 1080
+        move position center
+    }
+
+    for_window [app_id="brave-browser"] {
+        floating disable
+        resize set 1920 1080
+        move position center
+    }
+
+    for_window [app_id="chromium-browser"] {
+        resize set 1920 1080
+        move position center
+    }
 
 
 ### Key bindings
@@ -49,7 +76,6 @@ titlebar_padding 0
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+q exec swaynag --background 441111 -m 'Logout?' -B 'Exit' 'swaymsg exit'
 
-
 #
 # Menu: Tofi (Dmenu equivalent for Wayland)
 # 
@@ -64,14 +90,22 @@ titlebar_padding 0
     set $col3 "#2279ff"
     set $col4 "#2bc395"
 
-    # the monitor name is set manually to the main display
-    set $menu tofi --output HDMI-A-1 --selection-background
+    # the monitor name is set automatically to the monitor in focus
+    set $menu tofi --output `swaymsg -t get_outputs | jq '.[] | select(.focused) | .name' | sed 's/"//g'` --selection-background
 
     # find all executables in usr/bin (default behavior with Dmenu)
     set $menu0 find /usr/bin/ -executable -type f -printf "%f\n" | $menu=$col4 | xargs swaymsg exec --
 
     # custom command list from text files
     # diplay app names and launch the matching execuble
+
+    # read a textfile where each line is: command_name#binary_to_execute
+    # "command_name" will be the Tofi name
+    # when selected, it will launch: "binary_to_exectute"
+    # eg:
+    # chromium#chromium-browser
+    # kdenlive#flatpak run org.kde.kdenlive
+
     set $menu1 cat $d1 | awk -F'#' '{print $1}' | $menu=$col1 | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu2 cat $d2 | awk -F'#' '{print $1}' | $menu=$col2 | xargs -I % grep % $d2 | awk -F'#' '{print $2}' | xargs swaymsg exec --
     set $menu3 cat $d3 | awk -F'#' '{print $1}' | $menu=$col3 | xargs -I % grep % $d3 | awk -F'#' '{print $2}' | xargs swaymsg exec --
@@ -104,15 +138,9 @@ titlebar_padding 0
     bindsym $mod+Shift+up move up
     bindsym $mod+Shift+right move right
 
-
 #
 # Extra functions
 #
-    # Spotify prev/next track
-    set $spotify dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player
-    bindsym $mod+z exec $spotify.Previous
-    bindsym $mod+x exec $spotify.Next
-
     # switch on/off monitors
     bindsym $mod+XF86MonBrightnessDown exec swaymsg "output * dpms off"
     bindsym $mod+XF86MonBrightnessUp exec swaymsg "output * dpms on"
@@ -153,15 +181,19 @@ titlebar_padding 0
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
+    # manual vertical and horizontal splits
+    bindsym $mod+BackSpace split v
+    bindsym $mod+apostrophe split h
+
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
-    bindsym $mod+space fullscreen
+    # Full screen but keep title bar with web browsers
+    bindsym $mod+space floating toggle; resize set 100ppt 100ppt
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+f floating toggle
     bindsym $mod+t floating toggle
 
-    # swap monitors (not working properly)
+    # swap monitors
     bindsym $mod+Control+Shift+l move workspace to output right
     bindsym $mod+Control+Shift+h move workspace to output left
 
@@ -184,7 +216,6 @@ input type:keyboard {
 
 # Status Bar:
 bar {
-    # mode hide
     font Cascadia Mono PL Bold 11
 
     position top
@@ -201,31 +232,28 @@ bar {
     }
 }
 
+# show/hide status bar:
+bindsym $mod+b exec swaymsg bar mode toggle
+
 gaps inner 0
 default_border pixel 1
 client.focused #000000 #009900 #000000
 
+# remove border when only ONE window is on screen
+smart_borders on
+
 # wallpaper
 output * bg /home/bunker/Desktop/git/wallpapers/pixel_stars.png fill
 
-# bigger fonts on Thinkpad 
-output eDP-1 scale 1.3
+# Monitors:
+    # Thinkpad 1080p monitor
+    # bigger fonts (output resolution is 1477x831)
+    output eDP-1 scale 1.3
+    output eDP-1 position 0,0
+    output eDP-1 scale_filter smart
 
-# scale_filter values :default,linear,nearest,smart
-# not sure that does anything, I can't see the difference
+    # BenQ 1080p monitor
+    # 1480 is the closest value to: 1920/1.3 (1476.923)
+    output HDMI-A-1 position 1480,0
 
-# Thinkpad monitor
-output eDP-1 position 0,0
-# BenQ monitor
-# 1480 is the closest value to: 1920/1.3
-output HDMI-A-1 position 1480,0
 
-output eDP-1 scale_filter linear
-
-smart_borders on
-
-# get monitors:
-# swaymsg -t get_outputs
-
-# get focus monitor name
-# swaymsg -t get_outputs | jq '.[] | select(.focused) | .name'
