@@ -1,3 +1,4 @@
+
 [colors]
 draw_bold_text_with_bright_colors = true
 
@@ -67,3 +68,5 @@ opacity = 0.8
 [window.padding]
 x = 10
 y = 8
+
+

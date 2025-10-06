@@ -1,0 +1,121 @@
+/* --- Global Styles --- */
+* {
+  /*font-family: 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;*/
+
+  font-family:'Cascadia Code PL',sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  min-height: 0;
+  /*border: none;*/
+  /*border-radius: 0;*/
+  /*
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+*/
+}
+
+/* --- Waybar Container --- */
+#waybar {
+  background: transparent;
+  color: #111111;
+  margin: 0px;
+  font-weight: 100;
+  min-height: 18px;
+}
+
+/* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
+#workspaces,
+#custom-uptime,
+#cpu {
+  /*background-color: transparent;*/
+  padding: 0.3rem 0.7rem;
+  margin: 0px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
+  border-radius: 6px; /* These modules are always rounded */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+  border: none;
+  /* Transition for background-color and color only */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
+#clock {
+  /*background-color: #1a1b26;*/
+  padding: 0.3rem 0.7rem;
+  margin: 0px 0px;
+  border-radius: 6px; /* This module is always rounded */
+  box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2);
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Simple Hover effect for clock module - BRIGHTER COLOR */
+#clock:hover {
+  background-color: rgba(153, 209, 219, 0.1); /* Brighter highlight */
+}
+
+
+/* --- Right Modules (Single, Seamless Bar ) --- */
+#pulseaudio,
+#battery {
+  background-color: transparent;
+  padding: 0.3rem 0.7rem;
+  margin: 0px 0px; 
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#pulseaudio:hover,
+#battery:hover {
+  background-color: rgb(41, 42, 53);
+}
+
+
+#battery {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 7px;
+}
+
+#cpu {
+  color: #c6d0f5;
+}
+
+#clock {
+  background-color: transparent;
+  color: #99d1db;
+  font-weight: 500;
+}
+
+#pulseaudio {
+  color: #c6d0f5;
+}
+
+#battery {
+  color: #99d1db;;
+}
+#battery.charging {
+  color: #a6d189;
+}
+#battery.warning:not(.charging) {
+  color: #e78284;
+}
+
+/* --- Tooltip Styles --- */
+tooltip {
+  /*background-color: #1a1b26;*/
+  color: #dddddd;
+  padding: 5px 12px;
+  margin: 0px 0px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+}
+
+

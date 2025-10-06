@@ -187,8 +187,11 @@ titlebar_padding 0
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
+
+    # bindsym $mod+space fullscreen
+    #
     # Full screen but keep title bar with web browsers
-    bindsym $mod+space floating toggle; resize set 100ppt 100ppt
+    # bindsym $mod+space floating toggle; resize set 100ppt 100ppt
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+t floating toggle
