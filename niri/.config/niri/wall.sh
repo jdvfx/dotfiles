@@ -1,2 +1,2 @@
-swaybg -m fill -i /home/bunker/Desktop/git/wallpapers/pixel_stars.png &
+swaybg -m fill -i ~/Desktop/git/wallpapers/pixel_stars.png &
 

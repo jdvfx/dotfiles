@@ -1,4 +1,4 @@
-// This config is in the KDL format: https://kdl.dev
+
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
@@ -165,14 +165,15 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         width 1
-        active-color "#7fc8ff"
+        active-color "#2279ff"
         inactive-color "#50505000"
     }
 
 }
 
 
-
+// stop all notifications!
+spawn-at-startup "makoctl mode -a do-not-disturb"
 spawn-at-startup "waybar"
 spawn-sh-at-startup "bash ~/.config/niri/wall.sh"
 
@@ -497,15 +498,16 @@ binds {
 
 
     Mod+I {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_sys | awk -F'#' '{print $1}' | tofi --selection-background='c866ff' | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs swaymsg exec --";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_sys | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
     }
 
     Mod+O {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_apps1 | awk -F'#' '{print $1}' | tofi --selection-background='#2279ff' | xargs -I % grep % ~/.config/niri/menu_apps1 | awk -F'#' '{print $2}' | xargs -I % exec %";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_apps1 | awk -F'#' '{print $1}' | tofi --selection-background='#2279ff' | xargs -I % grep % ~/.config/niri/menu_apps1 | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
     }
 
     Mod+U {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_utils | awk -F'#' '{print $1}' | tofi --selection-background='#dc952e' | xargs -I % grep % $d1 | awk -F'#' '{print $2}' | xargs -I % exec $";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_utils | awk -F'#' '{print $1}' | tofi --selection-background='#dc952d' | xargs -I % grep % ~/.config/niri/menu_utils | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
+
     }
 
     // reload config
@@ -518,9 +520,5 @@ binds {
 }
 
 
-spawn-at-startup "swaybg -m fill -i ~/Desktop/git/wallpapers/pixel_stars.png &"
-
-// stop all notifications!
-spawn-at-startup "makoctl mode -a do-not-disturb"
 
 
