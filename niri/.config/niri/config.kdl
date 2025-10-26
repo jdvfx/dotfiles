@@ -264,24 +264,6 @@ binds {
     // or do a four-finger swipe up on a touchpad.
     Mod+Tab repeat=false { toggle-overview; }
 
-
-
-
-    //Mod+O repeat=false { toggle-overview; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Mod+Shift+C repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
@@ -398,15 +380,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
@@ -477,25 +459,10 @@ binds {
 
     Mod+Shift+q { quit; }
 
-    //Mod+I repeat=false { spawn-sh "echo 'FFF' | /usr/bin/tofi "; }
-    //Mod+I { spawn "echo 'AA' | /usr/bin/tofi" ; }
-    /* 
-    col1 "#c866ff";
-    col2 "#fc952e";
-    col3 "#2279ff";
-    */
 
-    /*
-    # the monitor name is set automatically to the monitor in focus
-    set $menu tofi --output `swaymsg -t get_outputs | jq '.[] | select(.focused) | .name' | sed 's/"//g'` --selection-background
+    /* TOFI menu */
 
-    # find all executables in usr/bin (default behavior with Dmenu)
-    set $menu0 find /usr/bin/ -executable -type f -printf "%f\n" | $menu=$col4 | xargs swaymsg exec --
-    */
-
-
-
-
+    /* #2bc395 */
 
     Mod+I {
         spawn "sh" "-c" "cat ~/.config/niri/menu_sys | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
@@ -512,13 +479,8 @@ binds {
 
     // reload config
     Mod+Q {
-    spawn "niri" "msg" "reload-config";
+        spawn "niri" "msg" "reload-config";
     }
 
-
-
 }
-
-
-
 

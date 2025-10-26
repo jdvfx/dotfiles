@@ -7,9 +7,11 @@
   "clock"
   ],
 
-  "modules-center": [""],
+  "modules-center": [
+  ],
 
   "modules-right": [
+    "custom/fan",
     "cpu",
     "pulseaudio", 
     "battery",
@@ -21,9 +23,16 @@
     "interval": 20
   },
 
+  "custom/fan": {
+    "tooltip": false,
+    "format": "{}",
+    "interval": 1,
+    "exec": "sensors | grep fan2 | awk '{print $2}'",
+  },
+
   "cpu": {
     "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     "on-click": "alacritty -e htop"
   },

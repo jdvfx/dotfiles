@@ -18,7 +18,7 @@
 /* --- Waybar Container --- */
 #waybar {
   background: transparent;
-  color: #111111;
+  color: #AAAAAA;
   margin: 0px;
   font-weight: 100;
   min-height: 18px;
@@ -38,6 +38,7 @@
   /* Transition for background-color and color only */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
+
 
 /* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
 #clock {
@@ -83,27 +84,27 @@
 }
 
 #cpu {
-  color: #c6d0f5;
+  color: #aaaaaa;
 }
 
 #clock {
   background-color: transparent;
-  color: #99d1db;
+  color: #aaaaaa;
   font-weight: 500;
 }
 
 #pulseaudio {
-  color: #c6d0f5;
+  color: #aaaaaa;
 }
 
 #battery {
-  color: #99d1db;;
+  color: #aaaaaa;
 }
 #battery.charging {
-  color: #a6d189;
+  color: #aaaaaa;
 }
 #battery.warning:not(.charging) {
-  color: #e78284;
+  color: #ffaaaa;
 }
 
 /* --- Tooltip Styles --- */

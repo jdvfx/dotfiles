@@ -619,7 +619,7 @@ require("lazy").setup({
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				basedpyright = {},
+				-- basedpyright = {},
 				-- 	capabilities = capabilities,
 				-- 	settings = {
 				-- 		basedpyright = {
