@@ -12,70 +12,17 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 }
 
+// ignore client side windows decorations
 prefer-no-csd
 
 input {
-    keyboard {
-        xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
 
-            // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
-        }
-
-        // Enable numlock on startup, omitting this setting disables it.
-
-        //numlock
-    }
-
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
-    touchpad {
-        // off
-        tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
-        natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
-    }
-
-    mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
-
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
-    }
-
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    // inputs are correct by default.
+    // no tap to click or "natural scrolling" 
+    // keymap set using QMK/Vial
+    
+    // this is blasphemy but OK
     warp-mouse-to-focus
-
-    // Focus windows and outputs automatically when moving the mouse into them.
-    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -107,8 +54,8 @@ input {
     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
     // The cursor can only move between directly adjacent outputs.
     // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+    // outputs are sized in , or scaled, pixels.
+    // For example, a 3840×2160 output with scale 2.0 will have a  size of 1920×1080,
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
@@ -119,7 +66,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
-    // Set gaps around windows in logical pixels.
+    // Set gaps around windows in  pixels.
     gaps 16
 
     // When to center a column when changing focus, options are:
@@ -139,7 +86,7 @@ layout {
         proportion 0.5
         proportion 0.66667
 
-        // Fixed sets the width in logical pixels exactly.
+        // Fixed sets the width in  pixels exactly.
         // fixed 1920
     }
 
@@ -166,15 +113,16 @@ layout {
     focus-ring {
         width 1
         active-color "#2279ff"
-        inactive-color "#50505000"
+        inactive-color "#111111FF"
     }
 
 }
 
 
-// stop all notifications!
-spawn-at-startup "makoctl mode -a do-not-disturb"
 spawn-at-startup "waybar"
+// stop all notifications!
+spawn-at-startup "makoctl mode -s do-not-disturb"
+// set my wallpaper
 spawn-sh-at-startup "bash ~/.config/niri/wall.sh"
 
 hotkey-overlay {
@@ -256,7 +204,7 @@ binds {
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    //Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
@@ -283,6 +231,11 @@ binds {
     Mod+Shift+J     { move-window-down; }
     Mod+Shift+K     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
+
+
+    // switch on/off monitors
+    Mod+XF86MonBrightnessDown { "power-off-monitors"; }
+    Mod+XF86MonBrightnessUp { "power-on-monitors"; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
@@ -399,13 +352,17 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
+    /*
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+    */
+    Mod+Period  { consume-or-expel-window-left; }
+    Mod+Slash { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
+    //Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    //Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
@@ -433,18 +390,9 @@ binds {
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
 
-    // Actions to switch layouts.
-
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    // Screenshots 
+    Mod+S { screenshot; }
+    Mod+Shift+S { screenshot-screen; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -460,8 +408,10 @@ binds {
     Mod+Shift+q { quit; }
 
 
-    /* TOFI menu */
-
+    /* TOFI menu
+        - this config file is not interpreted and therefore I cannot use variables
+        or scripting
+    */
     /* #2bc395 */
 
     Mod+I {
@@ -477,9 +427,10 @@ binds {
 
     }
 
-    // reload config
+    // reload waybar and niri's config 
+    //spawn "niri" "msg" "reload-config";
     Mod+Q {
-        spawn "niri" "msg" "reload-config";
+        spawn "sh" "-c" "killall -SIGUSR2 waybar && niri msg action load-config-file";
     }
 
 }
