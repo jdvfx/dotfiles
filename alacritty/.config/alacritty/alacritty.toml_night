@@ -3,14 +3,14 @@
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "#202b3b"
-blue = "#2279ff"
+black = "#212c3e"
+blue = "#4088cc"
 cyan = "#2bc395"
-green = "#2c9440"
-magenta = "#c866ff"
-red = "#d3302e"
-white = "#e6ecec"
-yellow = "#fc552e"
+green = "#32a448"
+magenta = "#c866aa"
+red = "#774444"
+white = "#afb6b9"
+yellow = "#bb33bb"
 
 [colors.cursor]
 cursor = "#ff77bb"
@@ -20,14 +20,14 @@ black = "#212c3e"
 blue = "#4088cc"
 cyan = "#2bc395"
 green = "#32a448"
-magenta = "#c866ff"
-red = "#aa2255"
+magenta = "#c866aa"
+red = "#774444"
 white = "#afb6b9"
 yellow = "#bb33bb"
 
 [colors.primary]
-background = "#151515"
-foreground = "#AAAAAA"
+background = "#091020"
+foreground = "#335588"
 
 [cursor]
 thickness = 0.2

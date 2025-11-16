@@ -1,29 +1,29 @@
 #oxocarbon theme remix
 
 [colors.bright]
-black = "#3c3838"
-blue = "#4589ff"
-cyan = "#3ddbd9"
-green = "#6fdc8c"
-magenta = "#be95ff"
-red = "#ee5396"
-white = "#ada8a8"
-yellow = "#ff8389"
+black = "#222020"
+blue = "#25439e"
+cyan = "#228483"
+green = "#328545"
+magenta = "#694c9e"
+red = "#922a4d"
+white = "#5c5959"
+yellow = "#9e3f43"
 
 [colors.cursor]
-cursor = "#ffffff"
+cursor = "#9e9e9e"
 
 [colors.normal]
-black = "#272525"
-blue = "#78a9ff"
-cyan = "#009d9a"
-green = "#24a148"
-magenta = "#a56eff"
-red = "#ee5396"
-white = "#726e6e"
-yellow = "#fa4d56"
+black = "#171616"
+blue = "#37599e"
+cyan = "#0e5250"
+green = "#155526"
+magenta = "#57319e"
+red = "#922a4d"
+white = "#333131"
+yellow = "#9a282b"
 
 [colors.primary]
 background = "#171414"
-foreground = "#ada8a8"
+foreground = "#6d6a6a"
 

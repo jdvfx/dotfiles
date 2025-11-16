@@ -1,33 +1,53 @@
-
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "#202b3b"
-blue = "#2279ff"
-cyan = "#2bc395"
-green = "#2c9440"
-magenta = "#c866ff"
-red = "#d3302e"
-white = "#e6ecec"
-yellow = "#fc552e"
+black = "#262626"
+blue = "#33b1ff"
+cyan = "#3ddbd9"
+green = "#42be65"
+magenta = "#be95ff"
+red = "#ee5396"
+white = "#525252"
+yellow = "#be95ff"
 
 [colors.cursor]
-cursor = "#ff77bb"
+cursor = "#ff7eb6"
 
 [colors.normal]
-black = "#212c3e"
-blue = "#4088cc"
-cyan = "#2bc395"
-green = "#32a448"
-magenta = "#c866ff"
-red = "#aa2255"
-white = "#afb6b9"
-yellow = "#bb33bb"
+black = "#262626"
+blue = "#78a9ff"
+cyan = "#3ddbd9"
+green = "#42be65"
+magenta = "#be95ff"
+red = "#ee5396"
+white = "#525252"
+yellow = "#be95ff"
 
+
+## OXOCARBON ##
+#161616
+#262626
+#393939
+#525252
+#dde1e6
+#f2f4f8
+#ffffff
+#08bdba
+#3ddbd9
+#78a9ff
+#ee5396
+#33b1ff
+#ff7eb6
+#42be65
+#be95ff
+#82cfff
+
+
+#
 [colors.primary]
-background = "#151515"
-foreground = "#AAAAAA"
+background = "#161616"
+foreground = "#707070"
 
 [cursor]
 thickness = 0.2

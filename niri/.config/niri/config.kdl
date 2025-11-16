@@ -1,13 +1,4 @@
 
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
-
-
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 }
@@ -20,8 +11,6 @@ input {
     // inputs are correct by default.
     // no tap to click or "natural scrolling" 
     // keymap set using QMK/Vial
-    
-    // this is blasphemy but OK
     warp-mouse-to-focus
 }
 
@@ -66,6 +55,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+
     // Set gaps around windows in  pixels.
     gaps 16
 
@@ -118,10 +108,29 @@ layout {
 
 }
 
+/*
+window-rule {
+    open-fullscreen true
+}
+window-rule {
+    open-maximized true
+}
+*/
+
+
 
 spawn-at-startup "waybar"
+
 // stop all notifications!
-spawn-at-startup "makoctl mode -s do-not-disturb"
+/*
+systemctl --user stop mako.service
+systemctl --user disable mako.service
+systemctl --user mask mako.service
+
+
+*/
+//spawn-at-startup "makoctl mode -s do-not-disturb"
+
 // set my wallpaper
 spawn-sh-at-startup "bash ~/.config/niri/wall.sh"
 
@@ -234,8 +243,13 @@ binds {
 
 
     // switch on/off monitors
-    Mod+XF86MonBrightnessDown { "power-off-monitors"; }
-    Mod+XF86MonBrightnessUp { "power-on-monitors"; }
+    Mod+Shift+XF86MonBrightnessDown { "power-off-monitors"; }
+    Mod+Shift+XF86MonBrightnessUp { "power-on-monitors"; }
+
+    // change brightness
+    Mod+XF86MonBrightnessDown {  spawn "sh" "-c" "pkill gammastep || gammastep -b 0.5 -r";} 
+    Mod+XF86MonBrightnessUp {  spawn "sh" "-c" "pkill gammastep || gammastep -b 0.7 -r";} 
+
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
@@ -406,7 +420,6 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+q { quit; }
-
 
     /* TOFI menu
         - this config file is not interpreted and therefore I cannot use variables

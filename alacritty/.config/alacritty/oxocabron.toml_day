@@ -1,0 +1,29 @@
+#oxocarbon theme remix
+
+[colors.bright]
+black = "#3c3838"
+blue = "#4589ff"
+cyan = "#3ddbd9"
+green = "#6fdc8c"
+magenta = "#be95ff"
+red = "#ee5396"
+white = "#ada8a8"
+yellow = "#ff8389"
+
+[colors.cursor]
+cursor = "#ffffff"
+
+[colors.normal]
+black = "#272525"
+blue = "#78a9ff"
+cyan = "#009d9a"
+green = "#24a148"
+magenta = "#a56eff"
+red = "#ee5396"
+white = "#726e6e"
+yellow = "#fa4d56"
+
+[colors.primary]
+background = "#171414"
+foreground = "#ada8a8"
+
