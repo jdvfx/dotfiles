@@ -1,0 +1,14 @@
+%Y	Full year (4 digits).		date +"%Y" outputs 2024.
+%m	Month (01-12).			date +"%m" outputs 10.
+%d	Day of the month (01-31).	date +"%d" outputs 08.
+%H	Hour (00-23, 24-hour format).	date +"%H" outputs 14.
+%M	Minute (00-59).			date +"%M" outputs 45.
+%S	Second (00-59).			date +"%S" outputs 30.
+%A	Full weekday name.		date +"%A" outputs Tuesday.
+%a	Abbreviated weekday name.	date +"%a" outputs Tue.
+%B	Full month name.		date +"%B" outputs October.
+%b	Abbreviated month name.		date +"%b" outputs Oct.
+%p	AM or PM indicator (12-hour).	date +"%I %p" outputs 02 PM.
+%I	Hour (01-12, 12-hour format).	date +"%I" outputs 02.
+%T	Time in 24-hour format (HH:MM).	date +"%T" outputs 14:45:30.
+%D	Date in MM/DD/YY format.	date +"%D" outputs 10/08/24.
