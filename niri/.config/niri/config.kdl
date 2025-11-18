@@ -1,4 +1,15 @@
 
+/*
+
+when opening GUI apps that require elevated permission
+if this error comes up:
+"Authorization required, but no authorization protocol specified"
+the solution is to type this in the terminal before:
+xhost + local:
+
+*/
+
+
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 }
@@ -428,15 +439,15 @@ binds {
     /* #2bc395 */
 
     Mod+I {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_sys | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_sys | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' --height=26 --margin-top=1 --padding-top=2 | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
     }
 
     Mod+O {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_apps1 | awk -F'#' '{print $1}' | tofi --selection-background='#2279ff' | xargs -I % grep % ~/.config/niri/menu_apps1 | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_apps1 | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' --height=26 --margin-top=1 --padding-top=2 | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
     }
 
     Mod+U {
-        spawn "sh" "-c" "cat ~/.config/niri/menu_utils | awk -F'#' '{print $1}' | tofi --selection-background='#dc952d' | xargs -I % grep % ~/.config/niri/menu_utils | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
+        spawn "sh" "-c" "cat ~/.config/niri/menu_utils | awk -F'#' '{print $1}' | tofi --selection-background='#c866ff' --height=26 --margin-top=1 --padding-top=2 | xargs -I % grep % ~/.config/niri/menu_sys | awk -F'#' '{print $2}' | xargs -I % sh -c '%'";
 
     }
 
