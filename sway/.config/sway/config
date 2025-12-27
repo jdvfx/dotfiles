@@ -1,6 +1,7 @@
 # Xmonad-ish config
 
 
+
 # setup the monitor's position with 'wdisplay'
 # sudo dnf install wdisplay
 
@@ -36,21 +37,8 @@ titlebar_padding 0
 
     # find app_id with: swaymsg --type get_tree
 
-
-
     for_window [instance="Houdini FX"] {
         floating enable
-        resize set 1920 1080
-        move position center
-    }
-
-    for_window [app_id="brave-browser"] {
-        floating disable
-        resize set 1920 1080
-        move position center
-    }
-
-    for_window [app_id="chromium-browser"] {
         resize set 1920 1080
         move position center
     }
@@ -138,6 +126,9 @@ titlebar_padding 0
     bindsym $mod+Shift+up move up
     bindsym $mod+Shift+right move right
 
+
+
+
 #
 # Extra functions
 #
@@ -188,6 +179,10 @@ titlebar_padding 0
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
+    # for Chrome based browsers, keep title bar
+    bindsym $mod+Shift+f floating toggle;resize set 1920 1080;move position 0 0
+
+    # bindsym $mod+Shift+f maximize
     # bindsym $mod+space fullscreen
     #
     # Full screen but keep title bar with web browsers
