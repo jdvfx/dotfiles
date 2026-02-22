@@ -1,0 +1,11 @@
+# install sddm on Fedora 43
+sudo dnf install sddm
+
+# enable SDDM and disable other display(login) manager
+sudo systemctl enable sddm.service -f
+
+# theme location:
+/usr/share/sddm/themes/sddm-astronaut-theme
+
+# update sddm config to use theme
+copy "sddm.conf" to /etc/
