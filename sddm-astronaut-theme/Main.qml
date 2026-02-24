@@ -27,7 +27,7 @@ Pane {
     palette.buttonText: config.HoverSystemButtonsIconsColor
 
     font.family: config.Font
-    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80) || 13
+    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 40) || 13
     
     focus: true
 

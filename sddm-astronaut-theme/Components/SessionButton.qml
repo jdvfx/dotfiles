@@ -43,7 +43,8 @@ Item {
             
             contentItem: Text {
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
+                //horizontalAlignment: Text.AlignHCenter
+                horizontalAlignment: Text.AlignHRight
 
                 text: model.name
                 font.pointSize: root.font.pointSize * 0.8

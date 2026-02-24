@@ -14,22 +14,32 @@ ColumnLayout {
     property int p: config.ScreenPadding == "" ? 0 : config.ScreenPadding
     property string a: config.FormPosition
 
+    SessionButton {
+        id: sessionSelect
+
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+        Layout.preferredHeight: root.height / 40
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.topMargin:  20
+    }
     Clock {
         id: clock
 
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+        Layout.alignment: Qt.AlignHCenter 
         // important
-        Layout.preferredHeight: root.height / 3
+        Layout.preferredHeight: root.height / 6
+        Layout.maximumHeight: root.height / 6
         Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        Layout.topMargin:  0
     }
+
 
     Input {
         id: input
-
         Layout.alignment: Qt.AlignVCenter
-        Layout.preferredHeight: root.height / 10
+        Layout.preferredHeight: root.height / 20
         Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
-        Layout.topMargin:  0
+        Layout.topMargin:  -100
     }
 
     SystemButtons {
@@ -43,14 +53,6 @@ ColumnLayout {
         exposedSession: input.exposeSession
     }
     
-    SessionButton {
-        id: sessionSelect
-
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-        Layout.preferredHeight: root.height / 54
-        Layout.maximumHeight: root.height / 54
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
-    }
 
     VirtualKeyboardButton {
         id: virtualKeyboardButton
