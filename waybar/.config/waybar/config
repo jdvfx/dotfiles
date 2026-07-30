@@ -6,10 +6,9 @@
 
   "modules-left": [
     "battery",
+    "custom/temp",
     "custom/fan",
-    "pulseaudio", 
     "memory",
-    "cpu",
   ],
 
   "modules-right": [
@@ -19,14 +18,22 @@
   "clock": {
     "tooltip": false,
     "format": "{:%a, %b %d . %H:%M}",
-    "interval": 20
+    "interval": 20,
+    "timezone":"US/Pacific"
   },
 
   "custom/fan": {
     "tooltip": false,
     "format": "{}",
-    "interval": 1,
+    "interval": 5,
     "exec": "sensors | grep fan2 | awk '{print $2}'",
+  },
+
+  "custom/temp": {
+    "tooltip": false,
+    "format": "{}",
+    "interval": 5,
+    "exec": "sensors | grep CPU | awk '{print $2}' | sed 's/+//' | sed 's/C//'",
   },
 
   "cpu": {
